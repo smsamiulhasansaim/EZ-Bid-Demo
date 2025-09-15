@@ -3,9 +3,1642 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Corporate Profile Setup</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- link-css -->
+     <link rel="stylesheet" href="css/profile.css">
 </head>
 <body>
-    
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="material-icons">business</span>
+                </div>
+                <div class="sidebar-title"> EZ BD Profile Setup</div>
+            </div>
+            <div class="form-sections">
+                <div class="form-section-item active" data-step="1">
+                    <span class="material-icons icon">info</span>
+                    <span>Basic Information</span>
+                </div>
+                <div class="form-section-item" data-step="2">
+                    <span class="material-icons icon">gavel</span>
+                    <span>Legal & Registration</span>
+                </div>
+                <div class="form-section-item" data-step="3">
+                    <span class="material-icons icon">location_on</span>
+                    <span>Address Details</span>
+                </div>
+                <div class="form-section-item" data-step="4">
+                    <span class="material-icons icon">contacts</span>
+                    <span>Contact Details</span>
+                </div>
+                <div class="form-section-item" data-step="5">
+                    <span class="material-icons icon">people</span>
+                    <span>Leadership</span>
+                </div>
+                <div class="form-section-item" data-step="6">
+                    <span class="material-icons icon">badge</span>
+                    <span>Key Personnel</span>
+                </div>
+                <div class="form-section-item" data-step="7">
+                    <span class="material-icons icon">work</span>
+                    <span>Experience & Expertise</span>
+                </div>
+                <div class="form-section-item" data-step="8">
+                    <span class="material-icons icon">construction</span>
+                    <span>Projects Portfolio</span>
+                </div>
+                <div class="form-section-item" data-step="9">
+                    <span class="material-icons icon">groups</span>
+                    <span>Clientele</span>
+                </div>
+                <div class="form-section-item" data-step="10">
+                    <span class="material-icons icon">verified</span>
+                    <span>Certifications</span>
+                </div>
+                <div class="form-section-item" data-step="11">
+                    <span class="material-icons icon">attach_money</span>
+                    <span>Financial Information</span>
+                </div>
+                <div class="form-section-item" data-step="12">
+                    <span class="material-icons icon">settings</span>
+                    <span>Technology & Tools</span>
+                </div>
+                <div class="form-section-item" data-step="13">
+                    <span class="material-icons icon">policy</span>
+                    <span>Quality & Safety</span>
+                </div>
+                <div class="form-section-item" data-step="14">
+                    <span class="material-icons icon">history</span>
+                    <span>Company History</span>
+                </div>
+                <div class="form-section-item" data-step="15">
+                    <span class="material-icons icon">task_alt</span>
+                    <span>Review & Submit</span>
+                </div>
+            </div>
+            <div class="help-section">
+                <p>Need help with your profile setup?</p>
+                <button class="contact-btn">
+                    <span class="material-icons">support_agent</span>
+                    Contact Support
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <div class="content-header">
+                <div class="progress-info">
+                    <h2>Profile Completion Progress</h2>
+                    <div class="step-counter">Step 1 of 15: Basic Information</div>
+                </div>
+                <div class="auto-save">
+                    <span class="material-icons" style="color: var(--success-color); font-size: 18px;">check_circle</span>
+                    <span style="font-size: 0.875rem;">Auto-save enabled</span>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 7%;"></div>
+                </div>
+                <div class="progress-steps">
+                    <span class="active">Basic</span>
+                    <span>Legal</span>
+                    <span>Address</span>
+                    <span>Contact</span>
+                    <span>Leadership</span>
+                    <span>Personnel</span>
+                    <span>Experience</span>
+                    <span>Projects</span>
+                    <span>Clientele</span>
+                    <span>Certifications</span>
+                    <span>Financial</span>
+                    <span>Technology</span>
+                    <span>Quality</span>
+                    <span>History</span>
+                    <span>Review</span>
+                </div>
+            </div>
+
+            <div class="form-content">
+                <!-- Step 1: Basic Information -->
+                <div class="form-step active" id="step-1">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="material-icons">business</span>
+                            Basic Business Information
+                        </h2>
+                        <p class="section-description">Provide fundamental details about your company</p>
+                        <div class="required-fields">
+                            <span class="material-icons" style="font-size: 16px;">info</span>
+                            <span>* Required fields</span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="companyName">Company Name *</label>
+                            <input type="text" id="companyName" placeholder="Enter your company name">
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfEstablishment">Date of Establishment *</label>
+                            <input type="date" id="dateOfEstablishment">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="businessType">Business Type *</label>
+                            <select id="businessType">
+                                <option value="">Select business type</option>
+                                <option value="sole-proprietorship">Sole Proprietorship</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="limited-liability">Limited Liability Company</option>
+                                <option value="corporation">Corporation</option>
+                            </select>
+                            <small>Will be validated against trade license/BIN</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="industrySector">Industry Sector *</label>
+                            <select id="industrySector">
+                                <option value="">Select industry sector</option>
+                                <option value="construction">Construction</option>
+                                <option value="manufacturing">Manufacturing</option>
+                                <option value="technology">Technology</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="finance">Finance</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Company Logo</label>
+                            <div class="file-upload">
+                                <div class="file-upload-icon">
+                                    <span class="material-icons">cloud_upload</span>
+                                </div>
+                                <p>Upload your company logo</p>
+                                <button class="upload-btn">
+                                    <span class="material-icons">upload</span>
+                                    Choose File
+                                </button>
+                                <p class="file-info">No file selected</p>
+                                <small>JPG, PNG, PDF | Max 2MB</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="validation-status">
+                        <div class="status-item status-success">
+                            <span class="material-icons">check_circle</span>
+                            <span>Company name format valid</span>
+                        </div>
+                        <div class="status-item status-pending">
+                            <span class="material-icons">schedule</span>
+                            <span>Trade license validation pending</span>
+                        </div>
+                        <div class="status-item status-pending">
+                            <span class="material-icons">schedule</span>
+                            <span>BIN validation pending</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Legal & Registration -->
+                <div class="form-step" id="step-2">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="material-icons">gavel</span>
+                            Legal & Registration Details
+                        </h2>
+                        <p class="section-description">Upload and verify your business registration documents</p>
+                        <button class="contact-btn" style="margin-left: auto; background-color: var(--dark-bg);">
+                            Document Upload Required
+                        </button>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tradeLicenseNumber">Trade License Number *</label>
+                            <input type="text" id="tradeLicenseNumber" placeholder="Enter trade license number">
+                        </div>
+                        <div class="form-group">
+                            <label for="binVatNumber">BIN/VAT Registration Number *</label>
+                            <input type="text" id="binVatNumber" placeholder="Enter BIN/VAT number">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Upload Trade License</label>
+                            <button class="upload-btn">
+                                <span class="material-icons">upload</span>
+                                Choose File
+                            </button>
+                            <p class="file-info">No file selected</p>
+                            <small>JPG, PDF | Max 2MB</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Upload BIN Certificate</label>
+                            <button class="upload-btn">
+                                <span class="material-icons">upload</span>
+                                Choose File
+                            </button>
+                            <p class="file-info">No file selected</p>
+                            <small>JPG, PDF | Max 2MB</small>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tinNumber">TIN (Taxpayer Identification Number) *</label>
+                            <input type="text" id="tinNumber" placeholder="Enter TIN number">
+                        </div>
+                        <div class="form-group">
+                            <label>Document Verification Status</label>
+                            <div class="document-status">
+                                <div class="document-status-item">
+                                    <span>Trade License</span>
+                                    <span class="status-badge status-pending-badge">Pending</span>
+                                </div>
+                                <div class="document-status-item">
+                                    <span>BIN Certificate</span>
+                                    <span class="status-badge status-pending-badge">Pending</span>
+                                </div>
+                                <div class="document-status-item">
+                                    <span>TIN Certificate</span>
+                                    <span class="status-badge status-pending-badge">Pending</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Upload TIN Certificate</label>
+                            <button class="upload-btn">
+                                <span class="material-icons">upload</span>
+                                Choose File
+                            </button>
+                            <p class="file-info">No file selected</p>
+                            <small>JPG, PDF | Max 2MB</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Address Details -->
+                <div class="form-step" id="step-3">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="material-icons">location_on</span>
+                            Address Details
+                        </h2>
+                        <p class="section-description">Provide your registered and operational office addresses</p>
+                        <small style="color: var(--secondary-color);">Address validation enabled</small>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Registered Office Address *</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="reg-village">Village/House No.</label>
+                                <input type="text" id="reg-village" placeholder="Enter house/village number">
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-road">Road No./Name/Area</label>
+                                <input type="text" id="reg-road" placeholder="Enter road/area details">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="reg-post-office">Post Office</label>
+                                <select id="reg-post-office">
+                                    <option value="">Select post office</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-post-code">Post Code</label>
+                                <input type="text" id="reg-post-code" placeholder="Enter post code">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="reg-police-station">Police Station</label>
+                                <select id="reg-police-station">
+                                    <option value="">Select police station</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-district">District</label>
+                                <select id="reg-district">
+                                    <option value="">Select district</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="reg-division">Division</label>
+                                <select id="reg-division">
+                                    <option value="">Select division</option>
+                                </select>
+                            </div>
+                            <div class="form-group"></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Operational/Branch Office Addresses</h3>
+                        </div>
+                        
+                        <div class="branch-address">
+                            <div class="card-header" style="padding: 0; border-bottom: none; margin-bottom: 1rem;">
+                                <h3>Branch Office #1</h3>
+                                <span class="material-icons" style="color: var(--error-color); cursor: pointer;">delete</span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="branch-village">Village/House No.</label>
+                                    <input type="text" id="branch-village" placeholder="Enter house/village number">
+                                </div>
+                                <div class="form-group">
+                                    <label for="branch-road">Road No./Name/Area</label>
+                                    <input type="text" id="branch-road" placeholder="Enter road/area details">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="branch-district">District</label>
+                                    <select id="branch-district">
+                                        <option value="">Select district</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="branch-division">Division</label>
+                                    <select id="branch-division">
+                                        <option value="">Select division</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#" class="upload-btn" style="display: inline-flex; text-decoration: none; margin-top: 1rem;">
+                            <span class="material-icons">add</span>
+                            Add Another Branch Office
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Step 4: Contact Details -->
+                <div class="form-step" id="step-4">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="material-icons">contacts</span>
+                            Contact Details
+                        </h2>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone-number">Phone Number *</label>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <input type="text" style="flex-basis: 70px; text-align: center;" value="+880" readonly>
+                                <input type="text" id="phone-number" placeholder="1XXXXXXXXX (11 digits)">
+                            </div>
+                            <small style="color: var(--secondary-color); margin-top: 0.25rem;">11-digit verification required</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="email-address">Email Address *</label>
+                            <input type="email" id="email-address" placeholder="company@example.com">
+                            <small style="color: var(--secondary-color); margin-top: 0.25rem;">Email format validation enabled</small>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="website">Website</label>
+                            <input type="url" id="website" placeholder="https://www.company.com">
+                            <small style="color: var(--secondary-color); margin-top: 0.25rem;">Website format validation enabled</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="fax">Fax (if applicable)</label>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <input type="text" style="flex-basis: 70px; text-align: center;" value="+880" readonly>
+                                <input type="text" id="fax" placeholder="1XXXXXXXXX (11 digits)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Leadership -->
+                <div class="form-step" id="step-5">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="material-icons">people</span>
+                            Leadership & Key Personnel
+                        </h2>
+                        <button class="contact-btn" style="background-color: var(--dark-bg);">
+                            <span class="material-icons">add</span>
+                            Add Personnel
+                        </button>
+                    </div>
+                    <p class="section-description">
+                        Add information about your company's leadership team
+                    </p>
+
+                    <div class="card">
+                        <h3 class="card-title">Managing Director / CEO / Proprietor *</h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="leader-fullName">Full Name</label>
+                                <input type="text" id="leader-fullName" placeholder="Enter full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="leader-designation">Designation</label>
+                                <select id="leader-designation">
+                                    <option value="">Select designation</option>
+                                    <option value="ceo">Chief Executive Officer</option>
+                                    <option value="md">Managing Director</option>
+                                    <option value="proprietor">Proprietor</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="leader-totalYears">Total Years of Experience *</label>
+                                <input type="number" id="leader-totalYears" placeholder="Years">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="leader-similarIndustryYears">Years in Similar Industry</label>
+                                <input type="number" id="leader-similarIndustryYears" placeholder="Years">
+                            </div>
+                            <div class="form-group">
+                                <label for="leader-projectsManaged">Number of Projects Managed</label>
+                                <input type="number" id="leader-projectsManaged" placeholder="Projects">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="leader-responsibilities">Current Role & Responsibilities *</label>
+                            <textarea id="leader-responsibilities" placeholder="Describe current responsibilities and achievements"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Upload CV/Profile</label>
+                            <button class="upload-btn">
+                                <span class="material-icons">upload</span>
+                                Choose File
+                            </button>
+                            <p class="file-info">No file selected</p>
+                            <small>WORD, PDF | Max 2MB</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6: Key Personnel -->
+                <div class="form-step" id="step-6">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="material-icons">badge</span>
+                            Key Personnel
+                        </h2>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Project Director / CFO / COO</h3>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="pd-fullName">Full Name</label>
+                                <input type="text" id="pd-fullName" placeholder="Enter full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="pd-designation">Designation</label>
+                                <select id="pd-designation">
+                                    <option value="">Select designation</option>
+                                    <option value="project-director">Project Director</option>
+                                    <option value="cfo">Chief Financial Officer</option>
+                                    <option value="coo">Chief Operating Officer</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="pd-totalYears">Total Years of Experience</label>
+                                <input type="number" id="pd-totalYears" placeholder="Years">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="pd-similarIndustryYears">Years in Similar Industry</label>
+                                <input type="number" id="pd-similarIndustryYears" placeholder="Years">
+                            </div>
+                            <div class="form-group">
+                                <label for="pd-projectsManaged">Number of Projects Managed</label>
+                                <input type="number" id="pd-projectsManaged" placeholder="Projects">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pd-responsibilities">Current Role & Responsibilities</label>
+                            <textarea id="pd-responsibilities" placeholder="Describe current responsibilities and achievements"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Upload CV/Profile</label>
+                            <button class="upload-btn">
+                                <span class="material-icons">upload</span>
+                                Choose File
+                            </button>
+                            <p class="file-info">No file selected</p>
+                            <small>WORD, PDF | Max 2MB</small>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Head of Departments</h3>
+                            <span class="material-icons" style="cursor: pointer;">add</span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="hod-fullName">Full Name</label>
+                                <input type="text" id="hod-fullName" placeholder="Enter full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="hod-department">Department</label>
+                                <select id="hod-department">
+                                    <option value="">Select department</option>
+                                    <option value="engineering">Engineering</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="operations">Operations</option>
+                                    <option value="hr">Human Resources</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="hod-totalYears">Total Years of Experience</label>
+                                <input type="number" id="hod-totalYears" placeholder="Years">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Upload CV/Profile</label>
+                            <button class="upload-btn">
+                                <span class="material-icons">upload</span>
+                                Choose File
+                            </button>
+                            <p class="file-info">No file selected</p>
+                            <small>WORD, PDF | Max 2MB</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 7: Experience & Expertise -->
+                <div class="form-step" id="step-7">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="material-icons">work</span>
+                            Experience & Expertise
+                        </h2>
+                        <button class="contact-btn" style="background-color: var(--primary-color);">
+                            Document Upload Required
+                        </button>
+                    </div>
+                    <p class="section-description">
+                        Detail your company's core competencies and capabilities
+                    </p>
+
+                    <div class="form-row">
+                        <div class="form-group" style="flex: 1;">
+                            <div class="card">
+                                <h3 class="card-title">Overview of Expertise</h3>
+                                <div class="form-group">
+                                    <label for="coreCompetencies">Core Competencies</label>
+                                    <textarea id="coreCompetencies" placeholder="Describe your core competencies (e.g., construction management, civil engineering, consulting)"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Upload Expertise Document</label>
+                                    <button class="upload-btn">
+                                        <span class="material-icons">upload</span>
+                                        Choose File
+                                    </button>
+                                    <p class="file-info">No file selected</p>
+                                    <small>WORD, PDF | Max 2MB</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="flex: 1;">
+                            <div class="card">
+                                <h3 class="card-title">Industry Experience</h3>
+                                <div class="form-group">
+                                    <label for="yearsInBD">Years of Experience in Bangladesh</label>
+                                    <input type="number" id="yearsInBD" placeholder="e.g., 15">
+                                    <small style="color: var(--secondary-color);">Total years of industry experience</small>
+                                </div>
+                                <div class="form-group">
+                                    <label>Sector Focus</label>
+                                    <div class="checkbox-group">
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="infrastructure">
+                                            <label for="infrastructure">Infrastructure</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="residential">
+                                            <label for="residential">Residential</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="industrial">
+                                            <label for="industrial">Industrial</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="publicSector">
+                                            <label for="publicSector">Public Sector</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="commercial">
+                                            <label for="commercial">Commercial</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Upload Experience Document</label>
+                                    <button class="upload-btn">
+                                        <span class="material-icons">upload</span>
+                                        Choose File
+                                    </button>
+                                    <p class="file-info">No file selected</p>
+                                    <small>WORD, PDF | Max 2MB</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Capability Assessment</h3>
+                        <div class="form-row">
+                            <div class="form-group" style="flex: 1;">
+                                <div class="card">
+                                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                        <span class="material-icons" style="margin-right: 0.5rem;">groups</span>
+                                        <h4>People Capacity</h4>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="totalEmployees">Total Employees</label>
+                                        <input type="number" id="totalEmployees" placeholder="Number of employees">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="technicalStaff">Technical Staff</label>
+                                        <input type="number" id="technicalStaff" placeholder="Technical personnel">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Upload Staff List & CVs</label>
+                                        <button class="upload-btn">
+                                            <span class="material-icons">upload</span>
+                                            Choose File
+                                        </button>
+                                        <p class="file-info">No file selected</p>
+                                        <small>PDF | Max 2MB</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="flex: 1;">
+                                <div class="card">
+                                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                        <span class="material-icons" style="margin-right: 0.5rem;">construction</span>
+                                        <h4>Tools/Machine Capacity</h4>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="heavyMachinery">Heavy Machinery</label>
+                                        <input type="text" id="heavyMachinery" placeholder="List of heavy machinery">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="specializedTools">Specialized Tools</label>
+                                        <input type="text" id="specializedTools" placeholder="Specialized equipment">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Upload Equipment List</label>
+                                        <button class="upload-btn">
+                                            <span class="material-icons">upload</span>
+                                            Choose File
+                                        </button>
+                                        <p class="file-info">No file selected</p>
+                                        <small>PDF | Max 2MB</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group" style="flex: 1;">
+                                <div class="card">
+                                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                        <span class="material-icons" style="margin-right: 0.5rem;">savings</span>
+                                        <h4>Financial Capacity</h4>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="workingCapital">Working Capital</label>
+                                        <input type="text" id="workingCapital" placeholder="Amount in BDT">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="creditFacilities">Credit Facilities</label>
+                                        <input type="text" id="creditFacilities" placeholder="Available credit">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Upload Financial Docs</label>
+                                        <button class="upload-btn">
+                                            <span class="material-icons">upload</span>
+                                            Choose File
+                                        </button>
+                                        <p class="file-info">No file selected</p>
+                                        <small>PDF | Max 2MB</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 8: Projects Portfolio -->
+                <div class="form-step" id="step-8">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="material-icons">construction</span>
+                            Projects Portfolio
+                        </h2>
+                        <button class="contact-btn" style="background-color: var(--dark-bg);">
+                            <span class="material-icons">add</span>
+                            Add Project
+                        </button>
+                    </div>
+                    <p class="section-description">
+                        Showcase your most significant projects (3-5 projects recommended)
+                    </p>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Project #1</h3>
+                            <span class="material-icons" style="color: var(--error-color); cursor: pointer;">delete</span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="projectName">Project Name</label>
+                                <input type="text" id="projectName" placeholder="Enter project name">
+                            </div>
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select id="category">
+                                    <option value="">Select category</option>
+                                    <option value="residential">Residential</option>
+                                    <option value="commercial">Commercial</option>
+                                    <option value="industrial">Industrial</option>
+                                    <option value="infrastructure">Infrastructure</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <input type="text" id="location" placeholder="Project location">
+                            </div>
+                            <div class="form-group">
+                                <label for="yearCompleted">Year Completed</label>
+                                <select id="yearCompleted">
+                                    <option value="">Select year</option>
+                                    <!-- Options would be dynamically generated -->
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="description">Brief Description</label>
+                                <textarea id="description" placeholder="Describe the project scope, challenges, and achievements"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="projectValue">Project Value</label>
+                                <input type="text" id="projectValue" placeholder="Project value in BDT">
+                                <label for="clientName" style="margin-top: 1rem;">Client Name</label>
+                                <input type="text" id="clientName" placeholder="Client organization">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Upload Project Portfolio</label>
+                            <button class="upload-btn">
+                                <span class="material-icons">upload</span>
+                                Choose File
+                            </button>
+                            <p class="file-info">No file selected</p>
+                            <small>WORD, PDF | Max 2MB</small>
+                        </div>
+                    </div>
+
+                    <div class="card" style="text-align: center; padding: 2rem; border: 2px dashed var(--border-color);">
+                        <span class="material-icons" style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 1rem;">add</span>
+                        <p style="font-weight: 500; margin-bottom: 1rem;">Add more projects to showcase your portfolio</p>
+                        <button class="contact-btn" style="background-color: var(--dark-bg);">
+                            Add Another Project
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 9: Clientele -->
+                <div class="form-step" id="step-9">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="material-icons">groups</span>
+                            Clientele
+                        </h2>
+                        <div style="display: flex; align-items: center; color: var(--secondary-color);">
+                            <span class="material-icons" style="margin-right: 0.25rem;">info</span>
+                            <span>Client relationships</span>
+                        </div>
+                    </div>
+                    <p class="section-description">
+                        List your key clients across different sectors
+                    </p>
+
+                    <div class="form-row">
+                        <div class="form-group" style="flex: 1;">
+                            <div class="card">
+                                <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                    <span class="material-icons" style="margin-right: 0.5rem;">apartment</span>
+                                    <h4>Government Sector</h4>
+                                </div>
+                                <div class="checkbox-group">
+                                    <p style="font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem;">Key Government Clients</p>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="ministryOfPublicWorks">
+                                        <label for="ministryOfPublicWorks">Ministry of Public Works</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="localGovernment">
+                                        <label for="localGovernment">Local Government Institutions</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="roadsAndHighways">
+                                        <label for="roadsAndHighways">Roads and Highways Department</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="publicWorksDepartment">
+                                        <label for="publicWorksDepartment">Public Works Department</label>
+                                    </div>
+                                </div>
+                                <input type="text" placeholder="Other government clients" style="margin-top: 0.5rem;">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group" style="flex: 1;">
+                            <div class="card">
+                                <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                    <span class="material-icons" style="margin-right: 0.5rem;">business</span>
+                                    <h4>Private Sector</h4>
+                                </div>
+                                <div class="checkbox-group">
+                                    <p style="font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem;">Key Private Clients</p>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="realEstate">
+                                        <label for="realEstate">Real Estate Developers</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="manufacturing">
+                                        <label for="manufacturing">Manufacturing Companies</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="financialInstitutions">
+                                        <label for="financialInstitutions">Financial Institutions</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="textileIndustries">
+                                        <label for="textileIndustries">Textile Industries</label>
+                                    </div>
+                                </div>
+                                <input type="text" placeholder="Other private clients" style="margin-top: 0.5rem;">
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="flex: 1;">
+                            <div class="card">
+                                <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                    <span class="material-icons" style="margin-right: 0.5rem;">public</span>
+                                    <h4>International Clients</h4>
+                                </div>
+                                <div class="checkbox-group">
+                                    <p style="font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem;">International Organizations</p>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="worldBank">
+                                        <label for="worldBank">World Bank</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="asianDevelopmentBank">
+                                        <label for="asianDevelopmentBank">Asian Development Bank</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="unAgencies">
+                                        <label for="unAgencies">UN Agencies</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="ngos">
+                                        <label for="ngos">NGOs</label>
+                                    </div>
+                                </div>
+                                <input type="text" placeholder="Other international clients" style="margin-top: 0.5rem;">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">Client Testimonials & References</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="notableClientNames">Notable Client Names</label>
+                                <textarea id="notableClientNames" placeholder="List key clients you have permission to mention"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="satisfactionRate">Client Satisfaction Rate</label>
+                                <input type="text" id="satisfactionRate" placeholder="e.g., 98% client satisfaction">
+                                <div class="form-group" style="margin-top: 1rem;">
+                                    <label>Upload Client References</label>
+                                    <button class="upload-btn">
+                                        <span class="material-icons">upload</span>
+                                        Choose File
+                                    </button>
+                                    <p class="file-info">No file selected</p>
+                                    <small>WORD, PDF | Max 2MB</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 10: Certifications -->
+                <div class="form-step" id="step-10">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="material-icons">verified</span>
+                            Certifications & Memberships
+                        </h2>
+                        <button class="contact-btn" style="background-color: var(--dark-bg);">
+                            <span class="material-icons">add</span>
+                            Add Certification
+                        </button>
+                    </div>
+                    <p class="section-description">
+                        List your industry certifications and professional affiliations
+                    </p>
+
+                    <div class="form-row">
+                        <div class="form-group" style="flex: 1;">
+                            <div class="card">
+                                <h3 class="card-title">ISO Certifications</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="isoStandard">ISO Standard</label>
+                                        <select id="isoStandard">
+                                            <option value="">Select ISO standard</option>
+                                            <option value="iso9001">ISO 9001:2015</option>
+                                            <option value="iso14001">ISO 14001:2015</option>
+                                            <option value="iso45001">ISO 45001:2018</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="certificateNumber">Certificate Number</label>
+                                        <input type="text" id="certificateNumber" placeholder="Certificate ID">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="issuingBody">Issuing Body</label>
+                                        <input type="text" id="issuingBody" placeholder="Certification body">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="validUntil">Valid Until</label>
+                                        <input type="date" id="validUntil">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Upload Certificate</label>
+                                    <button class="upload-btn">
+                                        <span class="material-icons">upload</span>
+                                        Choose File
+                                    </button>
+                                    <p class="file-info">No file selected</p>
+                                    <small>PDF | Max 2MB</small>
+                                </div>
+                            </div>
+
+                            <div class="card" style="margin-top: 1.5rem;">
+                                <h3 class="card-title">E-GP Registration Status</h3>
+                                <div class="form-group">
+                                    <label for="egpStatus">E-GP Registration</label>
+                                    <select id="egpStatus">
+                                        <option value="">Select status</option>
+                                        <option value="registered">Registered</option>
+                                        <option value="pending">Pending</option>
+                                        <option value="not-registered">Not Registered</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="egpNumber">E-GP Registration Number</label>
+                                    <input type="text" id="egpNumber" placeholder="Enter E-GP registration number">
+                                </div>
+                                <div class="form-group">
+                                    <label for="egpCategory">Category/Class</label>
+                                    <select id="egpCategory">
+                                        <option value="">Select category</option>
+                                        <option value="general">General</option>
+                                        <option value="special">Special</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="flex: 1;">
+                            <div class="card">
+                                <h3 class="card-title">Professional Memberships</h3>
+                                <div class="form-group">
+                                    <label>Industry Associations</label>
+                                    <div class="checkbox-group">
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="ieab">
+                                            <label for="ieab">Institution of Engineers, Bangladesh (IEB)</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="baci">
+                                            <label for="baci">Bangladesh Association of Construction Industry (BACI)</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="rehab">
+                                            <label for="rehab">Real Estate & Housing Association of Bangladesh (REHAB)</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="dhakaChamber">
+                                            <label for="dhakaChamber">Dhaka Chamber of Commerce & Industry</label>
+                                        </div>
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="fcci">
+                                            <label for="fcci">Federation of Bangladesh Chambers of Commerce & Industry</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="otherMemberships">Other Memberships</label>
+                                    <textarea id="otherMemberships" placeholder="List other professional memberships"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="card" style="margin-top: 1.5rem;">
+                                <h3 class="card-title">Safety & Quality Policies</h3>
+                                <div class="form-group">
+                                    <label for="safetyPolicies">Safety Management Systems</label>
+                                    <textarea id="safetyPolicies" placeholder="Describe your safety management workflow"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Upload Safety Policies</label>
+                                    <button class="upload-btn">
+                                        <span class="material-icons">upload</span>
+                                        Choose File
+                                    </button>
+                                    <p class="file-info">No file selected</p>
+                                    <small>WORD, PDF | Max 2MB</small>
+                                </div>
+                                <div class="form-group" style="margin-top: 1.5rem;">
+                                    <label for="qualityAssurance">Quality Assurance Processes</label>
+                                    <textarea id="qualityAssurance" placeholder="Describe your quality assurance workflow"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Upload QA Documents</label>
+                                    <button class="upload-btn">
+                                        <span class="material-icons">upload</span>
+                                        Choose File
+                                    </button>
+                                    <p class="file-info">No file selected</p>
+                                    <small>WORD, PDF | Max 2MB</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Awards & Recognition</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="awardName">Award Name</label>
+                                <input type="text" id="awardName" placeholder="e.g., Best Safety Award">
+                            </div>
+                            <div class="form-group">
+                                <label for="awardingOrganization">Awarding Organization</label>
+                                <input type="text" id="awardingOrganization" placeholder="Organization name">
+                            </div>
+                            <div class="form-group">
+                                <label for="yearReceived">Year Received</label>
+                                <select id="yearReceived">
+                                    <option value="">Select year</option>
+                                    <!-- Options would be dynamically generated -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Upload Award Certificate</label>
+                            <button class="upload-btn">
+                                <span class="material-icons">upload</span>
+                                Choose File
+                            </button>
+                            <p class="file-info">No file selected</p>
+                            <small>WORD, PDF | Max 2MB</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 11: Financial Information -->
+                <div class="form-step" id="step-11">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="material-icons">attach_money</span>
+                            Financial Snapshot
+                        </h2>
+                        <span style="background-color: #e0e0e0; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem;">
+                            Confidential Information
+                        </span>
+                    </div>
+                    <p class="section-description">
+                        Provide financial information and banking details
+                    </p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <h3 class="card-title">Annual Turnover *</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="turnover2023">2023 Turnover</label>
+                                    <input type="text" id="turnover2023" placeholder="Amount in BDT">
+                                </div>
+                                <div class="form-group">
+                                    <label for="turnover2024">2024 Turnover</label>
+                                    <input type="text" id="turnover2024" placeholder="Amount in BDT">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h3 class="card-title">Banking Partners *</h3>
+                            <input type="text" placeholder="Primary Bank Account">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <h3 class="card-title">Projected 2025 Turnover</h3>
+                            <input type="text" placeholder="Projected amount in BDT">
+                        </div>
+                        <div class="form-group">
+                            <h3 class="card-title">Bank References</h3>
+                            <div class="form-group">
+                                <label>Upload Bank Solvency Certificate</label>
+                                <button class="upload-btn">
+                                    <span class="material-icons">upload</span>
+                                    Choose File
+                                </button>
+                                <p class="file-info">No file selected</p>
+                                <small>PDF | Max 2MB</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Financial Documents</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Upload Audited Financial Statements (Last 2 Years)</label>
+                                <button class="upload-btn">
+                                    <span class="material-icons">upload</span>
+                                    Choose File
+                                </button>
+                                <p class="file-info">No file selected</p>
+                                <small>PDF | Max 5MB</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Upload Tax Returns (Last 2 Years)</label>
+                                <button class="upload-btn">
+                                    <span class="material-icons">upload</span>
+                                    Choose File
+                                </button>
+                                <p class="file-info">No file selected</p>
+                                <small>PDF | Max 5MB</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 12: Technology & Tools -->
+                <div class="form-step" id="step-12">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="material-icons">settings</span>
+                            Technology & Tools
+                        </h2>
+                    </div>
+                    <p class="section-description">
+                        Detail the technology infrastructure and tools used by your company
+                    </p>
+
+                    <div class="card">
+                        <h3 class="card-title">Software & Systems</h3>
+                        <div class="form-group">
+                            <label>Project Management Software</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="msProject">
+                                    <label for="msProject">Microsoft Project</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="primavera">
+                                    <label for="primavera">Primavera P6</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="asana">
+                                    <label for="asana">Asana</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="otherPmSoftware">
+                                    <label for="otherPmSoftware">Other (please specify)</label>
+                                </div>
+                            </div>
+                            <input type="text" placeholder="Specify other software" style="margin-top: 0.5rem;">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Design & CAD Software</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="autocad">
+                                    <label for="autocad">AutoCAD</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="revit">
+                                    <label for="revit">Revit</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sketchup">
+                                    <label for="sketchup">SketchUp</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="otherCadSoftware">
+                                    <label for="otherCadSoftware">Other (please specify)</label>
+                                </div>
+                            </div>
+                            <input type="text" placeholder="Specify other software" style="margin-top: 0.5rem;">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Accounting Software</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="quickbooks">
+                                    <label for="quickbooks">QuickBooks</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="xero">
+                                    <label for="xero">Xero</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="tally">
+                                    <label for="tally">Tally</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="otherAccountingSoftware">
+                                    <label for="otherAccountingSoftware">Other (please specify)</label>
+                                </div>
+                            </div>
+                            <input type="text" placeholder="Specify other software" style="margin-top: 0.5rem;">
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">IT Infrastructure</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="numberOfComputers">Number of Computers</label>
+                                <input type="number" id="numberOfComputers" placeholder="Number of computers">
+                            </div>
+                            <div class="form-group">
+                                <label for="serverCapacity">Server Capacity</label>
+                                <input type="text" id="serverCapacity" placeholder="Server specifications">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="itSecurity">IT Security Measures</label>
+                            <textarea id="itSecurity" placeholder="Describe your IT security measures"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Upload IT Infrastructure Document</label>
+                        <button class="upload-btn">
+                            <span class="material-icons">upload</span>
+                            Choose File
+                        </button>
+                        <p class="file-info">No file selected</p>
+                        <small>PDF | Max 2MB</small>
+                    </div>
+                </div>
+
+                <!-- Step 13: Quality & Safety -->
+                <div class="form-step" id="step-13">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="material-icons">policy</span>
+                            Quality & Safety Policies
+                        </h2>
+                    </div>
+                    <p class="section-description">
+                        Detail your company's quality assurance and safety management systems
+                    </p>
+
+                    <div class="card">
+                        <h3 class="card-title">Quality Management System</h3>
+                        <div class="form-group">
+                            <label for="qmsDescription">Quality Management System Description</label>
+                            <textarea id="qmsDescription" placeholder="Describe your quality management system"></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Upload Quality Manual</label>
+                                <button class="upload-btn">
+                                    <span class="material-icons">upload</span>
+                                    Choose File
+                                </button>
+                                <p class="file-info">No file selected</p>
+                                <small>PDF | Max 5MB</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Upload Quality Procedures</label>
+                                <button class="upload-btn">
+                                    <span class="material-icons">upload</span>
+                                    Choose File
+                                </button>
+                                <p class="file-info">No file selected</p>
+                                <small>PDF | Max 5MB</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Safety Management System</h3>
+                        <div class="form-group">
+                            <label for="smsDescription">Safety Management System Description</label>
+                            <textarea id="smsDescription" placeholder="Describe your safety management system"></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Upload Safety Manual</label>
+                                <button class="upload-btn">
+                                    <span class="material-icons">upload</span>
+                                    Choose File
+                                </button>
+                                <p class="file-info">No file selected</p>
+                                <small>PDF | Max 5MB</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Upload Safety Procedures</label>
+                                <button class="upload-btn">
+                                    <span class="material-icons">upload</span>
+                                    Choose File
+                                </button>
+                                <p class="file-info">No file selected</p>
+                                <small>PDF | Max 5MB</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Accident & Incident Records</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="safetyIncidents">Number of Safety Incidents (Last 3 Years)</label>
+                                <input type="number" id="safetyIncidents" placeholder="Number of incidents">
+                            </div>
+                            <div class="form-group">
+                                <label for="lostTimeInjuries">Lost Time Injuries (Last 3 Years)</label>
+                                <input type="number" id="lostTimeInjuries" placeholder="Number of injuries">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Upload Safety Performance Records</label>
+                            <button class="upload-btn">
+                                <span class="material-icons">upload</span>
+                                Choose File
+                            </button>
+                            <p class="file-info">No file selected</p>
+                            <small>PDF | Max 5MB</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 14: Company History -->
+                <div class="form-step" id="step-14">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="material-icons">history</span>
+                            Company History & Milestones
+                        </h2>
+                    </div>
+                    <p class="section-description">
+                        Share your company's journey, milestones, and significant achievements
+                    </p>
+
+                    <div class="card">
+                        <h3 class="card-title">Company Background</h3>
+                        <div class="form-group">
+                            <label for="companyHistory">Company History</label>
+                            <textarea id="companyHistory" placeholder="Describe your company's history, founding story, and evolution" rows="5"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="missionVision">Mission & Vision Statements</label>
+                            <textarea id="missionVision" placeholder="Enter your company's mission and vision statements" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="coreValues">Core Values</label>
+                            <textarea id="coreValues" placeholder="List your company's core values" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Major Milestones</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="milestone1">Milestone 1</label>
+                                <input type="text" id="milestone1" placeholder="Significant achievement">
+                                <input type="text" placeholder="Year" style="margin-top: 0.5rem;">
+                            </div>
+                            <div class="form-group">
+                                <label for="milestone2">Milestone 2</label>
+                                <input type="text" id="milestone2" placeholder="Significant achievement">
+                                <input type="text" placeholder="Year" style="margin-top: 0.5rem;">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="milestone3">Milestone 3</label>
+                                <input type="text" id="milestone3" placeholder="Significant achievement">
+                                <input type="text" placeholder="Year" style="margin-top: 0.5rem;">
+                            </div>
+                            <div class="form-group">
+                                <label for="milestone4">Milestone 4</label>
+                                <input type="text" id="milestone4" placeholder="Significant achievement">
+                                <input type="text" placeholder="Year" style="margin-top: 0.5rem;">
+                            </div>
+                        </div>
+                        <button class="upload-btn" style="margin-top: 1rem;">
+                            <span class="material-icons">add</span>
+                            Add Another Milestone
+                        </button>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Company Brochure & Profile</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Upload Company Brochure</label>
+                                <button class="upload-btn">
+                                    <span class="material-icons">upload</span>
+                                    Choose File
+                                </button>
+                                <p class="file-info">No file selected</p>
+                                <small>PDF | Max 10MB</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Upload Company Profile</label>
+                                <button class="upload-btn">
+                                    <span class="material-icons">upload</span>
+                                    Choose File
+                                </button>
+                                <p class="file-info">No file selected</p>
+                                <small>PDF | Max 10MB</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 15: Review & Submit -->
+                <div class="form-step" id="step-15">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            <span class="material-icons">task_alt</span>
+                            Review & Submit
+                        </h2>
+                    </div>
+                    <p class="section-description">
+                        Review all information before submitting your profile
+                    </p>
+
+                    <div class="card">
+                        <h3 class="card-title">Profile Completion Status</h3>
+                        <div class="status-item status-success">
+                            <span class="material-icons">check_circle</span>
+                            <span>Basic Information - Complete</span>
+                        </div>
+                        <div class="status-item status-success">
+                            <span class="material-icons">check_circle</span>
+                            <span>Legal & Registration - Complete</span>
+                        </div>
+                        <div class="status-item status-success">
+                            <span class="material-icons">check_circle</span>
+                            <span>Address Details - Complete</span>
+                        </div>
+                        <div class="status-item status-success">
+                            <span class="material-icons">check_circle</span>
+                            <span>Contact Details - Complete</span>
+                        </div>
+                        <div class="status-item status-success">
+                            <span class="material-icons">check_circle</span>
+                            <span>Leadership - Complete</span>
+                        </div>
+                        <div class="status-item status-success">
+                            <span class="material-icons">check_circle</span>
+                            <span>Key Personnel - Complete</span>
+                        </div>
+                        <div class="status-item status-success">
+                            <span class="material-icons">check_circle</span>
+                            <span>Experience & Expertise - Complete</span>
+                        </div>
+                        <div class="status-item status-success">
+                            <span class="material-icons">check_circle</span>
+                            <span>Projects Portfolio - Complete</span>
+                        </div>
+                        <div class="status-item status-success">
+                            <span class="material-icons">check_circle</span>
+                            <span>Clientele - Complete</span>
+                        </div>
+                        <div class="status-item status-success">
+                            <span class="material-icons">check_circle</span>
+                            <span>Certifications - Complete</span>
+                        </div>
+                        <div class="status-item status-success">
+                            <span class="material-icons">check_circle</span>
+                            <span>Financial Information - Complete</span>
+                        </div>
+                        <div class="status-item status-success">
+                            <span class="material-icons">check_circle</span>
+                            <span>Technology & Tools - Complete</span>
+                        </div>
+                        <div class="status-item status-success">
+                            <span class="material-icons">check_circle</span>
+                            <span>Quality & Safety - Complete</span>
+                        </div>
+                        <div class="status-item status-success">
+                            <span class="material-icons">check_circle</span>
+                            <span>Company History - Complete</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Declaration</h3>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="declaration">
+                            <label for="declaration">I hereby declare that all information provided in this profile is true and accurate to the best of my knowledge. I understand that any false information may result in disqualification from tender processes.</label>
+                        </div>
+                    </div>
+
+                    <div class="form-navigation" style="border-top: none; justify-content: center;">
+                        <button class="contact-btn" style="padding: 1rem 2rem; font-size: 1.1rem;">
+                            <span class="material-icons">send</span>
+                            Submit Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-navigation">
+                <button class="nav-btn btn-prev" disabled>
+                    <span class="material-icons">arrow_back</span>
+                    Previous
+                </button>
+                <button class="nav-btn btn-next">
+                    Next
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link-js -->
+     <script src="js/profile.js"></script>
 </body>
 </html>
