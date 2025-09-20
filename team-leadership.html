@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Profile Setup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+<!-- Toast Container for Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <div class="app-container">
+        <div class="main-content">
+            <!-- Sidebar Navigation -->
+             
+             <div class="sidebar-container">
+              <div class="sidebar">
+                <div class="sidebar-header">
+                    <div class="logo">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="sidebar-title">Profile Setup</div>
+                </div>
+                <div class="form-sections">
+                    <div class="form-section-item active" data-step="1">
+                        <i class="fas fa-info-circle icon"></i>
+                        <span>Basic Information</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="2">
+                        <i class="fas fa-gavel icon"></i>
+                        <span>Legal & Registration</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="3">
+                        <i class="fas fa-map-marker-alt icon"></i>
+                        <span>Address & Contact</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="4">
+                        <i class="fas fa-users icon"></i>
+                        <span>Team & Leadership</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="5">
+                        <i class="fas fa-briefcase icon"></i>
+                        <span>Experience & Projects</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="6">
+                        <i class="fas fa-award icon"></i>
+                        <span>Certifications & Quality</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="7">
+                        <i class="fas fa-check-circle icon"></i>
+                        <span>Review & Submit</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                </div>
+                <div class="help-section">
+                    <p>Need help with your profile setup?</p>
+                    <button class="contact-btn" id="supportBtn">
+                        <i class="fas fa-headset"></i>
+                        Contact Support
+                    </button>
+                </div>
+            </div>
+             </div>
+            
+            <!-- Form Container -->
+            <div class="form-container">
+                <div class="content-header">
+                    <div class="progress-info">
+                        <h2>Profile Completion Progress</h2>
+                        <div class="step-counter">Step 1 of 7: Basic Information</div>
+                    </div>
+                    <div class="auto-save" id="autoSaveStatus">
+                        <i class="fas fa-save"></i>
+                        <span>Auto-save enabled</span>
+                    </div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 14%;"></div>
+                    </div>
+                    <div class="progress-steps">
+                        <span class="active">Basic</span>
+                        <span>Legal</span>
+                        <span>Address</span>
+                        <span>Team</span>
+                        <span>Experience</span>
+                        <span>Certifications</span>
+                        <span>Review</span>
+                    </div>
+                </div>
+
+                <div class="form-content">
+                <!-- Step 4: Team & Leadership -->
+                    <div class="form-step" id="step-4">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <i class="fas fa-users"></i>
+                                Team & Leadership
+                            </h2>
+                            <button class="contact-btn" style="background-color: var(--dark-bg);">
+                                <i class="fas fa-plus"></i>
+                                Add Personnel
+                            </button>
+                        </div>
+                        <p class="section-description">
+                            Add information about your company's leadership team and key personnel
+                        </p>
+
+                        <div class="card hover-lift">
+                            <h3 class="card-title">Managing Director / CEO / Proprietor *</h3>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="leader-fullName">Full Name</label>
+                                    <input type="text" id="leader-fullName" placeholder="Enter full name" class="premium-focus">
+                                </div>
+                                <div class="form-group">
+                                    <label for="leader-designation">Designation</label>
+                                    <select id="leader-designation" class="premium-focus">
+                                        <option value="">Select designation</option>
+                                        <option value="ceo">Chief Executive Officer</option>
+                                        <option value="md">Managing Director</option>
+                                        <option value="proprietor">Proprietor</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="leader-totalYears">Total Years of Experience *</label>
+                                    <input type="number" id="leader-totalYears" placeholder="Years" class="premium-focus">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="leader-similarIndustryYears">Years in Similar Industry</label>
+                                    <input type="number" id="leader-similarIndustryYears" placeholder="Years" class="premium-focus">
+                                </div>
+                                <div class="form-group">
+                                    <label for="leader-projectsManaged">Number of Projects Managed</label>
+                                    <input type="number" id="leader-projectsManaged" placeholder="Projects" class="premium-focus">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="leader-responsibilities">Current Role & Responsibilities *</label>
+                                <textarea id="leader-responsibilities" placeholder="Describe current responsibilities and achievements" class="premium-focus"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Upload CV/Profile</label>
+                                <div class="file-upload hover-lift" id="leaderCvContainer">
+                                    <input type="file" id="leaderCvUpload" accept=".doc,.docx,.pdf" style="display: none;">
+                                    <button class="upload-btn" onclick="document.getElementById('leaderCvUpload').click()">
+                                        <i class="fas fa-upload"></i>
+                                        Choose File
+                                    </button>
+                                    <p class="file-info" id="leaderCvFileInfo">No file selected</p>
+                                    <div class="file-preview" id="leaderCvPreview"></div>
+                                    <div class="upload-status" id="leaderCvUploadStatus"></div>
+                                    <small>WORD, PDF | Max 2MB</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card hover-lift">
+                            <div class="card-header">
+                                <h3 class="card-title">Project Director / CFO / COO</h3>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="pd-fullName">Full Name</label>
+                                    <input type="text" id="pd-fullName" placeholder="Enter full name" class="premium-focus">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pd-designation">Designation</label>
+                                    <select id="pd-designation" class="premium-focus">
+                                        <option value="">Select designation</option>
+                                        <option value="project-director">Project Director</option>
+                                        <option value="cfo">Chief Financial Officer</option>
+                                        <option value="coo">Chief Operating Officer</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pd-totalYears">Total Years of Experience</label>
+                                    <input type="number" id="pd-totalYears" placeholder="Years" class="premium-focus">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="pd-similarIndustryYears">Years in Similar Industry</label>
+                                    <input type="number" id="pd-similarIndustryYears" placeholder="Years" class="premium-focus">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pd-projectsManaged">Number of Projects Managed</label>
+                                    <input type="number" id="pd-projectsManaged" placeholder="Projects" class="premium-focus">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pd-responsibilities">Current Role & Responsibilities</label>
+                                <textarea id="pd-responsibilities" placeholder="Describe current responsibilities and achievements" class="premium-focus"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Upload CV/Profile</label>
+                                <div class="file-upload hover-lift" id="pdCvContainer">
+                                    <input type="file" id="pdCvUpload" accept=".doc,.docx,.pdf" style="display: none;">
+                                    <button class="upload-btn" onclick="document.getElementById('pdCvUpload').click()">
+                                        <i class="fas fa-upload"></i>
+                                        Choose File
+                                    </button>
+                                    <p class="file-info" id="pdCvFileInfo">No file selected</p>
+                                    <div class="file-preview" id="pdCvPreview"></div>
+                                    <div class="upload-status" id="pdCvUploadStatus"></div>
+                                    <small>WORD, PDF | Max 2MB</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card hover-lift">
+                            <div class="card-header">
+                                <h3 class="card-title">Head of Departments</h3>
+                                <i class="fas fa-plus" style="cursor: pointer;"></i>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="hod-fullName">Full Name</label>
+                                    <input type="text" id="hod-fullName" placeholder="Enter full name" class="premium-focus">
+                                </div>
+                                <div class="form-group">
+                                    <label for="hod-department">Department</label>
+                                    <select id="hod-department" class="premium-focus">
+                                        <option value="">Select department</option>
+                                        <option value="engineering">Engineering</option>
+                                        <option value="finance">Finance</option>
+                                        <option value="operations">Operations</option>
+                                        <option value="hr">Human Resources</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="hod-totalYears">Total Years of Experience</label>
+                                    <input type="number" id="hod-totalYears" placeholder="Years" class="premium-focus">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Upload CV/Profile</label>
+                                <div class="file-upload hover-lift" id="hodCvContainer">
+                                    <input type="file" id="hodCvUpload" accept=".doc,.docx,.pdf" style="display: none;">
+                                    <button class="upload-btn" onclick="document.getElementById('hodCvUpload').click()">
+                                        <i class="fas fa-upload"></i>
+                                        Choose File
+                                    </button>
+                                    <p class="file-info" id="hodCvFileInfo">No file selected</p>
+                                    <div class="file-preview" id="hodCvPreview"></div>
+                                    <div class="upload-status" id="hodCvUploadStatus"></div>
+                                    <small>WORD, PDF | Max 2MB</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-navigation">
+                    <button class="nav-btn btn-prev">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous
+                    </button>
+                    <div>
+                        <button class="nav-btn btn-save" id="saveBtn">
+                            <i class="fas fa-save"></i>
+                            Save Progress
+                        </button>
+                    </div>
+                    <button class="nav-btn btn-next">
+                        Next
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <script src="js/profile.js"></script>
+</body>
+</html>

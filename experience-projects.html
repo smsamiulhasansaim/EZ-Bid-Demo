@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Profile Setup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+<!-- Toast Container for Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <div class="app-container">
+        <div class="main-content">
+            <!-- Sidebar Navigation -->
+             
+             <div class="sidebar-container">
+              <div class="sidebar">
+                <div class="sidebar-header">
+                    <div class="logo">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="sidebar-title">Profile Setup</div>
+                </div>
+                <div class="form-sections">
+                    <div class="form-section-item active" data-step="1">
+                        <i class="fas fa-info-circle icon"></i>
+                        <span>Basic Information</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="2">
+                        <i class="fas fa-gavel icon"></i>
+                        <span>Legal & Registration</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="3">
+                        <i class="fas fa-map-marker-alt icon"></i>
+                        <span>Address & Contact</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="4">
+                        <i class="fas fa-users icon"></i>
+                        <span>Team & Leadership</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="5">
+                        <i class="fas fa-briefcase icon"></i>
+                        <span>Experience & Projects</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="6">
+                        <i class="fas fa-award icon"></i>
+                        <span>Certifications & Quality</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="7">
+                        <i class="fas fa-check-circle icon"></i>
+                        <span>Review & Submit</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                </div>
+                <div class="help-section">
+                    <p>Need help with your profile setup?</p>
+                    <button class="contact-btn" id="supportBtn">
+                        <i class="fas fa-headset"></i>
+                        Contact Support
+                    </button>
+                </div>
+            </div>
+             </div>
+            
+            <!-- Form Container -->
+            <div class="form-container">
+                <div class="content-header">
+                    <div class="progress-info">
+                        <h2>Profile Completion Progress</h2>
+                        <div class="step-counter">Step 1 of 7: Basic Information</div>
+                    </div>
+                    <div class="auto-save" id="autoSaveStatus">
+                        <i class="fas fa-save"></i>
+                        <span>Auto-save enabled</span>
+                    </div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 14%;"></div>
+                    </div>
+                    <div class="progress-steps">
+                        <span class="active">Basic</span>
+                        <span>Legal</span>
+                        <span>Address</span>
+                        <span>Team</span>
+                        <span>Experience</span>
+                        <span>Certifications</span>
+                        <span>Review</span>
+                    </div>
+                </div>
+
+                <div class="form-content">
+                <!-- Step 5: Experience & Projects -->
+                    <div class="form-step" id="step-5">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <i class="fas fa-briefcase"></i>
+                                Experience & Projects
+                            </h2>
+                            <button class="contact-btn" style="background-color: var(--primary-color);">
+                                Document Upload Required
+                            </button>
+                        </div>
+                        <p class="section-description">
+                            Detail your company's core competencies, capabilities, and showcase your projects
+                        </p>
+
+                        <div class="form-row">
+                            <div class="form-group" style="flex: 1;">
+                                <div class="card hover-lift">
+                                    <h3 class="card-title">Overview of Expertise</h3>
+                                    <div class="form-group">
+                                        <label for="coreCompetencies">Core Competencies</label>
+                                        <textarea id="coreCompetencies" placeholder="Describe your core competencies (e.g., construction management, civil engineering, consulting)" class="premium-focus"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Upload Expertise Document</label>
+                                        <div class="file-upload hover-lift" id="expertiseDocContainer">
+                                            <input type="file" id="expertiseDocUpload" accept=".doc,.docx,.pdf" style="display: none;">
+                                            <button class="upload-btn" onclick="document.getElementById('expertiseDocUpload').click()">
+                                                <i class="fas fa-upload"></i>
+                                                Choose File
+                                            </button>
+                                            <p class="file-info" id="expertiseDocFileInfo">No file selected</p>
+                                            <div class="file-preview" id="expertiseDocPreview"></div>
+                                            <div class="upload-status" id="expertiseDocUploadStatus"></div>
+                                            <small>WORD, PDF | Max 2MB</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="flex: 1;">
+                                <div class="card hover-lift">
+                                    <h3 class="card-title">Industry Experience</h3>
+                                    <div class="form-group">
+                                        <label for="yearsInBD">Years of Experience in Bangladesh</label>
+                                        <input type="number" id="yearsInBD" placeholder="e.g., 15" class="premium-focus">
+                                        <small style="color: var(--secondary-color);">Total years of industry experience</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sector Focus</label>
+                                        <div class="checkbox-group">
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="infrastructure">
+                                                <label for="infrastructure">Infrastructure</label>
+                                            </div>
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="residential">
+                                                <label for="residential">Residential</label>
+                                            </div>
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="industrial">
+                                                <label for="industrial">Industrial</label>
+                                            </div>
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="publicSector">
+                                                <label for="publicSector">Public Sector</label>
+                                            </div>
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="commercial">
+                                                <label for="commercial">Commercial</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Upload Experience Document</label>
+                                        <div class="file-upload hover-lift" id="experienceDocContainer">
+                                            <input type="file" id="experienceDocUpload" accept=".doc,.docx,.pdf" style="display: none;">
+                                            <button class="upload-btn" onclick="document.getElementById('experienceDocUpload').click()">
+                                                <i class="fas fa-upload"></i>
+                                                Choose File
+                                            </button>
+                                            <p class="file-info" id="experienceDocFileInfo">No file selected</p>
+                                            <div class="file-preview" id="experienceDocPreview"></div>
+                                            <div class="upload-status" id="experienceDocUploadStatus"></div>
+                                            <small>WORD, PDF | Max 2MB</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card hover-lift">
+                            <h3 class="card-title">Capability Assessment</h3>
+                            <div class="form-row">
+                                <div class="form-group" style="flex: 1;">
+                                    <div class="card">
+                                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                            <i class="fas fa-users" style="margin-right: 0.5rem;"></i>
+                                            <h4>People Capacity</h4>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="totalEmployees">Total Employees</label>
+                                            <input type="number" id="totalEmployees" placeholder="Number of employees" class="premium-focus">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="technicalStaff">Technical Staff</label>
+                                            <input type="number" id="technicalStaff" placeholder="Technical personnel" class="premium-focus">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Upload Staff List & CVs</label>
+                                            <div class="file-upload hover-lift" id="staffListContainer">
+                                                <input type="file" id="staffListUpload" accept=".pdf" style="display: none;">
+                                                <button class="upload-btn" onclick="document.getElementById('staffListUpload').click()">
+                                                    <i class="fas fa-upload"></i>
+                                                    Choose File
+                                                </button>
+                                                <p class="file-info" id="staffListFileInfo">No file selected</p>
+                                                <div class="file-preview" id="staffListPreview"></div>
+                                                <div class="upload-status" id="staffListUploadStatus"></div>
+                                                <small>PDF | Max 2MB</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" style="flex: 1;">
+                                    <div class="card">
+                                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                            <i class="fas fa-tools" style="margin-right: 0.5rem;"></i>
+                                            <h4>Tools/Machine Capacity</h4>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="heavyMachinery">Heavy Machinery</label>
+                                            <input type="text" id="heavyMachinery" placeholder="List of heavy machinery" class="premium-focus">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="specializedTools">Specialized Tools</label>
+                                            <input type="text" id="specializedTools" placeholder="Specialized equipment" class="premium-focus">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Upload Equipment List</label>
+                                            <div class="file-upload hover-lift" id="equipmentListContainer">
+                                                <input type="file" id="equipmentListUpload" accept=".pdf" style="display: none;">
+                                                <button class="upload-btn" onclick="document.getElementById('equipmentListUpload').click()">
+                                                    <i class="fas fa-upload"></i>
+                                                    Choose File
+                                                </button>
+                                                <p class="file-info" id="equipmentListFileInfo">No file selected</p>
+                                                <div class="file-preview" id="equipmentListPreview"></div>
+                                                <div class="upload-status" id="equipmentListUploadStatus"></div>
+                                                <small>PDF | Max 2MB</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group" style="flex: 1;">
+                                    <div class="card">
+                                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                            <i class="fas fa-money-bill-wave" style="margin-right: 0.5rem;"></i>
+                                            <h4>Financial Capacity</h4>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="workingCapital">Working Capital</label>
+                                            <input type="text" id="workingCapital" placeholder="Amount in BDT" class="premium-focus">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="creditFacilities">Credit Facilities</label>
+                                            <input type="text" id="creditFacilities" placeholder="Available credit" class="premium-focus">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Upload Financial Docs</label>
+                                            <div class="file-upload hover-lift" id="financialDocsContainer">
+                                                <input type="file" id="financialDocsUpload" accept=".pdf" style="display: none;">
+                                                <button class="upload-btn" onclick="document.getElementById('financialDocsUpload').click()">
+                                                    <i class="fas fa-upload"></i>
+                                                    Choose File
+                                                </button>
+                                                <p class="file-info" id="financialDocsFileInfo">No file selected</p>
+                                                <div class="file-preview" id="financialDocsPreview"></div>
+                                                <div class="upload-status" id="financialDocsUploadStatus"></div>
+                                                <small>PDF | Max 2MB</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card hover-lift">
+                            <div class="card-header">
+                                <h3 class="card-title">Projects Portfolio</h3>
+                                <button class="contact-btn" style="background-color: var(--dark-bg); padding: 0.5rem 1rem;">
+                                    <i class="fas fa-plus"></i>
+                                    Add Project
+                                </button>
+                            </div>
+                            <p class="section-description">
+                                Showcase your most significant projects (3-5 projects recommended)
+                            </p>
+
+                            <div class="card hover-lift">
+                                <div class="card-header">
+                                    <h3 class="card-title">Project #1</h3>
+                                    <i class="fas fa-trash" style="color: var(--error-color); cursor: pointer;"></i>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="projectName">Project Name</label>
+                                        <input type="text" id="projectName" placeholder="Enter project name" class="premium-focus">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="category">Category</label>
+                                        <select id="category" class="premium-focus">
+                                            <option value="">Select category</option>
+                                            <option value="residential">Residential</option>
+                                            <option value="commercial">Commercial</option>
+                                            <option value="industrial">Industrial</option>
+                                            <option value="infrastructure">Infrastructure</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="location">Location</label>
+                                        <input type="text" id="location" placeholder="Project location" class="premium-focus">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="yearCompleted">Year Completed</label>
+                                        <select id="yearCompleted" class="premium-focus">
+                                            <option value="">Select year</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2020">2020</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="description">Brief Description</label>
+                                        <textarea id="description" placeholder="Describe the project scope, challenges, and achievements" class="premium-focus"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="projectValue">Project Value</label>
+                                        <input type="text" id="projectValue" placeholder="Project value in BDT" class="premium-focus">
+                                        <label for="clientName" style="margin-top: 1rem;">Client Name</label>
+                                        <input type="text" id="clientName" placeholder="Client organization" class="premium-focus">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Upload Project Portfolio</label>
+                                    <div class="file-upload hover-lift" id="projectPortfolioContainer">
+                                        <input type="file" id="projectPortfolioUpload" accept=".doc,.docx,.pdf" style="display: none;">
+                                        <button class="upload-btn" onclick="document.getElementById('projectPortfolioUpload').click()">
+                                            <i class="fas fa-upload"></i>
+                                            Choose File
+                                        </button>
+                                        <p class="file-info" id="projectPortfolioFileInfo">No file selected</p>
+                                        <div class="file-preview" id="projectPortfolioPreview"></div>
+                                        <div class="upload-status" id="projectPortfolioUploadStatus"></div>
+                                        <small>WORD, PDF | Max 2MB</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card" style="text-align: center; padding: 2rem; border: 2px dashed var(--border-color);">
+                                <i class="fas fa-plus" style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 1rem;"></i>
+                                <p style="font-weight: 500; margin-bottom: 1rem;">Add more projects to showcase your portfolio</p>
+                                <button class="contact-btn" style="background-color: var(--dark-bg);">
+                                    Add Another Project
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card hover-lift">
+                            <h3 class="card-title">Clientele</h3>
+                            <div style="display: flex; align-items: center; color: var(--secondary-color); margin-bottom: 1rem;">
+                                <i class="fas fa-info-circle" style="margin-right: 0.25rem;"></i>
+                                <span>Client relationships</span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group" style="flex: 1;">
+                                    <div class="card hover-lift">
+                                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                            <i class="fas fa-building" style="margin-right: 0.5rem;"></i>
+                                            <h4>Government Sector</h4>
+                                        </div>
+                                        <div class="checkbox-group">
+                                            <p style="font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem;">Key Government Clients</p>
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="ministryOfPublicWorks">
+                                                <label for="ministryOfPublicWorks">Ministry of Public Works</label>
+                                            </div>
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="localGovernment">
+                                                <label for="localGovernment">Local Government Institutions</label>
+                                            </div>
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="roadsAndHighways">
+                                                <label for="roadsAndHighways">Roads and Highways Department</label>
+                                            </div>
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="publicWorksDepartment">
+                                                <label for="publicWorksDepartment">Public Works Department</label>
+                                            </div>
+                                        </div>
+                                        <input type="text" placeholder="Other government clients" class="premium-focus" style="margin-top: 0.5rem;">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group" style="flex: 1;">
+                                    <div class="card hover-lift">
+                                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                            <i class="fas fa-business-time" style="margin-right: 0.5rem;"></i>
+                                            <h4>Private Sector</h4>
+                                        </div>
+                                        <div class="checkbox-group">
+                                            <p style="font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem;">Key Private Clients</p>
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="realEstate">
+                                                <label for="realEstate">Real Estate Developers</label>
+                                            </div>
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="manufacturing">
+                                                <label for="manufacturing">Manufacturing Companies</label>
+                                            </div>
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="financialInstitutions">
+                                                <label for="financialInstitutions">Financial Institutions</label>
+                                            </div>
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="textileIndustries">
+                                                <label for="textileIndustries">Textile Industries</label>
+                                            </div>
+                                        </div>
+                                        <input type="text" placeholder="Other private clients" class="premium-focus" style="margin-top: 0.5rem;">
+                                    </div>
+                                </div>
+
+                                <div class="form-group" style="flex: 1;">
+                                    <div class="card hover-lift">
+                                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                                            <i class="fas fa-globe" style="margin-right: 0.5rem;"></i>
+                                            <h4>International Clients</h4>
+                                        </div>
+                                        <div class="checkbox-group">
+                                            <p style="font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem;">International Organizations</p>
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="worldBank">
+                                                <label for="worldBank">World Bank</label>
+                                            </div>
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="asianDevelopmentBank">
+                                                <label for="asianDevelopmentBank">Asian Development Bank</label>
+                                            </div>
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="unAgencies">
+                                                <label for="unAgencies">UN Agencies</label>
+                                            </div>
+                                            <div class="checkbox-item">
+                                                <input type="checkbox" id="ngos">
+                                                <label for="ngos">NGOs</label>
+                                            </div>
+                                        </div>
+                                        <input type="text" placeholder="Other international clients" class="premium-focus" style="margin-top: 0.5rem;">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card hover-lift">
+                                <h3 class="card-title">Client Testimonials & References</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="notableClientNames">Notable Client Names</label>
+                                        <textarea id="notableClientNames" placeholder="List key clients you have permission to mention" class="premium-focus"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="satisfactionRate">Client Satisfaction Rate</label>
+                                        <input type="text" id="satisfactionRate" placeholder="e.g., 98% client satisfaction" class="premium-focus">
+                                        <div class="form-group" style="margin-top: 1rem;">
+                                            <label>Upload Client References</label>
+                                            <div class="file-upload hover-lift" id="clientReferencesContainer">
+                                                <input type="file" id="clientReferencesUpload" accept=".doc,.docx,.pdf" style="display: none;">
+                                                <button class="upload-btn" onclick="document.getElementById('clientReferencesUpload').click()">
+                                                    <i class="fas fa-upload"></i>
+                                                    Choose File
+                                                </button>
+                                                <p class="file-info" id="clientReferencesFileInfo">No file selected</p>
+                                                <div class="file-preview" id="clientReferencesPreview"></div>
+                                                <div class="upload-status" id="clientReferencesUploadStatus"></div>
+                                                <small>WORD, PDF | Max 2MB</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-navigation">
+                    <button class="nav-btn btn-prev">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous
+                    </button>
+                    <div>
+                        <button class="nav-btn btn-save" id="saveBtn">
+                            <i class="fas fa-save"></i>
+                            Save Progress
+                        </button>
+                    </div>
+                    <button class="nav-btn btn-next">
+                        Next
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <script src="js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Profile Setup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+<!-- Toast Container for Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <div class="app-container">
+        <div class="main-content">
+            <!-- Sidebar Navigation -->
+             
+             <div class="sidebar-container">
+              <div class="sidebar">
+                <div class="sidebar-header">
+                    <div class="logo">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="sidebar-title">Profile Setup</div>
+                </div>
+                <div class="form-sections">
+                    <div class="form-section-item active" data-step="1">
+                        <i class="fas fa-info-circle icon"></i>
+                        <span>Basic Information</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="2">
+                        <i class="fas fa-gavel icon"></i>
+                        <span>Legal & Registration</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="3">
+                        <i class="fas fa-map-marker-alt icon"></i>
+                        <span>Address & Contact</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="4">
+                        <i class="fas fa-users icon"></i>
+                        <span>Team & Leadership</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="5">
+                        <i class="fas fa-briefcase icon"></i>
+                        <span>Experience & Projects</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="6">
+                        <i class="fas fa-award icon"></i>
+                        <span>Certifications & Quality</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="7">
+                        <i class="fas fa-check-circle icon"></i>
+                        <span>Review & Submit</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                </div>
+                <div class="help-section">
+                    <p>Need help with your profile setup?</p>
+                    <button class="contact-btn" id="supportBtn">
+                        <i class="fas fa-headset"></i>
+                        Contact Support
+                    </button>
+                </div>
+            </div>
+             </div>
+            
+            <!-- Form Container -->
+            <div class="form-container">
+                <div class="content-header">
+                    <div class="progress-info">
+                        <h2>Profile Completion Progress</h2>
+                        <div class="step-counter">Step 1 of 7: Basic Information</div>
+                    </div>
+                    <div class="auto-save" id="autoSaveStatus">
+                        <i class="fas fa-save"></i>
+                        <span>Auto-save enabled</span>
+                    </div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 14%;"></div>
+                    </div>
+                    <div class="progress-steps">
+                        <span class="active">Basic</span>
+                        <span>Legal</span>
+                        <span>Address</span>
+                        <span>Team</span>
+                        <span>Experience</span>
+                        <span>Certifications</span>
+                        <span>Review</span>
+                    </div>
+                </div>
+
+                <div class="form-content">
+                <!-- Step 2: Legal & Registration -->
+                    <div class="form-step" id="step-2">
+                        <div class="section-header">
+                            <div>
+                                <h2 class="section-title">
+                                    <i class="fas fa-gavel"></i>
+                                    Legal & Registration Details - 
+                                </h2>
+                                <p class="section-description">Upload and verify your business registration documents</p>
+                            </div>
+                            <button class="contact-btn">
+                                Document Upload Required
+                            </button>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tradeLicenseNumber" class="required">Trade License Number</label>
+                                <input type="text" id="tradeLicenseNumber" placeholder="Enter trade license number" required class="premium-focus">
+                                <div class="error-message" id="tradeLicenseNumberError">Please enter a valid trade license number</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="binVatNumber" class="required">BIN/VAT Registration Number</label>
+                                <input type="text" id="binVatNumber" placeholder="Enter BIN/VAT number" required class="premium-focus">
+                                <div class="error-message" id="binVatNumberError">Please enter a valid BIN/VAT number</div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="required">Upload Trade License</label>
+                                <div class="file-upload hover-lift" id="tradeLicenseContainer">
+                                    <input type="file" id="tradeLicenseUpload" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                                    <button class="upload-btn" onclick="document.getElementById('tradeLicenseUpload').click()">
+                                        <i class="fas fa-upload"></i>
+                                        Choose File
+                                    </button>
+                                    <p class="file-info" id="tradeLicenseFileInfo">No file selected</p>
+                                    <div class="file-preview" id="tradeLicensePreview"></div>
+                                    <div class="upload-status" id="tradeLicenseUploadStatus"></div>
+                                    <small>JPG, PDF | Max 2MB</small>
+                                </div>
+                                <div class="error-message" id="tradeLicenseError">Please upload a valid trade license document</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">Upload BIN Certificate</label>
+                                <div class="file-upload hover-lift" id="binCertificateContainer">
+                                    <input type="file" id="binCertificateUpload" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                                    <button class="upload-btn" onclick="document.getElementById('binCertificateUpload').click()">
+                                        <i class="fas fa-upload"></i>
+                                        Choose File
+                                    </button>
+                                    <p class="file-info" id="binCertificateFileInfo">No file selected</p>
+                                    <div class="file-preview" id="binCertificatePreview"></div>
+                                    <div class="upload-status" id="binCertificateUploadStatus"></div>
+                                    <small>JPG, PDF | Max 2MB</small>
+                                </div>
+                                <div class="error-message" id="binCertificateError">Please upload a valid BIN certificate</div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tinNumber" class="required">TIN (Taxpayer Identification Number)</label>
+                                <input type="text" id="tinNumber" placeholder="Enter TIN number" required class="premium-focus">
+                                <div class="error-message" id="tinNumberError">Please enter a valid TIN number</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">Upload TIN Certificate</label>
+                                <div class="file-upload hover-lift" id="tinCertificateContainer">
+                                    <input type="file" id="tinCertificateUpload" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                                    <button class="upload-btn" onclick="document.getElementById('tinCertificateUpload').click()">
+                                        <i class="fas fa-upload"></i>
+                                        Choose File
+                                    </button>
+                                    <p class="file-info" id="tinCertificateFileInfo">No file selected</p>
+                                    <div class="file-preview" id="tinCertificatePreview"></div>
+                                    <div class="upload-status" id="tinCertificateUploadStatus"></div>
+                                    <small>JPG, PDF | Max 2MB</small>
+                                </div>
+                                <div class="error-message" id="tinCertificateError">Please upload a valid TIN certificate</div>
+                            </div>
+                            
+                        </div>
+                          <div class="form-group">
+                                <label>Document Verification Status</label>
+                                <div class="document-status">
+                                    <div class="document-status-item">
+                                        <span>Trade License</span>
+                                        <span class="status-badge status-pending-badge">Pending</span>
+                                    </div>
+                                    <div class="document-status-item">
+                                        <span>BIN Certificate</span>
+                                        <span class="status-badge status-pending-badge">Pending</span>
+                                    </div>
+                                    <div class="document-status-item">
+                                        <span>TIN Certificate</span>
+                                        <span class="status-badge status-pending-badge">Pending</span>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                </div>
+
+                <div class="form-navigation">
+                    <button class="nav-btn btn-prev">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous
+                    </button>
+                    <div>
+                        <button class="nav-btn btn-save" id="saveBtn">
+                            <i class="fas fa-save"></i>
+                            Save Progress
+                        </button>
+                    </div>
+                    <button class="nav-btn btn-next">
+                        Next
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <script src="js/profile.js"></script>
+</body>
+</html>

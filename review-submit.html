@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Profile Setup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+<!-- Toast Container for Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <div class="app-container">
+        <div class="main-content">
+            <!-- Sidebar Navigation -->
+             
+             <div class="sidebar-container">
+              <div class="sidebar">
+                <div class="sidebar-header">
+                    <div class="logo">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="sidebar-title">Profile Setup</div>
+                </div>
+                <div class="form-sections">
+                    <div class="form-section-item active" data-step="1">
+                        <i class="fas fa-info-circle icon"></i>
+                        <span>Basic Information</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="2">
+                        <i class="fas fa-gavel icon"></i>
+                        <span>Legal & Registration</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="3">
+                        <i class="fas fa-map-marker-alt icon"></i>
+                        <span>Address & Contact</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="4">
+                        <i class="fas fa-users icon"></i>
+                        <span>Team & Leadership</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="5">
+                        <i class="fas fa-briefcase icon"></i>
+                        <span>Experience & Projects</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="6">
+                        <i class="fas fa-award icon"></i>
+                        <span>Certifications & Quality</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="7">
+                        <i class="fas fa-check-circle icon"></i>
+                        <span>Review & Submit</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                </div>
+                <div class="help-section">
+                    <p>Need help with your profile setup?</p>
+                    <button class="contact-btn" id="supportBtn">
+                        <i class="fas fa-headset"></i>
+                        Contact Support
+                    </button>
+                </div>
+            </div>
+             </div>
+            
+            <!-- Form Container -->
+            <div class="form-container">
+                <div class="content-header">
+                    <div class="progress-info">
+                        <h2>Profile Completion Progress</h2>
+                        <div class="step-counter">Step 1 of 7: Basic Information</div>
+                    </div>
+                    <div class="auto-save" id="autoSaveStatus">
+                        <i class="fas fa-save"></i>
+                        <span>Auto-save enabled</span>
+                    </div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 14%;"></div>
+                    </div>
+                    <div class="progress-steps">
+                        <span class="active">Basic</span>
+                        <span>Legal</span>
+                        <span>Address</span>
+                        <span>Team</span>
+                        <span>Experience</span>
+                        <span>Certifications</span>
+                        <span>Review</span>
+                    </div>
+                </div>
+
+                <div class="form-content">
+                    <!-- Step 7: Review & Submit -->
+                    <div class="form-step" id="step-7">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <i class="fas fa-check-circle"></i>
+                                Review & Submit Your Profile
+                            </h2>
+                            <p class="section-description">Review all information before final submission</p>
+                        </div>
+
+                        <div class="review-section">
+                            <h3 class="review-title">Basic Information</h3>
+                            <div class="review-content">
+                                <div class="review-item">
+                                    <span class="review-label">Company Name:</span>
+                                    <span class="review-value" id="review-companyName">Not provided</span>
+                                    <i class="fas fa-edit edit-icon" data-section="basic" data-field="companyName"></i>
+                                </div>
+                                <div class="review-item">
+                                    <span class="review-label">Date of Establishment:</span>
+                                    <span class="review-value" id="review-dateOfEstablishment">Not provided</span>
+                                    <i class="fas fa-edit edit-icon" data-section="basic" data-field="dateOfEstablishment"></i>
+                                </div>
+                                <div class="review-item">
+                                    <span class="review-label">Business Type:</span>
+                                    <span class="review-value" id="review-businessType">Not provided</span>
+                                    <i class="fas fa-edit edit-icon" data-section="basic" data-field="businessType"></i>
+                                </div>
+                                <div class="review-item">
+                                    <span class="review-label">Industry Sector:</span>
+                                    <span class="review-value" id="review-industrySector">Not provided</span>
+                                    <i class="fas fa-edit edit-icon" data-section="basic" data-field="industrySector"></i>
+                                </div>
+                            </div>
+
+                            <h3 class="review-title">Legal & Registration</h3>
+                            <div class="review-content">
+                                <div class="review-item">
+                                    <span class="review-label">Trade License Number:</span>
+                                    <span class="review-value" id="review-tradeLicenseNumber">Not provided</span>
+                                    <i class="fas fa-edit edit-icon" data-section="legal" data-field="tradeLicenseNumber"></i>
+                                </div>
+                                <div class="review-item">
+                                    <span class="review-label">BIN/VAT Number:</span>
+                                    <span class="review-value" id="review-binVatNumber">Not provided</span>
+                                    <i class="fas fa-edit edit-icon" data-section="legal" data-field="binVatNumber"></i>
+                                </div>
+                                <div class="review-item">
+                                    <span class="review-label">TIN Number:</span>
+                                    <span class="review-value" id="review-tinNumber">Not provided</span>
+                                    <i class="fas fa-edit edit-icon" data-section="legal" data-field="tinNumber"></i>
+                                </div>
+                            </div>
+
+                            <h3 class="review-title">Uploaded Documents</h3>
+                            <div class="review-content">
+                                <div class="review-item">
+                                    <span class="review-label">Company Logo:</span>
+                                    <span class="review-value" id="review-companyLogo">Not provided</span>
+                                    <i class="fas fa-edit edit-icon" data-section="documents" data-field="companyLogo"></i>
+                                </div>
+                                <div class="review-item">
+                                    <span class="review-label">Trade License:</span>
+                                    <span class="review-value" id="review-tradeLicense">Not provided</span>
+                                    <i class="fas fa-edit edit-icon" data-section="documents" data-field="tradeLicense"></i>
+                                </div>
+                                <div class="review-item">
+                                    <span class="review-label">BIN Certificate:</span>
+                                    <span class="review-value" id="review-binCertificate">Not provided</span>
+                                    <i class="fas fa-edit edit-icon" data-section="documents" data-field="binCertificate"></i>
+                                </div>
+                                <div class="review-item">
+                                    <span class="review-label">TIN Certificate:</span>
+                                    <span class="review-value" id="review-tinCertificate">Not provided</span>
+                                    <i class="fas fa-edit edit-icon" data-section="documents" data-field="tinCertificate"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card" style="margin-top: 2rem;">
+                            <div class="card-header">
+                                <h3 class="card-title">Ready to Submit</h3>
+                                <i class="fas fa-check-circle" style="color: var(--success-color); font-size: 1.5rem;"></i>
+                            </div>
+                            <p>All required information has been completed. Please review all details carefully before submission. Once submitted, your profile will be verified and activated within 3-5 business days.</p>
+                            <div class="checkbox-group" style="margin-top: 1rem;">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="termsAgreement" required>
+                                    <label for="termsAgreement">I agree to the terms and conditions and confirm that all information provided is accurate to the best of my knowledge.</label>
+                                </div>
+                                <div class="error-message" id="termsAgreementError">You must agree to the terms and conditions</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-navigation">
+                    <button class="nav-btn btn-prev">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous
+                    </button>
+                    <div>
+                        <button class="nav-btn btn-save" id="saveBtn">
+                            <i class="fas fa-save"></i>
+                            Save Progress
+                        </button>
+                    </div>
+                    <button class="nav-btn btn-next">
+                        Next
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <script src="js/profile.js"></script>
+</body>
+</html>

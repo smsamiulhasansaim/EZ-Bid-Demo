@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Profile Setup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+<!-- Toast Container for Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <div class="app-container">
+        <div class="main-content">
+            <!-- Sidebar Navigation -->
+             
+             <div class="sidebar-container">
+              <div class="sidebar">
+                <div class="sidebar-header">
+                    <div class="logo">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="sidebar-title">Profile Setup</div>
+                </div>
+                <div class="form-sections">
+                    <div class="form-section-item active" data-step="1">
+                        <i class="fas fa-info-circle icon"></i>
+                        <span>Basic Information</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="2">
+                        <i class="fas fa-gavel icon"></i>
+                        <span>Legal & Registration</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="3">
+                        <i class="fas fa-map-marker-alt icon"></i>
+                        <span>Address & Contact</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="4">
+                        <i class="fas fa-users icon"></i>
+                        <span>Team & Leadership</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="5">
+                        <i class="fas fa-briefcase icon"></i>
+                        <span>Experience & Projects</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="6">
+                        <i class="fas fa-award icon"></i>
+                        <span>Certifications & Quality</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                    <div class="form-section-item" data-step="7">
+                        <i class="fas fa-check-circle icon"></i>
+                        <span>Review & Submit</span>
+                        <span class="section-status status-incomplete">0%</span>
+                    </div>
+                </div>
+                <div class="help-section">
+                    <p>Need help with your profile setup?</p>
+                    <button class="contact-btn" id="supportBtn">
+                        <i class="fas fa-headset"></i>
+                        Contact Support
+                    </button>
+                </div>
+            </div>
+             </div>
+            
+            <!-- Form Container -->
+            <div class="form-container">
+                <div class="content-header">
+                    <div class="progress-info">
+                        <h2>Profile Completion Progress</h2>
+                        <div class="step-counter">Step 1 of 7: Basic Information</div>
+                    </div>
+                    <div class="auto-save" id="autoSaveStatus">
+                        <i class="fas fa-save"></i>
+                        <span>Auto-save enabled</span>
+                    </div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 14%;"></div>
+                    </div>
+                    <div class="progress-steps">
+                        <span class="active">Basic</span>
+                        <span>Legal</span>
+                        <span>Address</span>
+                        <span>Team</span>
+                        <span>Experience</span>
+                        <span>Certifications</span>
+                        <span>Review</span>
+                    </div>
+                </div>
+
+                <div class="form-content">
+                    <!-- Step 1: Basic Information -->
+                    <div class="form-step active" id="step-1">
+                        <div class="section-header">
+                            <div>
+                                <h2 class="section-title">
+                                    <i class="fas fa-building"></i>
+                                    Basic Business Information
+                                </h2>
+                                <p class="section-description">Provide fundamental details about your company</p>
+                            </div>
+                            <div class="required-fields">
+                                <span>* Required fields</span>
+                                <i class="fas fa-info-circle" style="font-size: 16px;"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="companyName" class="required">Company Name</label>
+                                <input type="text" id="companyName" placeholder="Enter your company name" required class="premium-focus">
+                                <div class="error-message" id="companyNameError">Please enter a valid company name</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dateOfEstablishment" class="required">Date of Establishment</label>
+                                <input type="date" id="dateOfEstablishment" required class="premium-focus">
+                                <div class="error-message" id="dateOfEstablishmentError">Please select a valid date</div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="businessType" class="required">Business Type</label>   
+                                <select id="businessType" required class="premium-focus">
+                                    <option value="">Select business type</option>
+                                    <option value="sole-proprietorship">Sole Proprietorship</option>
+                                    <option value="partnership">Partnership</option>
+                                    <option value="limited-liability">Limited Liability Company</option>
+                                    <option value="corporation">Corporation</option>
+                                </select>
+                                <div class="error-message" id="businessTypeError">Please select a business type</div>
+                                <small>Will be validated against trade license/BIN</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="industrySector" class="required">Industry Sector</label>
+                                <select id="industrySector" required class="premium-focus">
+                                    <option value="">Select industry sector</option>
+                                    <option value="construction">Construction</option>
+                                    <option value="manufacturing">Manufacturing</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="finance">Finance</option>
+                                </select>
+                                <div class="error-message" id="industrySectorError">Please select an industry sector</div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="companyLogo">Company Logo</label>
+                                <div class="file-upload hover-lift" id="logoUploadContainer">
+                                    <div class="file-upload-icon">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                    </div>
+                                    <p>Upload your company logo</p>
+                                    <input type="file" id="logoUpload" accept="image/*" style="display: none;">
+                                    <button class="upload-btn" onclick="document.getElementById('logoUpload').click()">
+                                        <i class="fas fa-upload"></i>
+                                        Choose File
+                                    </button>
+                                    <p class="file-info" id="logoFileInfo">No file selected</p>
+                                    <div class="file-preview" id="logoPreview"></div>
+                                    <div class="upload-status" id="logoUploadStatus"></div>
+                                    <small>JPG, PNG | Max 2MB</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="validation-status">
+                            <div class="status-item status-success">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Company name format valid</span>
+                            </div>
+                            <div class="status-item status-pending">
+                                <i class="fas fa-clock"></i>
+                                <span>Trade license validation pending</span>
+                            </div>
+                            <div class="status-item status-pending">
+                                <i class="fas fa-clock"></i>
+                                <span>BIN validation pending</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-navigation">
+                    <button class="nav-btn btn-prev">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous
+                    </button>
+                    <div>
+                        <button class="nav-btn btn-save" id="saveBtn">
+                            <i class="fas fa-save"></i>
+                            Save Progress
+                        </button>
+                    </div>
+                    <button class="nav-btn btn-next">
+                        Next
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <script src="js/profile.js"></script>
+</body>
+</html>
