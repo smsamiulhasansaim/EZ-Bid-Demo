@@ -3,10 +3,897 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corporate Profile Setup</title>
+    <title>Legal & Registration Information</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/profile.css">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #dbeafe;
+            --secondary-color: #64748b;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --info-color: #3b82f6;
+            --light-bg: #f8fafc;
+            --dark-bg: #1e293b;
+            --border-color: #e2e8f0;
+            --text-color: #334155;
+            --heading-color: #1e293b;
+            --sidebar-bg: #1e293b;
+            --sidebar-text: #f1f5f9;
+            --sidebar-hover: #334155;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 1.5rem;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 1.5rem;
+        }
+
+        .sidebar-container {
+            position: relative; 
+        }
+        
+        .sidebar {
+            position: sticky;
+            top: 20px;
+            background: var(--sidebar-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: var(--transition);
+            height: fit-content;
+        }
+
+        .sidebar-header {
+            padding: 1.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-color);
+            border-radius: 8px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .sidebar-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--sidebar-text);
+        }
+
+        .form-sections {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.25rem 0;
+        }
+
+        .form-section-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.75rem;
+            color: var(--sidebar-text);
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            opacity: 0.8;
+        }
+
+        .form-section-item:hover {
+            background-color: var(--sidebar-hover);
+            opacity: 1;
+            padding-left: 2rem;
+        }
+
+        .form-section-item.active {
+            background: linear-gradient(90deg, rgba(37, 99, 235, 0.2) 0%, transparent 100%);
+            color: white;
+            opacity: 1;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .form-section-item .icon {
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .section-status {
+            margin-left: auto;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+        }
+
+        .status-complete {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .status-incomplete {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .help-section {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            background: rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .help-section p {
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            color: var(--sidebar-text);
+            opacity: 0.8;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            gap: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-container {
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+        }
+
+        .progress-info h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--heading-color);
+            margin-bottom: 0.25rem;
+            display: none;
+        }
+
+        .step-counter {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        .auto-save {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--success-color);
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+
+        .progress-container {
+            padding: 1.25rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--light-bg);
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+            border-radius: 5px;
+            width: 28%;
+            transition: width 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--secondary-color);
+            flex-wrap: wrap;
+        }
+
+        .progress-steps span {
+            padding: 0.25rem 0.5rem;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .progress-steps .active {
+            color: var(--primary-color);
+            font-weight: 600;
+            background-color: var(--primary-light);
+        }
+
+        .form-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2rem;
+            background: var(--light-bg);
+        }
+
+        .form-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-description {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            max-width: 600px;
+        }
+
+        .required-fields {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--error-color);
+            margin-top: 0.5rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            flex: 1;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--heading-color);
+        }
+
+        label.required::after {
+            content: " *";
+            color: var(--error-color);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        input[type="date"],
+        input[type="number"],
+        input[type="password"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.875rem 1.25rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+            color: var(--text-color);
+            transition: var(--transition);
+            background: white;
+            font-family: 'Inter', sans-serif;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: var(--secondary-color);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .input-error {
+            border-color: var(--error-color);
+        }
+
+        .input-error:focus {
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+
+        .file-upload {
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.5);
+            position: relative;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary-color);
+            background: rgba(37, 99, 235, 0.03);
+        }
+
+        .file-upload-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .upload-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .upload-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .file-info {
+            font-size: 0.875rem;
+            color: var(--secondary-color);
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .file-preview {
+            margin-top: 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .file-preview img {
+            max-width: 150px;
+            max-height: 150px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .file-preview .remove-file {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--error-color);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .upload-status {
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .status-success {
+            color: var(--success-color);
+        }
+
+        .status-error {
+            color: var(--error-color);
+        }
+
+        .validation-status {
+            background-color: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--border-color);
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--heading-color);
+        }
+
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            border-top: 1px solid var(--border-color);
+            background-color: white;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-prev {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            color: var(--secondary-color);
+        }
+
+        .btn-prev:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-next:hover {
+            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-save {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .btn-save:hover {
+            background-color: #0da271;
+        }
+
+        .checkbox-group {
+            margin-top: 0.75rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .checkbox-item input {
+            margin-right: 0.75rem;
+            width: 18px;
+            height: 18px;
+        }
+
+        .document-status {
+            background-color: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+        }
+
+        .document-status-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .status-badge {
+            padding: 0.35rem 0.875rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-pending-badge {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-approved-badge {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-rejected-badge {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-slide-in {
+            animation: slideIn 0.5s ease;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.7s ease;
+        }
+
+        .review-section {
+            margin-top: 2rem;
+        }
+
+        .review-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--heading-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .review-content {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .review-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-radius: var(--radius);
+            background-color: var(--light-bg);
+            transition: var(--transition);
+        }
+
+        .review-item:hover {
+            background-color: #eef2ff;
+        }
+
+        .review-label {
+            font-weight: 600;
+            color: var(--heading-color);
+            min-width: 200px;
+        }
+
+        .review-value {
+            flex: 1;
+            color: var(--text-color);
+        }
+
+        .edit-icon {
+            color: var(--primary-color);
+            cursor: pointer;
+            margin-left: 1rem;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .edit-icon:hover {
+            color: var(--primary-dark);
+        }
+
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toast {
+            padding: 1rem 1.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: var(--radius);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: var(--shadow);
+            transform: translateX(100%);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .toast-success {
+            background-color: var(--success-color);
+        }
+
+        .toast-error {
+            background-color: var(--error-color);
+        }
+
+        .toast-warning {
+            background-color: var(--warning-color);
+        }
+        
+        .toast-info {
+            background-color: var(--info-color);
+        }
+
+        .premium-focus:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1), 0 4px 12px rgba(37, 99, 235, 0.15);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px -10px rgba(0, 0, 0, 0.15);
+        }
+
+        .branch-address {
+            background-color: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                width: 100%;
+                margin-bottom: 1.5rem;
+            }
+            
+            .form-sections {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+            
+            .form-section-item {
+                border-radius: 8px;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .app-container {
+                padding: 0.5rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .content-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            
+            .progress-steps {
+                gap: 0.5rem;
+            }
+            
+            .progress-steps span {
+                flex: 1;
+                min-width: 60px;
+                text-align: center;
+                font-size: 0.7rem;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .form-content {
+                padding: 1.5rem;
+            }
+            
+            .review-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .review-label {
+                min-width: auto;
+                margin-bottom: 0.5rem;
+            }
+            
+            .edit-icon {
+                align-self: flex-end;
+                margin-left: 0;
+            }
+            
+            .form-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 {
+            margin-top: 0.5rem;
+        }
+
+        .mt-2 {
+            margin-top: 1rem;
+        }
+
+        .mt-3 {
+            margin-top: 1.5rem;
+        }
+
+        .mb-1 {
+            margin-bottom: 0.5rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-3 {
+            margin-bottom: 1.5rem;
+        }
+    </style>
 </head>
 <body>
 <!-- Toast Container for Notifications -->
@@ -25,12 +912,12 @@
                     <div class="sidebar-title">Profile Setup</div>
                 </div>
                 <div class="form-sections">
-                    <div class="form-section-item active" data-step="1">
+                    <div class="form-section-item" data-step="1">
                         <i class="fas fa-info-circle icon"></i>
                         <span>Basic Information</span>
-                        <span class="section-status status-incomplete">0%</span>
+                        <span class="section-status status-complete">50%</span>
                     </div>
-                    <div class="form-section-item" data-step="2">
+                    <div class="form-section-item active" data-step="2">
                         <i class="fas fa-gavel icon"></i>
                         <span>Legal & Registration</span>
                         <span class="section-status status-incomplete">0%</span>
@@ -76,7 +963,7 @@
                 <div class="content-header">
                     <div class="progress-info">
                         <h2>Profile Completion Progress</h2>
-                        <div class="step-counter">Step 1 of 7: Basic Information</div>
+                        <div class="step-counter">Step 2 of 7: Legal & Registration</div>
                     </div>
                     <div class="auto-save" id="autoSaveStatus">
                         <i class="fas fa-save"></i>
@@ -86,11 +973,11 @@
 
                 <div class="progress-container">
                     <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill" style="width: 14%;"></div>
+                        <div class="progress-fill" id="progressFill" style="width: 28%;"></div>
                     </div>
                     <div class="progress-steps">
                         <span class="active">Basic</span>
-                        <span>Legal</span>
+                        <span class="active">Legal</span>
                         <span>Address</span>
                         <span>Team</span>
                         <span>Experience</span>
@@ -100,130 +987,488 @@
                 </div>
 
                 <div class="form-content">
-                <!-- Step 2: Legal & Registration -->
-                    <div class="form-step" id="step-2">
+                    <!-- Step 2: Legal & Registration -->
+                    <div class="form-step active" id="step-2">
                         <div class="section-header">
                             <div>
                                 <h2 class="section-title">
                                     <i class="fas fa-gavel"></i>
-                                    Legal & Registration Details - 
+                                    Legal & Registration Information
                                 </h2>
-                                <p class="section-description">Upload and verify your business registration documents</p>
+                                <p class="section-description">Provide your company's legal registration details and upload relevant documents</p>
                             </div>
-                            <button class="contact-btn">
-                                Document Upload Required
-                            </button>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="tradeLicenseNumber" class="required">Trade License Number</label>
-                                <input type="text" id="tradeLicenseNumber" placeholder="Enter trade license number" required class="premium-focus">
-                                <div class="error-message" id="tradeLicenseNumberError">Please enter a valid trade license number</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="binVatNumber" class="required">BIN/VAT Registration Number</label>
-                                <input type="text" id="binVatNumber" placeholder="Enter BIN/VAT number" required class="premium-focus">
-                                <div class="error-message" id="binVatNumberError">Please enter a valid BIN/VAT number</div>
+                            <div class="required-fields">
+                                <span>* Required fields</span>
+                                <i class="fas fa-info-circle" style="font-size: 16px;"></i>
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="required">Upload Trade License</label>
-                                <div class="file-upload hover-lift" id="tradeLicenseContainer">
-                                    <input type="file" id="tradeLicenseUpload" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                                    <button class="upload-btn" onclick="document.getElementById('tradeLicenseUpload').click()">
-                                        <i class="fas fa-upload"></i>
-                                        Choose File
-                                    </button>
-                                    <p class="file-info" id="tradeLicenseFileInfo">No file selected</p>
-                                    <div class="file-preview" id="tradeLicensePreview"></div>
-                                    <div class="upload-status" id="tradeLicenseUploadStatus"></div>
-                                    <small>JPG, PDF | Max 2MB</small>
-                                </div>
-                                <div class="error-message" id="tradeLicenseError">Please upload a valid trade license document</div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Registration Details</h3>
                             </div>
-                            <div class="form-group">
-                                <label class="required">Upload BIN Certificate</label>
-                                <div class="file-upload hover-lift" id="binCertificateContainer">
-                                    <input type="file" id="binCertificateUpload" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                                    <button class="upload-btn" onclick="document.getElementById('binCertificateUpload').click()">
-                                        <i class="fas fa-upload"></i>
-                                        Choose File
-                                    </button>
-                                    <p class="file-info" id="binCertificateFileInfo">No file selected</p>
-                                    <div class="file-preview" id="binCertificatePreview"></div>
-                                    <div class="upload-status" id="binCertificateUploadStatus"></div>
-                                    <small>JPG, PDF | Max 2MB</small>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="registrationNumber" class="required">Registration Number</label>
+                                    <input type="text" id="registrationNumber" placeholder="Enter registration number" required class="premium-focus">
+                                    <div class="error-message" id="registrationNumberError">Please enter a valid registration number</div>
                                 </div>
-                                <div class="error-message" id="binCertificateError">Please upload a valid BIN certificate</div>
+                                <div class="form-group">
+                                    <label for="taxId" class="required">Tax ID Number</label>
+                                    <input type="text" id="taxId" placeholder="Enter tax ID number" required class="premium-focus">
+                                    <div class="error-message" id="taxIdError">Please enter a valid tax ID number</div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="registrationDate" class="required">Registration Date</label>
+                                    <input type="date" id="registrationDate" required class="premium-focus">
+                                    <div class="error-message" id="registrationDateError">Please select a valid date</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="registrationAuthority" class="required">Registration Authority</label>
+                                    <select id="registrationAuthority" required class="premium-focus">
+                                        <option value="">Select authority</option>
+                                        <option value="roc">Registrar of Companies</option>
+                                        <option value="dti">Department of Trade and Industry</option>
+                                        <option value="sec">Securities and Exchange Commission</option>
+                                        <option value="other">Other Authority</option>
+                                    </select>
+                                    <div class="error-message" id="registrationAuthorityError">Please select a registration authority</div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="tinNumber" class="required">TIN (Taxpayer Identification Number)</label>
-                                <input type="text" id="tinNumber" placeholder="Enter TIN number" required class="premium-focus">
-                                <div class="error-message" id="tinNumberError">Please enter a valid TIN number</div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Document Upload</h3>
+                                <small>Upload scanned copies of your legal documents</small>
                             </div>
-                            <div class="form-group">
-                                <label class="required">Upload TIN Certificate</label>
-                                <div class="file-upload hover-lift" id="tinCertificateContainer">
-                                    <input type="file" id="tinCertificateUpload" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                                    <button class="upload-btn" onclick="document.getElementById('tinCertificateUpload').click()">
-                                        <i class="fas fa-upload"></i>
-                                        Choose File
-                                    </button>
-                                    <p class="file-info" id="tinCertificateFileInfo">No file selected</p>
-                                    <div class="file-preview" id="tinCertificatePreview"></div>
-                                    <div class="upload-status" id="tinCertificateUploadStatus"></div>
-                                    <small>JPG, PDF | Max 2MB</small>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="tradeLicense" class="required">Trade License</label>
+                                    <div class="file-upload hover-lift" id="tradeLicenseUploadContainer">
+                                        <div class="file-upload-icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </div>
+                                        <p>Upload your trade license</p>
+                                        <input type="file" id="tradeLicenseUpload" accept=".pdf,.jpg,.jpeg,.png" style="display: none;">
+                                        <button class="upload-btn" onclick="document.getElementById('tradeLicenseUpload').click()">
+                                            <i class="fas fa-upload"></i>
+                                            Choose File
+                                        </button>
+                                        <p class="file-info" id="tradeLicenseFileInfo">No file selected</p>
+                                        <div class="upload-status" id="tradeLicenseUploadStatus"></div>
+                                        <small>PDF, JPG, PNG | Max 5MB</small>
+                                    </div>
                                 </div>
-                                <div class="error-message" id="tinCertificateError">Please upload a valid TIN certificate</div>
+                                <div class="form-group">
+                                    <label for="taxCertificate" class="required">Tax Certificate</label>
+                                    <div class="file-upload hover-lift" id="taxCertificateUploadContainer">
+                                        <div class="file-upload-icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </div>
+                                        <p>Upload your tax certificate</p>
+                                        <input type="file" id="taxCertificateUpload" accept=".pdf,.jpg,.jpeg,.png" style="display: none;">
+                                        <button class="upload-btn" onclick="document.getElementById('taxCertificateUpload').click()">
+                                            <i class="fas fa-upload"></i>
+                                            Choose File
+                                        </button>
+                                        <p class="file-info" id="taxCertificateFileInfo">No file selected</p>
+                                        <div class="upload-status" id="taxCertificateUploadStatus"></div>
+                                        <small>PDF, JPG, PNG | Max 5MB</small>
+                                    </div>
+                                </div>
                             </div>
-                            
                         </div>
-                          <div class="form-group">
-                                <label>Document Verification Status</label>
-                                <div class="document-status">
-                                    <div class="document-status-item">
-                                        <span>Trade License</span>
-                                        <span class="status-badge status-pending-badge">Pending</span>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Additional Legal Documents (Optional)</h3>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="articlesOfAssociation">Articles of Association</label>
+                                    <div class="file-upload hover-lift" id="articlesUploadContainer">
+                                        <div class="file-upload-icon">
+                                            <i class="fas fa-file-contract"></i>
+                                        </div>
+                                        <p>Upload articles of association</p>
+                                        <input type="file" id="articlesUpload" accept=".pdf,.jpg,.jpeg,.png" style="display: none;">
+                                        <button class="upload-btn" onclick="document.getElementById('articlesUpload').click()">
+                                            <i class="fas fa-upload"></i>
+                                            Choose File
+                                        </button>
+                                        <p class="file-info" id="articlesFileInfo">No file selected</p>
+                                        <div class="upload-status" id="articlesUploadStatus"></div>
+                                        <small>PDF, JPG, PNG | Max 5MB</small>
                                     </div>
-                                    <div class="document-status-item">
-                                        <span>BIN Certificate</span>
-                                        <span class="status-badge status-pending-badge">Pending</span>
-                                    </div>
-                                    <div class="document-status-item">
-                                        <span>TIN Certificate</span>
-                                        <span class="status-badge status-pending-badge">Pending</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="otherDocuments">Other Legal Documents</label>
+                                    <div class="file-upload hover-lift" id="otherDocsUploadContainer">
+                                        <div class="file-upload-icon">
+                                            <i class="fas fa-file-alt"></i>
+                                        </div>
+                                        <p>Upload other legal documents</p>
+                                        <input type="file" id="otherDocsUpload" accept=".pdf,.jpg,.jpeg,.png" style="display: none;">
+                                        <button class="upload-btn" onclick="document.getElementById('otherDocsUpload').click()">
+                                            <i class="fas fa-upload"></i>
+                                            Choose File
+                                        </button>
+                                        <p class="file-info" id="otherDocsFileInfo">No file selected</p>
+                                        <div class="upload-status" id="otherDocsUploadStatus"></div>
+                                        <small>PDF, JPG, PNG | Max 5MB</small>
                                     </div>
                                 </div>
                             </div>
-                        
+                        </div>
+
+                        <div class="validation-status">
+                            <div class="status-item status-pending">
+                                <i class="fas fa-clock"></i>
+                                <span>Registration number validation pending</span>
+                            </div>
+                            <div class="status-item status-pending">
+                                <i class="fas fa-clock"></i>
+                                <span>Tax ID verification pending</span>
+                            </div>
+                            <div class="status-item status-pending">
+                                <i class="fas fa-clock"></i>
+                                <span>Document verification pending</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-navigation">
-                    <button class="nav-btn btn-prev">
+                    <a href="basic-information.html">
+                        <button class="nav-btn btn-prev">
                         <i class="fas fa-arrow-left"></i>
                         Previous
                     </button>
+                    </a>
                     <div>
                         <button class="nav-btn btn-save" id="saveBtn">
                             <i class="fas fa-save"></i>
                             Save Progress
                         </button>
                     </div>
-                    <button class="nav-btn btn-next">
+                    <a href="address-contact.html">
+                        <button class="nav-btn btn-next">
                         Next
                         <i class="fas fa-arrow-right"></i>
                     </button>
+                    </a>
                 </div>
             </div>
         </div>
     </div> 
-    <script src="js/profile.js"></script>
+    <script>
+        // Current step tracking
+        let currentStep = 2;
+        const totalSteps = 7;
+
+        // Store form data
+        const formData = {
+            basic: {},
+            legal: {},
+            address: {},
+            team: {},
+            experience: {},
+            certifications: {},
+            review: {}
+        };
+
+        // DOM elements
+        const formSteps = document.querySelectorAll('.form-step');
+        const formSectionItems = document.querySelectorAll('.form-section-item');
+        const progressFill = document.getElementById('progressFill');
+        const stepCounter = document.querySelector('.step-counter');
+        const progressSteps = document.querySelectorAll('.progress-steps span');
+        const prevBtn = document.querySelector('.btn-prev');
+        const nextBtn = document.querySelector('.btn-next');
+        const saveBtn = document.getElementById('saveBtn');
+        const autoSaveStatus = document.getElementById('autoSaveStatus');
+        const supportBtn = document.getElementById('supportBtn');
+        const toastContainer = document.getElementById('toastContainer');
+
+        // Initialize the application
+        function initApp() {
+            updateStep(2);
+            initializeFileUploads();
+            initializeEventListeners();
+            loadSavedData();
+            
+            // Set up auto-save indicator
+            setInterval(() => {
+                autoSaveStatus.innerHTML = '<i class="fas fa-save"></i> <span>Auto-save enabled</span>';
+                setTimeout(() => {
+                    autoSaveStatus.innerHTML = '<i class="fas fa-save"></i> <span>All changes saved</span>';
+                }, 2000);
+            }, 30000);
+        }
+
+        // Initialize file upload previews for ALL sections
+        function initializeFileUploads() {
+            // Trade license upload
+            document.getElementById('tradeLicenseUpload').addEventListener('change', function(e) {
+                handleFileUpload(e, 'tradeLicenseFileInfo', '', 'tradeLicenseUploadStatus', 'tradeLicense');
+            });
+            
+            // Tax certificate upload
+            document.getElementById('taxCertificateUpload').addEventListener('change', function(e) {
+                handleFileUpload(e, 'taxCertificateFileInfo', '', 'taxCertificateUploadStatus', 'taxCertificate');
+            });
+            
+            // Articles of association upload
+            document.getElementById('articlesUpload').addEventListener('change', function(e) {
+                handleFileUpload(e, 'articlesFileInfo', '', 'articlesUploadStatus', 'articlesOfAssociation');
+            });
+            
+            // Other documents upload
+            document.getElementById('otherDocsUpload').addEventListener('change', function(e) {
+                handleFileUpload(e, 'otherDocsFileInfo', '', 'otherDocsUploadStatus', 'otherLegalDocuments');
+            });
+        }
+
+        // Initialize event listeners
+        function initializeEventListeners() {
+            // Navigation buttons
+            prevBtn.addEventListener('click', goToPreviousStep);
+            nextBtn.addEventListener('click', goToNextStep);
+            saveBtn.addEventListener('click', saveFormData);
+            
+            // Support button
+            supportBtn.addEventListener('click', showSupportModal);
+            
+            // Sidebar navigation
+            formSectionItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const step = parseInt(item.dataset.step);
+                    if (validateCurrentStep()) {
+                        updateStep(step);
+                    }
+                });
+            });
+            
+            // Input validation on blur
+            document.querySelectorAll('input, select, textarea').forEach(input => {
+                input.addEventListener('blur', () => {
+                    validateInput(input);
+                });
+            });
+        }
+
+        // Update the current step
+        function updateStep(step) {
+            // Hide all steps
+            formSteps.forEach(formStep => {
+                formStep.classList.remove('active');
+            });
+            
+            // Remove active class from all sidebar items
+            formSectionItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Show the current step
+            document.getElementById(`step-${step}`).classList.add('active');
+            
+            // Update sidebar active item
+            document.querySelector(`.form-section-item[data-step="${step}"]`).classList.add('active');
+            
+            // Update progress bar
+            const progressPercentage = (step / totalSteps) * 100;
+            progressFill.style.width = `${progressPercentage}%`;
+            
+            // Update step counter
+            const stepNames = ['Basic Information', 'Legal & Registration', 'Address & Contact', 'Team & Leadership', 'Experience & Projects', 'Certifications & Quality', 'Review & Submit'];
+            stepCounter.textContent = `Step ${step} of ${totalSteps}: ${stepNames[step-1]}`;
+            
+            // Update progress steps
+            progressSteps.forEach((progressStep, index) => {
+                if (index < step) {
+                    progressStep.classList.add('active');
+                } else {
+                    progressStep.classList.remove('active');
+                }
+            });
+            
+            currentStep = step;
+        }
+
+        // Go to the next step
+        function goToNextStep() {
+            if (validateCurrentStep()) {
+                if (currentStep < totalSteps) {
+                    updateStep(currentStep + 1);
+                }
+            }
+        }
+
+        // Go to the previous step
+        function goToPreviousStep() {
+            if (currentStep > 1) {
+                updateStep(currentStep - 1);
+            }
+        }
+
+        // Validate the current step
+        function validateCurrentStep() {
+            let isValid = true;
+            
+            // Get all required inputs in the current step
+            const requiredInputs = document.querySelectorAll(`#step-${currentStep} input[required], #step-${currentStep} select[required]`);
+            
+            requiredInputs.forEach(input => {
+                if (!validateInput(input)) {
+                    isValid = false;
+                }
+            });
+            
+            if (!isValid) {
+                showToast('Please fill all required fields correctly', 'error');
+            }
+            
+            return isValid;
+        }
+
+        // Validate a single input
+        function validateInput(input) {
+            const errorElement = document.getElementById(`${input.id}Error`);
+            
+            if (input.hasAttribute('required') && !input.value.trim()) {
+                input.classList.add('input-error');
+                if (errorElement) errorElement.style.display = 'block';
+                return false;
+            } else {
+                input.classList.remove('input-error');
+                if (errorElement) errorElement.style.display = 'none';
+                return true;
+            }
+        }
+
+        // Handle file uploads with preview
+        function handleFileUpload(event, fileInfoId, previewId, statusId, dataKey) {
+            const file = event.target.files[0];
+            const fileInfoElement = document.getElementById(fileInfoId);
+            const statusElement = document.getElementById(statusId);
+            
+            if (file) {
+                // Check file size (max 5MB)
+                if (file.size > 5 * 1024 * 1024) {
+                    showToast('File size exceeds 5MB limit', 'error');
+                    event.target.value = '';
+                    return;
+                }
+                
+                // Update file info
+                fileInfoElement.textContent = `${file.name} (${formatFileSize(file.size)})`;
+                fileInfoElement.style.display = 'block';
+                
+                // Simulate upload process
+                statusElement.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+                
+                setTimeout(() => {
+                    statusElement.innerHTML = '<i class="fas fa-check-circle status-success"></i> Upload successful';
+                    formData[currentStep][dataKey] = file.name;
+                    showToast('File uploaded successfully', 'success');
+                }, 1500);
+            }
+        }
+
+        // Format file size
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' bytes';
+            else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+            else return (bytes / 1048576).toFixed(1) + ' MB';
+        }
+
+        // Save form data
+        function saveFormData() {
+            // Collect data from current step
+            const inputs = document.querySelectorAll(`#step-${currentStep} input, #step-${currentStep} select, #step-${currentStep} textarea`);
+            
+            inputs.forEach(input => {
+                if (input.type !== 'file') {
+                    formData[currentStep][input.id] = input.value;
+                }
+            });
+            
+            // Update status in sidebar
+            const statusElement = document.querySelector(`.form-section-item[data-step="${currentStep}"] .section-status`);
+            statusElement.textContent = '50%';
+            statusElement.classList.remove('status-incomplete');
+            statusElement.classList.add('status-complete');
+            
+            // Save to localStorage (simulated)
+            localStorage.setItem('corporateProfileData', JSON.stringify(formData));
+            
+            showToast('Progress saved successfully', 'success');
+        }
+
+        // Load saved data
+        function loadSavedData() {
+            const savedData = localStorage.getItem('corporateProfileData');
+            
+            if (savedData) {
+                const parsedData = JSON.parse(savedData);
+                
+                // Update form data object
+                Object.assign(formData, parsedData);
+                
+                // Update UI for completed steps
+                for (const step in parsedData) {
+                    if (Object.keys(parsedData[step]).length > 0) {
+                        const stepNumber = step.replace('step', '');
+                        const statusElement = document.querySelector(`.form-section-item[data-step="${stepNumber}"] .section-status`);
+                        
+                        if (statusElement) {
+                            statusElement.textContent = '50%';
+                            statusElement.classList.remove('status-incomplete');
+                            statusElement.classList.add('status-complete');
+                        }
+                    }
+                }
+                
+                showToast('Previous progress loaded', 'info');
+            }
+        }
+
+        // Show support modal
+        function showSupportModal() {
+            showToast('Support contact feature will be implemented here', 'info');
+        }
+
+        // Show toast notification
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.innerHTML = `
+                <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            toastContainer.appendChild(toast);
+            
+            // Show toast
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 100);
+            
+            // Hide toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toastContainer.removeChild(toast);
+                }, 300);
+            }, 3000);
+        }
+
+        // Initialize the application when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
 </body>
 </html>

@@ -6,7 +6,891 @@
     <title>Corporate Profile Setup</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/profile.css">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #dbeafe;
+            --secondary-color: #64748b;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --info-color: #3b82f6;
+            --light-bg: #f8fafc;
+            --dark-bg: #1e293b;
+            --border-color: #e2e8f0;
+            --text-color: #334155;
+            --heading-color: #1e293b;
+            --sidebar-bg: #1e293b;
+            --sidebar-text: #f1f5f9;
+            --sidebar-hover: #334155;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 1.5rem;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 1.5rem;
+        }
+
+        .sidebar-container {
+            position: relative; 
+        }
+        
+        .sidebar {
+            position: sticky;
+            top: 20px;
+            background: var(--sidebar-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: var(--transition);
+            height: fit-content;
+        }
+
+        .sidebar-header {
+            padding: 1.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-color);
+            border-radius: 8px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .sidebar-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--sidebar-text);
+        }
+
+        .form-sections {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.25rem 0;
+        }
+
+        .form-section-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.75rem;
+            color: var(--sidebar-text);
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            opacity: 0.8;
+        }
+
+        .form-section-item:hover {
+            background-color: var(--sidebar-hover);
+            opacity: 1;
+            padding-left: 2rem;
+        }
+
+        .form-section-item.active {
+            background: linear-gradient(90deg, rgba(37, 99, 235, 0.2) 0%, transparent 100%);
+            color: white;
+            opacity: 1;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .form-section-item .icon {
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .section-status {
+            margin-left: auto;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+        }
+
+        .status-complete {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .status-incomplete {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .help-section {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .help-section p {
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            color: var(--sidebar-text);
+            opacity: 0.8;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            gap: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-container {
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+        }
+
+        .progress-info h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--heading-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .step-counter {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        .auto-save {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--success-color);
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+
+        .progress-container {
+            padding: 1.25rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--light-bg);
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+            border-radius: 5px;
+            width: 100%;
+            transition: width 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--secondary-color);
+            flex-wrap: wrap;
+        }
+
+        .progress-steps span {
+            padding: 0.25rem 0.5rem;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .progress-steps .active {
+            color: var(--primary-color);
+            font-weight: 600;
+            background-color: var(--primary-light);
+        }
+
+        .form-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2rem;
+            background: var(--light-bg);
+        }
+
+        .form-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-description {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            max-width: 600px;
+        }
+
+        .required-fields {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--error-color);
+            margin-top: 0.5rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            flex: 1;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--heading-color);
+        }
+
+        label.required::after {
+            content: " *";
+            color: var(--error-color);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        input[type="date"],
+        input[type="number"],
+        input[type="password"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.875rem 1.25rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            font-size: 0.9rem;
+            color: var(--text-color);
+            transition: var(--transition);
+            background: white;
+            font-family: 'Inter', sans-serif;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: var(--secondary-color);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .input-error {
+            border-color: var(--error-color);
+        }
+
+        .input-error:focus {
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+
+        .file-upload {
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.5);
+            position: relative;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary-color);
+            background: rgba(37, 99, 235, 0.03);
+        }
+
+        .file-upload-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .upload-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .upload-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .file-info {
+            font-size: 0.875rem;
+            color: var(--secondary-color);
+            margin-top: 0.5rem;
+        }
+
+        .file-preview {
+            margin-top: 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .file-preview img {
+            max-width: 150px;
+            max-height: 150px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .file-preview .remove-file {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--error-color);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .upload-status {
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .status-success {
+            color: var(--success-color);
+        }
+
+        .status-error {
+            color: var(--error-color);
+        }
+
+        .validation-status {
+            background-color: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--border-color);
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--heading-color);
+        }
+
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            border-top: 1px solid var(--border-color);
+            background-color: white;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-prev {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            color: var(--secondary-color);
+        }
+
+        .btn-prev:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-next:hover {
+            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-save {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .btn-save:hover {
+            background-color: #0da271;
+        }
+
+        .checkbox-group {
+            margin-top: 0.75rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .checkbox-item input {
+            margin-right: 0.75rem;
+            width: 18px;
+            height: 18px;
+        }
+
+        .document-status {
+            background-color: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+        }
+
+        .document-status-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .status-badge {
+            padding: 0.35rem 0.875rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-pending-badge {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-approved-badge {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-rejected-badge {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-slide-in {
+            animation: slideIn 0.5s ease;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.7s ease;
+        }
+
+        .review-section {
+            margin-top: 2rem;
+        }
+
+        .review-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--heading-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .review-content {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .review-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-radius: var(--radius);
+            background-color: var(--light-bg);
+            transition: var(--transition);
+        }
+
+        .review-item:hover {
+            background-color: #eef2ff;
+        }
+
+        .review-label {
+            font-weight: 600;
+            color: var(--heading-color);
+            min-width: 200px;
+        }
+
+        .review-value {
+            flex: 1;
+            color: var(--text-color);
+        }
+
+        .edit-icon {
+            color: var(--primary-color);
+            cursor: pointer;
+            margin-left: 1rem;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .edit-icon:hover {
+            color: var(--primary-dark);
+        }
+
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .toast {
+            padding: 1rem 1.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: var(--radius);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: var(--shadow);
+            transform: translateX(100%);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .toast-success {
+            background-color: var(--success-color);
+        }
+
+        .toast-error {
+            background-color: var(--error-color);
+        }
+
+        .toast-warning {
+            background-color: var(--warning-color);
+        }
+        
+        .toast-info {
+            background-color: var(--info-color);
+        }
+
+        .premium-focus:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1), 0 4px 12px rgba(37, 99, 235, 0.15);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px -10px rgba(0, 0, 0, 0.15);
+        }
+
+        .branch-address {
+            background-color: var(--light-bg);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                width: 100%;
+                margin-bottom: 1.5rem;
+            }
+            
+            .form-sections {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+            
+            .form-section-item {
+                border-radius: 8px;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .app-container {
+                padding: 0.5rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .content-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            
+            .progress-steps {
+                gap: 0.5rem;
+            }
+            
+            .progress-steps span {
+                flex: 1;
+                min-width: 60px;
+                text-align: center;
+                font-size: 0.7rem;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .form-content {
+                padding: 1.5rem;
+            }
+            
+            .review-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .review-label {
+                min-width: auto;
+                margin-bottom: 0.5rem;
+            }
+            
+            .edit-icon {
+                align-self: flex-end;
+                margin-left: 0;
+            }
+            
+            .form-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 {
+            margin-top: 0.5rem;
+        }
+
+        .mt-2 {
+            margin-top: 1rem;
+        }
+
+        .mt-3 {
+            margin-top: 1.5rem;
+        }
+
+        .mb-1 {
+            margin-bottom: 0.5rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-3 {
+            margin-bottom: 1.5rem;
+        }
+    </style>
 </head>
 <body>
 <!-- Toast Container for Notifications -->
@@ -25,40 +909,40 @@
                     <div class="sidebar-title">Profile Setup</div>
                 </div>
                 <div class="form-sections">
-                    <div class="form-section-item active" data-step="1">
+                    <div class="form-section-item" data-step="1">
                         <i class="fas fa-info-circle icon"></i>
                         <span>Basic Information</span>
-                        <span class="section-status status-incomplete">0%</span>
+                        <span class="section-status status-complete">100%</span>
                     </div>
                     <div class="form-section-item" data-step="2">
                         <i class="fas fa-gavel icon"></i>
                         <span>Legal & Registration</span>
-                        <span class="section-status status-incomplete">0%</span>
+                        <span class="section-status status-complete">100%</span>
                     </div>
                     <div class="form-section-item" data-step="3">
                         <i class="fas fa-map-marker-alt icon"></i>
                         <span>Address & Contact</span>
-                        <span class="section-status status-incomplete">0%</span>
+                        <span class="section-status status-complete">100%</span>
                     </div>
                     <div class="form-section-item" data-step="4">
                         <i class="fas fa-users icon"></i>
                         <span>Team & Leadership</span>
-                        <span class="section-status status-incomplete">0%</span>
+                        <span class="section-status status-complete">100%</span>
                     </div>
                     <div class="form-section-item" data-step="5">
                         <i class="fas fa-briefcase icon"></i>
                         <span>Experience & Projects</span>
-                        <span class="section-status status-incomplete">0%</span>
+                        <span class="section-status status-complete">100%</span>
                     </div>
                     <div class="form-section-item" data-step="6">
                         <i class="fas fa-award icon"></i>
                         <span>Certifications & Quality</span>
-                        <span class="section-status status-incomplete">0%</span>
+                        <span class="section-status status-complete">100%</span>
                     </div>
-                    <div class="form-section-item" data-step="7">
+                    <div class="form-section-item active" data-step="7">
                         <i class="fas fa-check-circle icon"></i>
                         <span>Review & Submit</span>
-                        <span class="section-status status-incomplete">0%</span>
+                        <span class="section-status status-complete">100%</span>
                     </div>
                 </div>
                 <div class="help-section">
@@ -76,38 +960,44 @@
                 <div class="content-header">
                     <div class="progress-info">
                         <h2>Profile Completion Progress</h2>
-                        <div class="step-counter">Step 1 of 7: Basic Information</div>
+                        <div class="step-counter">Step 7 of 7: Review & Submit</div>
                     </div>
                     <div class="auto-save" id="autoSaveStatus">
                         <i class="fas fa-save"></i>
-                        <span>Auto-save enabled</span>
+                        <span>All changes saved</span>
                     </div>
                 </div>
 
                 <div class="progress-container">
                     <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill" style="width: 14%;"></div>
+                        <div class="progress-fill" id="progressFill" style="width: 100%;"></div>
                     </div>
                     <div class="progress-steps">
                         <span class="active">Basic</span>
-                        <span>Legal</span>
-                        <span>Address</span>
-                        <span>Team</span>
-                        <span>Experience</span>
-                        <span>Certifications</span>
-                        <span>Review</span>
+                        <span class="active">Legal</span>
+                        <span class="active">Address</span>
+                        <span class="active">Team</span>
+                        <span class="active">Experience</span>
+                        <span class="active">Certifications</span>
+                        <span class="active">Review</span>
                     </div>
                 </div>
 
                 <div class="form-content">
                     <!-- Step 7: Review & Submit -->
-                    <div class="form-step" id="step-7">
+                    <div class="form-step active" id="step-7">
                         <div class="section-header">
-                            <h2 class="section-title">
-                                <i class="fas fa-check-circle"></i>
-                                Review & Submit Your Profile
-                            </h2>
-                            <p class="section-description">Review all information before final submission</p>
+                            <div>
+                                <h2 class="section-title">
+                                    <i class="fas fa-check-circle"></i>
+                                    Review & Submit Your Profile
+                                </h2>
+                                <p class="section-description">Review all information before final submission</p>
+                            </div>
+                            <div class="required-fields">
+                                <span>* Required fields</span>
+                                <i class="fas fa-info-circle" style="font-size: 16px;"></i>
+                            </div>
                         </div>
 
                         <div class="review-section">
@@ -115,22 +1005,22 @@
                             <div class="review-content">
                                 <div class="review-item">
                                     <span class="review-label">Company Name:</span>
-                                    <span class="review-value" id="review-companyName">Not provided</span>
+                                    <span class="review-value" id="review-companyName">ABC Construction Ltd.</span>
                                     <i class="fas fa-edit edit-icon" data-section="basic" data-field="companyName"></i>
                                 </div>
                                 <div class="review-item">
                                     <span class="review-label">Date of Establishment:</span>
-                                    <span class="review-value" id="review-dateOfEstablishment">Not provided</span>
+                                    <span class="review-value" id="review-dateOfEstablishment">2015-03-15</span>
                                     <i class="fas fa-edit edit-icon" data-section="basic" data-field="dateOfEstablishment"></i>
                                 </div>
                                 <div class="review-item">
                                     <span class="review-label">Business Type:</span>
-                                    <span class="review-value" id="review-businessType">Not provided</span>
+                                    <span class="review-value" id="review-businessType">Limited Liability Company</span>
                                     <i class="fas fa-edit edit-icon" data-section="basic" data-field="businessType"></i>
                                 </div>
                                 <div class="review-item">
                                     <span class="review-label">Industry Sector:</span>
-                                    <span class="review-value" id="review-industrySector">Not provided</span>
+                                    <span class="review-value" id="review-industrySector">Construction</span>
                                     <i class="fas fa-edit edit-icon" data-section="basic" data-field="industrySector"></i>
                                 </div>
                             </div>
@@ -139,17 +1029,17 @@
                             <div class="review-content">
                                 <div class="review-item">
                                     <span class="review-label">Trade License Number:</span>
-                                    <span class="review-value" id="review-tradeLicenseNumber">Not provided</span>
+                                    <span class="review-value" id="review-tradeLicenseNumber">TL-123456789</span>
                                     <i class="fas fa-edit edit-icon" data-section="legal" data-field="tradeLicenseNumber"></i>
                                 </div>
                                 <div class="review-item">
                                     <span class="review-label">BIN/VAT Number:</span>
-                                    <span class="review-value" id="review-binVatNumber">Not provided</span>
+                                    <span class="review-value" id="review-binVatNumber">BIN-987654321</span>
                                     <i class="fas fa-edit edit-icon" data-section="legal" data-field="binVatNumber"></i>
                                 </div>
                                 <div class="review-item">
                                     <span class="review-label">TIN Number:</span>
-                                    <span class="review-value" id="review-tinNumber">Not provided</span>
+                                    <span class="review-value" id="review-tinNumber">TIN-456789123</span>
                                     <i class="fas fa-edit edit-icon" data-section="legal" data-field="tinNumber"></i>
                                 </div>
                             </div>
@@ -158,22 +1048,22 @@
                             <div class="review-content">
                                 <div class="review-item">
                                     <span class="review-label">Company Logo:</span>
-                                    <span class="review-value" id="review-companyLogo">Not provided</span>
+                                    <span class="review-value" id="review-companyLogo">company_logo.png</span>
                                     <i class="fas fa-edit edit-icon" data-section="documents" data-field="companyLogo"></i>
                                 </div>
                                 <div class="review-item">
                                     <span class="review-label">Trade License:</span>
-                                    <span class="review-value" id="review-tradeLicense">Not provided</span>
+                                    <span class="review-value" id="review-tradeLicense">trade_license.pdf</span>
                                     <i class="fas fa-edit edit-icon" data-section="documents" data-field="tradeLicense"></i>
                                 </div>
                                 <div class="review-item">
                                     <span class="review-label">BIN Certificate:</span>
-                                    <span class="review-value" id="review-binCertificate">Not provided</span>
+                                    <span class="review-value" id="review-binCertificate">bin_certificate.pdf</span>
                                     <i class="fas fa-edit edit-icon" data-section="documents" data-field="binCertificate"></i>
                                 </div>
                                 <div class="review-item">
                                     <span class="review-label">TIN Certificate:</span>
-                                    <span class="review-value" id="review-tinCertificate">Not provided</span>
+                                    <span class="review-value" id="review-tinCertificate">tin_certificate.pdf</span>
                                     <i class="fas fa-edit edit-icon" data-section="documents" data-field="tinCertificate"></i>
                                 </div>
                             </div>
@@ -207,14 +1097,129 @@
                             Save Progress
                         </button>
                     </div>
-                    <button class="nav-btn btn-next">
-                        Next
-                        <i class="fas fa-arrow-right"></i>
+                    <button class="nav-btn btn-next" id="submitBtn">
+                        Submit
+                        <i class="fas fa-paper-plane"></i>
                     </button>
                 </div>
             </div>
         </div>
     </div> 
-    <script src="js/profile.js"></script>
+    <script>
+        // Current step tracking
+        let currentStep = 7;
+        const totalSteps = 7;
+
+        // DOM elements
+        const progressFill = document.getElementById('progressFill');
+        const stepCounter = document.querySelector('.step-counter');
+        const saveBtn = document.getElementById('saveBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const supportBtn = document.getElementById('supportBtn');
+        const toastContainer = document.getElementById('toastContainer');
+        const termsAgreement = document.getElementById('termsAgreement');
+        const termsAgreementError = document.getElementById('termsAgreementError');
+
+        // Initialize the application
+        function initApp() {
+            initializeEventListeners();
+        }
+
+        // Initialize event listeners
+        function initializeEventListeners() {
+            // Save button
+            saveBtn.addEventListener('click', saveFormData);
+            
+            // Support button
+            supportBtn.addEventListener('click', showSupportModal);
+            
+            // Submit button
+            submitBtn.addEventListener('click', submitForm);
+            
+            // Terms agreement validation
+            termsAgreement.addEventListener('change', function() {
+                if (this.checked) {
+                    termsAgreementError.style.display = 'none';
+                }
+            });
+            
+            // Edit icons
+            document.querySelectorAll('.edit-icon').forEach(icon => {
+                icon.addEventListener('click', function() {
+                    const section = this.getAttribute('data-section');
+                    const field = this.getAttribute('data-field');
+                    showToast(`Editing ${field} from ${section} section`, 'info');
+                });
+            });
+        }
+
+        // Save form data
+        function saveFormData() {
+            showToast('Your progress has been saved successfully!', 'success');
+        }
+
+        // Show support modal
+        function showSupportModal() {
+            showToast('Support team will contact you shortly', 'info');
+        }
+
+        // Submit form
+        function submitForm() {
+            // Validate terms agreement
+            if (!termsAgreement.checked) {
+                termsAgreementError.style.display = 'block';
+                showToast('Please agree to the terms and conditions', 'error');
+                return;
+            }
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                showToast('Profile submitted successfully! It will be reviewed within 3-5 business days.', 'success');
+                
+                // Reset button state
+                submitBtn.innerHTML = 'Submit <i class="fas fa-paper-plane"></i>';
+                submitBtn.disabled = false;
+            }, 2000);
+        }
+
+        // Show toast notification
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            
+            let iconClass = 'fas fa-info-circle';
+            if (type === 'success') iconClass = 'fas fa-check-circle';
+            if (type === 'error') iconClass = 'fas fa-exclamation-circle';
+            if (type === 'warning') iconClass = 'fas fa-exclamation-triangle';
+            
+            toast.innerHTML = `
+                <i class="${iconClass}"></i>
+                <span>${message}</span>
+            `;
+            
+            toastContainer.appendChild(toast);
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            
+            // Show toast
+            toast.classList.add('show');
+            
+            // Hide after 5 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toastContainer.removeChild(toast);
+                }, 300);
+            }, 5000);
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
 </body>
 </html>
