@@ -43,62 +43,6 @@
             margin: 0 auto;
             gap: 1.5rem;
         }
-
-        /* Header Styles */
-        .app-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .logo {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
-        }
-
-        .app-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--heading-color);
-        }
-
-        .language-selector {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .language-btn {
-            background: none;
-            border: 1px solid var(--border-color);
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .language-btn.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
         /* Main Content Layout */
         .main-content {
             display: grid;
@@ -106,16 +50,23 @@
             gap: 1.5rem;
         }
 
-        /* Sidebar Styles */
+        /* Sidebar */
+
+        .sidebar-container {
+        position: relative; 
+        }
+        
         .sidebar {
-            background: var(--sidebar-bg);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            transition: var(--transition);
-            height: fit-content;
+        position: sticky;
+        top: 20px;
+        background: var(--sidebar-bg);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        transition: var(--transition);
+        
         }
 
         .sidebar-header {

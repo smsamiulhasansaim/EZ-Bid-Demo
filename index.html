@@ -11,25 +11,13 @@
 <body>
 <!-- Toast Container for Notifications -->
     <div class="toast-container" id="toastContainer"></div>
-
+    
     <div class="app-container">
-        <!-- App Header -->
-        <header class="app-header">
-            <div class="logo-container">
-                <div class="logo">
-                    <i class="fas fa-building"></i>
-                </div>
-                <h1 class="app-title">EZ BD Profile Setup</h1>
-            </div>
-            <div class="language-selector">
-                <button class="language-btn active" data-lang="en">EN</button>
-                <button class="language-btn" data-lang="bn">BN</button>
-            </div>
-        </header>
-
         <div class="main-content">
             <!-- Sidebar Navigation -->
-            <div class="sidebar">
+             
+             <div class="sidebar-container">
+              <div class="sidebar">
                 <div class="sidebar-header">
                     <div class="logo">
                         <i class="fas fa-building"></i>
@@ -81,7 +69,8 @@
                     </button>
                 </div>
             </div>
-
+             </div>
+            
             <!-- Form Container -->
             <div class="form-container">
                 <div class="content-header">
@@ -210,7 +199,7 @@
                             <div>
                                 <h2 class="section-title">
                                     <i class="fas fa-gavel"></i>
-                                    Legal & Registration Details
+                                    Legal & Registration Details - 
                                 </h2>
                                 <p class="section-description">Upload and verify your business registration documents</p>
                             </div>
@@ -272,6 +261,23 @@
                                 <div class="error-message" id="tinNumberError">Please enter a valid TIN number</div>
                             </div>
                             <div class="form-group">
+                                <label class="required">Upload TIN Certificate</label>
+                                <div class="file-upload hover-lift" id="tinCertificateContainer">
+                                    <input type="file" id="tinCertificateUpload" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                                    <button class="upload-btn" onclick="document.getElementById('tinCertificateUpload').click()">
+                                        <i class="fas fa-upload"></i>
+                                        Choose File
+                                    </button>
+                                    <p class="file-info" id="tinCertificateFileInfo">No file selected</p>
+                                    <div class="file-preview" id="tinCertificatePreview"></div>
+                                    <div class="upload-status" id="tinCertificateUploadStatus"></div>
+                                    <small>JPG, PDF | Max 2MB</small>
+                                </div>
+                                <div class="error-message" id="tinCertificateError">Please upload a valid TIN certificate</div>
+                            </div>
+                            
+                        </div>
+                          <div class="form-group">
                                 <label>Document Verification Status</label>
                                 <div class="document-status">
                                     <div class="document-status-item">
@@ -288,25 +294,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="required">Upload TIN Certificate</label>
-                                <div class="file-upload hover-lift" id="tinCertificateContainer">
-                                    <input type="file" id="tinCertificateUpload" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                                    <button class="upload-btn" onclick="document.getElementById('tinCertificateUpload').click()">
-                                        <i class="fas fa-upload"></i>
-                                        Choose File
-                                    </button>
-                                    <p class="file-info" id="tinCertificateFileInfo">No file selected</p>
-                                    <div class="file-preview" id="tinCertificatePreview"></div>
-                                    <div class="upload-status" id="tinCertificateUploadStatus"></div>
-                                    <small>JPG, PDF | Max 2MB</small>
-                                </div>
-                                <div class="error-message" id="tinCertificateError">Please upload a valid TIN certificate</div>
-                            </div>
-                        </div>
+                        
                     </div>
 
                     <!-- Step 3: Address & Contact Details -->
