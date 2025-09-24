@@ -811,100 +811,6 @@
             background-color: #dc2626;
         }
 
-        /* New styles for searchable dropdown */
-        .searchable-select {
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 0.875rem 1.25rem;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            font-size: 0.9rem;
-            color: var(--text-color);
-            transition: var(--transition);
-            background: white;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .dropdown-options {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            max-height: 200px;
-            overflow-y: auto;
-            z-index: 100;
-            box-shadow: var(--shadow);
-            display: none;
-        }
-
-        .dropdown-option {
-            padding: 0.75rem 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .dropdown-option:hover {
-            background-color: var(--primary-light);
-        }
-
-        .dropdown-option.selected {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .search-loading {
-            padding: 0.75rem 1rem;
-            text-align: center;
-            color: var(--secondary-color);
-            font-style: italic;
-        }
-
-        .selection-method {
-            display: flex;
-            margin-bottom: 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            overflow: hidden;
-        }
-
-        .selection-tab {
-            flex: 1;
-            padding: 0.75rem;
-            text-align: center;
-            background: white;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .selection-tab.active {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .selection-tab:not(:last-child) {
-            border-right: 1px solid var(--border-color);
-        }
-
-        .location-method {
-            display: none;
-        }
-
-        .location-method.active {
-            display: block;
-        }
-
         @media (max-width: 1024px) {
             .main-content {
                 grid-template-columns: 1fr;
@@ -987,15 +893,6 @@
             .nav-btn {
                 width: 100%;
                 justify-content: center;
-            }
-            
-            .selection-method {
-                flex-direction: column;
-            }
-            
-            .selection-tab:not(:last-child) {
-                border-right: none;
-                border-bottom: 1px solid var(--border-color);
             }
         }
 
@@ -1140,119 +1037,122 @@
                         </div>
 
                         <div class="card">
+
                             <div class="card-header">
                                 <h3 class="card-title">Head Office Address</h3>
                             </div>
                             
-                            <!-- Selection Method Tabs -->
-                            <div class="selection-method">
-                                <div class="selection-tab active" data-method="division">Division to Post Code</div>
-                                <div class="selection-tab" data-method="postcode">Post Code to Division</div>
-                            </div>
-                            
-                            <!-- Division to Post Code Method -->
-                            <div class="location-method active" id="divisionMethod">
-                                <!-- Location Selection Fields -->
-                                <div class="form-row">
-                                    <div class="form-group searchable-select">
-                                        <label for="division" class="required">Division</label>
-                                        <input type="text" id="divisionSearch" class="search-input" placeholder="Search division...">
-                                        <div class="dropdown-options" id="divisionOptions"></div>
-                                        <select id="division" required class="premium-focus hidden">
-                                            <option value="">Select Division</option>
-                                            <!-- Options will be populated by JavaScript -->
-                                        </select>
-                                        <div class="error-message" id="divisionError">Please select a division</div>
-                                    </div>
-                                    <div class="form-group searchable-select">
-                                        <label for="district" class="required">District</label>
-                                        <input type="text" id="districtSearch" class="search-input" placeholder="Search district..." disabled>
-                                        <div class="dropdown-options" id="districtOptions"></div>
-                                        <select id="district" required class="premium-focus hidden" disabled>
-                                            <option value="">Select District</option>
-                                            <!-- Options will be populated by JavaScript -->
-                                        </select>
-                                        <div class="error-message" id="districtError">Please select a district</div>
-                                    </div>
-                                </div>
+                            <!-- Location Selection Fields -->
+                            <div class="form-row">
                                 
-                                <div class="form-row">
-                                    <div class="form-group searchable-select">
-                                        <label for="policeStation" class="required">Police Station (PS)</label>
-                                        <input type="text" id="policeStationSearch" class="search-input" placeholder="Search police station..." disabled>
-                                        <div class="dropdown-options" id="policeStationOptions"></div>
-                                        <select id="policeStation" required class="premium-focus hidden" disabled>
-                                            <option value="">Select Police Station</option>
-                                            <!-- Options will be populated by JavaScript -->
-                                        </select>
-                                        <div class="error-message" id="policeStationError">Please select a police station</div>
-                                    </div>
-                                    <div class="form-group searchable-select">
-                                        <label for="postOffice" class="required">Post Office</label>
-                                        <input type="text" id="postOfficeSearch" class="search-input" placeholder="Search post office..." disabled>
-                                        <div class="dropdown-options" id="postOfficeOptions"></div>
-                                        <select id="postOffice" required class="premium-focus hidden" disabled>
-                                            <option value="">Select Post Office</option>
-                                            <!-- Options will be populated by JavaScript -->
-                                        </select>
-                                        <div class="error-message" id="postOfficeError">Please select a post office</div>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="division" class="required">Division</label>
+                                    <select id="division" required class="premium-focus">
+                                        <option value="">Select Division</option>
+                                        <!-- Options will be populated by JavaScript -->
+                                    </select>
+                                    <div class="error-message" id="divisionError">Please select a division</div>
                                 </div>
-                                
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="postCode" class="required">Post Code</label>
-                                        <input type="text" id="postCode" class="premium-focus" placeholder="Post code will be auto-filled" readonly>
-                                        <div class="error-message" id="postCodeError">Post code is required</div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="detailedAddress" class="required">Detailed Address</label>
-                                        <input type="text" id="detailedAddress" class="premium-focus" placeholder="House/Road/Area details" required>
-                                        <div class="error-message" id="detailedAddressError">Please provide detailed address</div>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="district" class="required">District</label>
+                                    <select id="district" required class="premium-focus" disabled>
+                                        <option value="">Select District</option>
+                                        <!-- Options will be populated by JavaScript -->
+                                    </select>
+                                    <div class="error-message" id="districtError">Please select a district</div>
                                 </div>
                             </div>
                             
-                            <!-- Post Code to Division Method -->
-                            <div class="location-method" id="postcodeMethod">
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="postCodeDirect" class="required">Post Code</label>
-                                        <input type="text" id="postCodeDirect" class="search-input" placeholder="Enter post code...">
-                                        <div class="dropdown-options" id="postCodeOptions"></div>
-                                        <div class="error-message" id="postCodeDirectError">Please enter a valid post code</div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="postOfficeDirect" class="required">Post Office</label>
-                                        <input type="text" id="postOfficeDirect" class="premium-focus" placeholder="Post office will be auto-filled" readonly>
-                                        <div class="error-message" id="postOfficeDirectError">Post office is required</div>
-                                    </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="policeStation" class="required">Police Station (PS)</label>
+                                    <select id="policeStation" required class="premium-focus" disabled>
+                                        <option value="">Select Police Station</option>
+                                        <!-- Options will be populated by JavaScript -->
+                                    </select>
+                                    <div class="error-message" id="policeStationError">Please select a police station</div>
                                 </div>
-                                
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="policeStationDirect" class="required">Police Station (PS)</label>
-                                        <input type="text" id="policeStationDirect" class="premium-focus" placeholder="Police station will be auto-filled" readonly>
-                                        <div class="error-message" id="policeStationDirectError">Police station is required</div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="districtDirect" class="required">District</label>
-                                        <input type="text" id="districtDirect" class="premium-focus" placeholder="District will be auto-filled" readonly>
-                                        <div class="error-message" id="districtDirectError">District is required</div>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="postOffice" class="required">Post Office</label>
+                                    <select id="postOffice" required class="premium-focus" disabled>
+                                        <option value="">Select Post Office</option>
+                                        <!-- Options will be populated by JavaScript -->
+                                    </select>
+                                    <div class="error-message" id="postOfficeError">Please select a post office</div>
                                 </div>
-                                
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="divisionDirect" class="required">Division</label>
-                                        <input type="text" id="divisionDirect" class="premium-focus" placeholder="Division will be auto-filled" readonly>
-                                        <div class="error-message" id="divisionDirectError">Division is required</div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="detailedAddressDirect" class="required">Detailed Address</label>
-                                        <input type="text" id="detailedAddressDirect" class="premium-focus" placeholder="House/Road/Area details" required>
-                                        <div class="error-message" id="detailedAddressDirectError">Please provide detailed address</div>
-                                    </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="postCode" class="required">Post Code</label>
+                                    <input type="text" id="postCode" placeholder="Post code will be auto-filled" required class="premium-focus" readonly>
+                                    <div class="error-message" id="postCodeError">Post code is required</div>
+                                </div>
+                                <div class="form-group">
+                                </div>
+                            </div>
+                            
+                            <!-- Address Details -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="houseName" class="required">House Name</label>
+                                    <input type="text" id="houseName" placeholder="Enter house name" required class="premium-focus">
+                                    <div class="error-message" id="houseNameError">Please enter a valid house name</div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="flatNo">Flat No</label>
+                                    <input type="text" id="flatNo" placeholder="Enter flat number (A-Z only)" class="premium-focus" pattern="[A-Za-z]+" title="Only English letters (A-Z) are allowed">
+                                    <div class="error-message" id="flatNoError">Only English letters (A-Z) are allowed</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sectionNo">Section No</label>
+                                    <input type="number" id="sectionNo" placeholder="Enter section number (1-50)" class="premium-focus" min="1" max="50">
+                                    <div class="error-message" id="sectionNoError">Please enter a number between 1 and 50</div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="streetAddress" class="required">Street Address</label>
+                                    <input type="text" id="streetAddress" placeholder="Enter street address" required class="premium-focus">
+                                    <div class="error-message" id="streetAddressError">Please enter a valid address</div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city" class="required">City</label>
+                                    <input type="text" id="city" placeholder="Enter city" required class="premium-focus">
+                                    <div class="error-message" id="cityError">Please enter a valid city</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state" class="required">State/Province</label>
+                                    <input type="text" id="state" placeholder="Enter state or province" required class="premium-focus">
+                                    <div class="error-message" id="stateError">Please enter a valid state/province</div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="postalCode" class="required">Postal Code</label>
+                                    <input type="text" id="postalCode" placeholder="Enter postal code" required class="premium-focus">
+                                    <div class="error-message" id="postalCodeError">Please enter a valid postal code</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="country" class="required">Country</label>
+                                    <select id="country" required class="premium-focus">
+                                        <option value="">Select Country</option>
+                                        <option value="Bangladesh" selected>Bangladesh</option>
+                                        <option value="India">India</option>
+                                        <option value="Pakistan">Pakistan</option>
+                                        <option value="Nepal">Nepal</option>
+                                        <option value="Sri Lanka">Sri Lanka</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <div class="error-message" id="countryError">Please select a country</div>
                                 </div>
                             </div>
                         </div>
@@ -1263,75 +1163,89 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="phoneNumber" class="required">Phone Number</label>
-                                    <input type="tel" id="phoneNumber" class="premium-focus" placeholder="+880 XXXX-XXXXXX" required>
+                                    <label for="phone" class="required">Phone Number</label>
+                                    <input type="tel" id="phone" placeholder="Enter phone number" required class="premium-focus">
                                     <div class="error-message" id="phoneError">Please enter a valid phone number</div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email" class="required">Email Address</label>
-                                    <input type="email" id="email" class="premium-focus" placeholder="company@example.com" required>
-                                    <div class="error-message" id="emailError">Please enter a valid email address</div>
+                                    <label for="mobile" class="required">Mobile Number</label>
+                                    <input type="tel" id="mobile" placeholder="Enter mobile number" required class="premium-focus">
+                                    <div class="error-message" id="mobileError">Please enter a valid mobile number</div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="website">Website (Optional)</label>
-                                    <input type="url" id="website" class="premium-focus" placeholder="https://www.example.com">
-                                    <div class="error-message" id="websiteError">Please enter a valid URL</div>
+                                    <label for="email" class="required">Email Address</label>
+                                    <input type="email" id="email" placeholder="Enter email address" required class="premium-focus">
+                                    <div class="error-message" id="emailError">Please enter a valid email address</div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="emergencyContact">Emergency Contact</label>
-                                    <input type="tel" id="emergencyContact" class="premium-focus" placeholder="+880 XXXX-XXXXXX">
-                                    <div class="error-message" id="emergencyContactError">Please enter a valid phone number</div>
+                                    <label for="website">Website (Optional)</label>
+                                    <input type="url" id="website" placeholder="Enter website URL" class="premium-focus">
+                                    <div class="error-message" id="websiteError">Please enter a valid website URL</div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Branch Addresses (Optional)</h3>
+                                <h3 class="card-title">Additional Address Options</h3>
                             </div>
-                            <div class="branch-address" id="branchAddresses">
-                                <p>No branch addresses added yet.</p>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sameAsRegistered">
+                                    <label for="sameAsRegistered">Head Office / Corporate Office address is same as Registered Office address</label>
+                                </div>
                             </div>
-                            <button type="button" class="add-branch-btn" id="addBranchBtn">
+                            <div id="branchAddresses">
+                                <div class="branch-address">
+                                    <h4>Branch Office Address 1</h4>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="branchDivision">Division</label>
+                                            <select id="branchDivision" class="premium-focus">
+                                                <option value="">Select Division</option>
+                                                <!-- Options will be populated by JavaScript -->
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="branchDistrict">District</label>
+                                            <select id="branchDistrict" class="premium-focus" disabled>
+                                                <option value="">Select District</option>
+                                                <!-- Options will be populated by JavaScript -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="branchAddress">Address</label>
+                                            <input type="text" id="branchAddress" placeholder="Enter branch address" class="premium-focus">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="add-branch-btn" id="addBranchBtn">
                                 <i class="fas fa-plus"></i>
-                                Add Branch Address
+                                Add Another Branch Address
                             </button>
                         </div>
 
-                        <div class="validation-status">
-                            <h4>Address Validation Status</h4>
-                            <div class="status-item">
-                                <i class="fas fa-check-circle" style="color: var(--success-color);"></i>
-                                <span>Country: Bangladesh (Auto-filled)</span>
-                            </div>
-                            <div class="status-item">
-                                <i class="fas fa-spinner fa-spin" style="color: var(--warning-color);"></i>
-                                <span>Address format: Pending validation</span>
-                            </div>
-                            <div class="status-item">
-                                <i class="fas fa-clock" style="color: var(--secondary-color);"></i>
-                                <span>Postal code verification: In progress</span>
+                        <div class="form-navigation">
+                            <button class="nav-btn btn-prev" id="prevBtn">
+                                <i class="fas fa-arrow-left"></i>
+                                Previous Step
+                            </button>
+                            <div>
+                                <button class="nav-btn btn-save" id="saveBtn">
+                                    <i class="fas fa-save"></i>
+                                    Save Draft
+                                </button>
+                                <button class="nav-btn btn-next" id="nextBtn">
+                                    Next Step
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="form-navigation">
-                    <button class="nav-btn btn-prev" id="prevBtn">
-                        <i class="fas fa-arrow-left"></i>
-                        Previous Step
-                    </button>
-                    <div>
-                        <button class="nav-btn btn-save" id="saveBtn">
-                            <i class="fas fa-save"></i>
-                            Save Draft
-                        </button>
-                        <button class="nav-btn btn-next" id="nextBtn">
-                            Next Step
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -1339,70 +1253,65 @@
     </div>
 
     <script>
-        // Sample JSON data for Bangladesh locations
+        // Sample location data in JSON format
         const locationData = {
             "divisions": [
                 {
-                    "id": "div-1",
+                    "id": "dhaka",
                     "name": "Dhaka",
                     "districts": [
                         {
-                            "id": "dis-1",
+                            "id": "dhaka",
                             "name": "Dhaka",
                             "policeStations": [
                                 {
-                                    "id": "ps-1",
+                                    "id": "savar",
+                                    "name": "Savar",
+                                    "postOffices": [
+                                        {"id": "ashulia", "name": "Ashulia EDBO", "postCode": "1341"},
+                                        {"id": "savar", "name": "Savar", "postCode": "1340"},
+                                        {"id": "dhamrai", "name": "Dhamrai", "postCode": "1350"}
+                                    ]
+                                },
+                                {
+                                    "id": "gulshan",
                                     "name": "Gulshan",
                                     "postOffices": [
-                                        {
-                                            "id": "po-1",
-                                            "name": "Gulshan Model Town",
-                                            "postCode": "1212"
-                                        },
-                                        {
-                                            "id": "po-2",
-                                            "name": "Gulshan-1",
-                                            "postCode": "1212"
-                                        }
+                                        {"id": "gulshan1", "name": "Gulshan 1", "postCode": "1212"},
+                                        {"id": "gulshan2", "name": "Gulshan 2", "postCode": "1213"},
+                                        {"id": "banani", "name": "Banani", "postCode": "1213"}
                                     ]
                                 },
                                 {
-                                    "id": "ps-2",
-                                    "name": "Banani",
+                                    "id": "uttara",
+                                    "name": "Uttara",
                                     "postOffices": [
-                                        {
-                                            "id": "po-3",
-                                            "name": "Banani",
-                                            "postCode": "1213"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "id": "ps-3",
-                                    "name": "Dhanmondi",
-                                    "postOffices": [
-                                        {
-                                            "id": "po-4",
-                                            "name": "Dhanmondi",
-                                            "postCode": "1205"
-                                        }
+                                        {"id": "uttara1", "name": "Uttara Sector 1", "postCode": "1230"},
+                                        {"id": "uttara2", "name": "Uttara Sector 2", "postCode": "1231"},
+                                        {"id": "uttara3", "name": "Uttara Sector 3", "postCode": "1232"}
                                     ]
                                 }
                             ]
                         },
                         {
-                            "id": "dis-2",
-                            "name": "Narayanganj",
+                            "id": "gazipur",
+                            "name": "Gazipur",
                             "policeStations": [
                                 {
-                                    "id": "ps-4",
-                                    "name": "Narayanganj Sadar",
+                                    "id": "gazipur_sadar",
+                                    "name": "Gazipur Sadar",
                                     "postOffices": [
-                                        {
-                                            "id": "po-5",
-                                            "name": "Narayanganj Sadar",
-                                            "postCode": "1400"
-                                        }
+                                        {"id": "gazipur1", "name": "Gazipur Sadar", "postCode": "1700"},
+                                        {"id": "tongi", "name": "Tongi", "postCode": "1710"},
+                                        {"id": "konabari", "name": "Konabari", "postCode": "1720"}
+                                    ]
+                                },
+                                {
+                                    "id": "kaliakair",
+                                    "name": "Kaliakair",
+                                    "postOffices": [
+                                        {"id": "kaliakair1", "name": "Kaliakair", "postCode": "1750"},
+                                        {"id": "pubail", "name": "Pubail", "postCode": "1751"}
                                     ]
                                 }
                             ]
@@ -1410,22 +1319,42 @@
                     ]
                 },
                 {
-                    "id": "div-2",
-                    "name": "Chittagong",
+                    "id": "chattogram",
+                    "name": "Chattogram",
                     "districts": [
                         {
-                            "id": "dis-3",
-                            "name": "Chittagong",
+                            "id": "chattogram",
+                            "name": "Chattogram",
                             "policeStations": [
                                 {
-                                    "id": "ps-5",
-                                    "name": "Kotwali",
+                                    "id": "chattogram_sadar",
+                                    "name": "Chattogram Sadar",
                                     "postOffices": [
-                                        {
-                                            "id": "po-6",
-                                            "name": "Chittagong GPO",
-                                            "postCode": "4000"
-                                        }
+                                        {"id": "agrabad", "name": "Agrabad", "postCode": "4100"},
+                                        {"id": "chawkbazar", "name": "Chawkbazar", "postCode": "4101"},
+                                        {"id": "kotwali", "name": "Kotwali", "postCode": "4102"}
+                                    ]
+                                },
+                                {
+                                    "id": "patenga",
+                                    "name": "Patenga",
+                                    "postOffices": [
+                                        {"id": "patenga1", "name": "Patenga", "postCode": "4200"},
+                                        {"id": "faujdarhat", "name": "Faujdarhat", "postCode": "4201"}
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "id": "cox's_bazar",
+                            "name": "Cox's Bazar",
+                            "policeStations": [
+                                {
+                                    "id": "cox's_bazar_sadar",
+                                    "name": "Cox's Bazar Sadar",
+                                    "postOffices": [
+                                        {"id": "cox's_bazar1", "name": "Cox's Bazar Sadar", "postCode": "4700"},
+                                        {"id": "kolatoli", "name": "Kolatoli", "postCode": "4701"}
                                     ]
                                 }
                             ]
@@ -1433,137 +1362,33 @@
                     ]
                 },
                 {
-                    "id": "div-3",
+                    "id": "rajshahi",
                     "name": "Rajshahi",
                     "districts": [
                         {
-                            "id": "dis-4",
+                            "id": "rajshahi",
                             "name": "Rajshahi",
                             "policeStations": [
                                 {
-                                    "id": "ps-6",
-                                    "name": "Rajpara",
+                                    "id": "rajshahi_sadar",
+                                    "name": "Rajshahi Sadar",
                                     "postOffices": [
-                                        {
-                                            "id": "po-7",
-                                            "name": "Rajshahi Sadar",
-                                            "postCode": "6000"
-                                        }
+                                        {"id": "rajshahi1", "name": "Rajshahi Sadar", "postCode": "6000"},
+                                        {"id": "binodpur", "name": "Binodpur", "postCode": "6001"}
                                     ]
                                 }
                             ]
-                        }
-                    ]
-                },
-                {
-                    "id": "div-4",
-                    "name": "Khulna",
-                    "districts": [
+                        },
                         {
-                            "id": "dis-5",
-                            "name": "Khulna",
+                            "id": "bogra",
+                            "name": "Bogra",
                             "policeStations": [
                                 {
-                                    "id": "ps-7",
-                                    "name": "Khulna Sadar",
+                                    "id": "bogra_sadar",
+                                    "name": "Bogra Sadar",
                                     "postOffices": [
-                                        {
-                                            "id": "po-8",
-                                            "name": "Khulna GPO",
-                                            "postCode": "9000"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "id": "div-5",
-                    "name": "Barisal",
-                    "districts": [
-                        {
-                            "id": "dis-6",
-                            "name": "Barisal",
-                            "policeStations": [
-                                {
-                                    "id": "ps-8",
-                                    "name": "Barisal Sadar",
-                                    "postOffices": [
-                                        {
-                                            "id": "po-9",
-                                            "name": "Barisal Sadar",
-                                            "postCode": "8200"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "id": "div-6",
-                    "name": "Sylhet",
-                    "districts": [
-                        {
-                            "id": "dis-7",
-                            "name": "Sylhet",
-                            "policeStations": [
-                                {
-                                    "id": "ps-9",
-                                    "name": "Sylhet Sadar",
-                                    "postOffices": [
-                                        {
-                                            "id": "po-10",
-                                            "name": "Sylhet Sadar",
-                                            "postCode": "3100"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "id": "div-7",
-                    "name": "Rangpur",
-                    "districts": [
-                        {
-                            "id": "dis-8",
-                            "name": "Rangpur",
-                            "policeStations": [
-                                {
-                                    "id": "ps-10",
-                                    "name": "Rangpur Sadar",
-                                    "postOffices": [
-                                        {
-                                            "id": "po-11",
-                                            "name": "Rangpur Sadar",
-                                            "postCode": "5400"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "id": "div-8",
-                    "name": "Mymensingh",
-                    "districts": [
-                        {
-                            "id": "dis-9",
-                            "name": "Mymensingh",
-                            "policeStations": [
-                                {
-                                    "id": "ps-11",
-                                    "name": "Mymensingh Sadar",
-                                    "postOffices": [
-                                        {
-                                            "id": "po-12",
-                                            "name": "Mymensingh Sadar",
-                                            "postCode": "2200"
-                                        }
+                                        {"id": "bogra1", "name": "Bogra Sadar", "postCode": "5800"},
+                                        {"id": "santahar", "name": "Santahar", "postCode": "5801"}
                                     ]
                                 }
                             ]
@@ -1573,469 +1398,388 @@
             ]
         };
 
-        // Flattened data for direct postcode search
-        let postCodeMap = {};
-
-        // Initialize postcode mapping
-        function initializePostCodeMap() {
-            locationData.divisions.forEach(division => {
-                division.districts.forEach(district => {
-                    district.policeStations.forEach(policeStation => {
-                        policeStation.postOffices.forEach(postOffice => {
-                            postCodeMap[postOffice.postCode] = {
-                                postOffice: postOffice.name,
-                                policeStation: policeStation.name,
-                                district: district.name,
-                                division: division.name
-                            };
-                        });
-                    });
-                });
-            });
-        }
-
         // DOM Elements
-        const divisionSearch = document.getElementById('divisionSearch');
-        const districtSearch = document.getElementById('districtSearch');
-        const policeStationSearch = document.getElementById('policeStationSearch');
-        const postOfficeSearch = document.getElementById('postOfficeSearch');
-        const postCodeDirect = document.getElementById('postCodeDirect');
-
         const divisionSelect = document.getElementById('division');
         const districtSelect = document.getElementById('district');
         const policeStationSelect = document.getElementById('policeStation');
         const postOfficeSelect = document.getElementById('postOffice');
-        const postCodeField = document.getElementById('postCode');
+        const postCodeInput = document.getElementById('postCode');
+        const firstOfficeSelect = document.getElementById('firstOffice');
+        const sameAsRegisteredCheckbox = document.getElementById('sameAsRegistered');
+        const addBranchBtn = document.getElementById('addBranchBtn');
+        const branchAddressesContainer = document.getElementById('branchAddresses');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        const supportBtn = document.getElementById('supportBtn');
+        const autoSaveStatus = document.getElementById('autoSaveStatus');
+        const toastContainer = document.getElementById('toastContainer');
 
-        const divisionDirect = document.getElementById('divisionDirect');
-        const districtDirect = document.getElementById('districtDirect');
-        const policeStationDirect = document.getElementById('policeStationDirect');
-        const postOfficeDirect = document.getElementById('postOfficeDirect');
-
-        const divisionOptions = document.getElementById('divisionOptions');
-        const districtOptions = document.getElementById('districtOptions');
-        const policeStationOptions = document.getElementById('policeStationOptions');
-        const postOfficeOptions = document.getElementById('postOfficeOptions');
-        const postCodeOptions = document.getElementById('postCodeOptions');
-
-        const selectionTabs = document.querySelectorAll('.selection-tab');
-        const divisionMethod = document.getElementById('divisionMethod');
-        const postcodeMethod = document.getElementById('postcodeMethod');
-
-        // Current selected values
-        let selectedDivision = null;
-        let selectedDistrict = null;
-        let selectedPoliceStation = null;
-        let selectedPostOffice = null;
-
-        // Initialize the application
+        // Populate divisions on page load
         document.addEventListener('DOMContentLoaded', function() {
-            initializePostCodeMap();
-            populateDivisionOptions();
+            populateDivisions();
             setupEventListeners();
-            setupSearchFunctionality();
+            setupAutoSave();
         });
 
-        // Populate division options
-        function populateDivisionOptions() {
-            // Clear existing options
-            divisionSelect.innerHTML = '<option value="">Select Division</option>';
-            divisionOptions.innerHTML = '';
-            
-            // Add options from JSON data
+        // Populate divisions in the dropdown
+        function populateDivisions() {
             locationData.divisions.forEach(division => {
-                // Add to select element
                 const option = document.createElement('option');
                 option.value = division.id;
                 option.textContent = division.name;
                 divisionSelect.appendChild(option);
-                
-                // Add to search dropdown
-                const dropdownOption = document.createElement('div');
-                dropdownOption.className = 'dropdown-option';
-                dropdownOption.textContent = division.name;
-                dropdownOption.dataset.value = division.id;
-                dropdownOption.addEventListener('click', function() {
-                    selectDivision(division.id, division.name);
-                    divisionSearch.value = division.name;
-                    divisionOptions.style.display = 'none';
-                });
-                divisionOptions.appendChild(dropdownOption);
             });
         }
 
-        // Select a division and populate district options
-        function selectDivision(divisionId, divisionName) {
-            selectedDivision = locationData.divisions.find(div => div.id === divisionId);
-            
-            // Update select element
-            divisionSelect.value = divisionId;
-            
-            // Clear dependent fields
-            districtSelect.innerHTML = '<option value="">Select District</option>';
-            policeStationSelect.innerHTML = '<option value="">Select Police Station</option>';
-            postOfficeSelect.innerHTML = '<option value="">Select Post Office</option>';
-            postCodeField.value = '';
-            
-            // Enable district field
-            districtSearch.disabled = false;
-            districtSelect.disabled = false;
-            
-            // Populate district options
-            populateDistrictOptions(selectedDivision.districts);
-        }
+        // Setup event listeners for form interactions
+        function setupEventListeners() {
+            // Division selection
+            divisionSelect.addEventListener('change', function() {
+                const selectedDivisionId = this.value;
+                if (selectedDivisionId) {
+                    populateDistricts(selectedDivisionId);
+                    districtSelect.disabled = false;
+                    policeStationSelect.disabled = true;
+                    postOfficeSelect.disabled = true;
+                    policeStationSelect.innerHTML = '<option value="">Select Police Station</option>';
+                    postOfficeSelect.innerHTML = '<option value="">Select Post Office</option>';
+                    postCodeInput.value = '';
+                } else {
+                    districtSelect.disabled = true;
+                    policeStationSelect.disabled = true;
+                    postOfficeSelect.disabled = true;
+                    districtSelect.innerHTML = '<option value="">Select District</option>';
+                    policeStationSelect.innerHTML = '<option value="">Select Police Station</option>';
+                    postOfficeSelect.innerHTML = '<option value="">Select Post Office</option>';
+                    postCodeInput.value = '';
+                }
+            });
 
-        // Populate district options
-        function populateDistrictOptions(districts) {
-            // Clear existing options
-            districtSelect.innerHTML = '<option value="">Select District</option>';
-            districtOptions.innerHTML = '';
-            
-            // Add options from districts array
-            districts.forEach(district => {
-                // Add to select element
-                const option = document.createElement('option');
-                option.value = district.id;
-                option.textContent = district.name;
-                districtSelect.appendChild(option);
-                
-                // Add to search dropdown
-                const dropdownOption = document.createElement('div');
-                dropdownOption.className = 'dropdown-option';
-                dropdownOption.textContent = district.name;
-                dropdownOption.dataset.value = district.id;
-                dropdownOption.addEventListener('click', function() {
-                    selectDistrict(district.id, district.name);
-                    districtSearch.value = district.name;
-                    districtOptions.style.display = 'none';
-                });
-                districtOptions.appendChild(dropdownOption);
+            // District selection
+            districtSelect.addEventListener('change', function() {
+                const selectedDistrictId = this.value;
+                if (selectedDistrictId) {
+                    populatePoliceStations(selectedDistrictId);
+                    policeStationSelect.disabled = false;
+                    postOfficeSelect.disabled = true;
+                    postOfficeSelect.innerHTML = '<option value="">Select Post Office</option>';
+                    postCodeInput.value = '';
+                } else {
+                    policeStationSelect.disabled = true;
+                    postOfficeSelect.disabled = true;
+                    policeStationSelect.innerHTML = '<option value="">Select Police Station</option>';
+                    postOfficeSelect.innerHTML = '<option value="">Select Post Office</option>';
+                    postCodeInput.value = '';
+                }
+            });
+
+            // Police Station selection
+            policeStationSelect.addEventListener('change', function() {
+                const selectedPoliceStationId = this.value;
+                if (selectedPoliceStationId) {
+                    populatePostOffices(selectedPoliceStationId);
+                    postOfficeSelect.disabled = false;
+                    postCodeInput.value = '';
+                } else {
+                    postOfficeSelect.disabled = true;
+                    postOfficeSelect.innerHTML = '<option value="">Select Post Office</option>';
+                    postCodeInput.value = '';
+                }
+            });
+
+            // Post Office selection
+            postOfficeSelect.addEventListener('change', function() {
+                const selectedPostOfficeId = this.value;
+                if (selectedPostOfficeId) {
+                    const postCode = getPostCode(selectedPostOfficeId);
+                    postCodeInput.value = postCode;
+                } else {
+                    postCodeInput.value = '';
+                }
+            });
+
+            // Same as registered office checkbox
+            sameAsRegisteredCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    showToast('Head Office address will be copied from Registered Office', 'info');
+                }
+            });
+
+            // Add branch address button
+            addBranchBtn.addEventListener('click', function() {
+                addBranchAddress();
+            });
+
+            // Navigation buttons
+            prevBtn.addEventListener('click', function() {
+                showToast('Navigating to previous step', 'info');
+                // In a real application, this would navigate to the previous step
+            });
+
+            nextBtn.addEventListener('click', function() {
+                if (validateForm()) {
+                    showToast('Address information saved successfully', 'success');
+                    // In a real application, this would navigate to the next step
+                } else {
+                    showToast('Please fill in all required fields correctly', 'error');
+                }
+            });
+
+            saveBtn.addEventListener('click', function() {
+                showToast('Draft saved successfully', 'success');
+            });
+
+            supportBtn.addEventListener('click', function() {
+                showToast('Support team will contact you shortly', 'info');
             });
         }
 
-        // Select a district and populate police station options
-        function selectDistrict(districtId, districtName) {
-            selectedDistrict = selectedDivision.districts.find(dis => dis.id === districtId);
+        // Populate districts based on selected division
+        function populateDistricts(divisionId) {
+            const division = locationData.divisions.find(d => d.id === divisionId);
+            districtSelect.innerHTML = '<option value="">Select District</option>';
             
-            // Update select element
-            districtSelect.value = districtId;
-            
-            // Clear dependent fields
-            policeStationSelect.innerHTML = '<option value="">Select Police Station</option>';
-            postOfficeSelect.innerHTML = '<option value="">Select Post Office</option>';
-            postCodeField.value = '';
-            
-            // Enable police station field
-            policeStationSearch.disabled = false;
-            policeStationSelect.disabled = false;
-            
-            // Populate police station options
-            populatePoliceStationOptions(selectedDistrict.policeStations);
+            if (division) {
+                division.districts.forEach(district => {
+                    const option = document.createElement('option');
+                    option.value = district.id;
+                    option.textContent = district.name;
+                    districtSelect.appendChild(option);
+                });
+            }
         }
 
-        // Populate police station options
-        function populatePoliceStationOptions(policeStations) {
-            // Clear existing options
-            policeStationSelect.innerHTML = '<option value="">Select Police Station</option>';
-            policeStationOptions.innerHTML = '';
+        // Populate police stations based on selected district
+        function populatePoliceStations(districtId) {
+            // Find the district in any division
+            let policeStations = [];
+            for (const division of locationData.divisions) {
+                const district = division.districts.find(d => d.id === districtId);
+                if (district) {
+                    policeStations = district.policeStations;
+                    break;
+                }
+            }
             
-            // Add options from policeStations array
+            policeStationSelect.innerHTML = '<option value="">Select Police Station</option>';
+            
             policeStations.forEach(ps => {
-                // Add to select element
                 const option = document.createElement('option');
                 option.value = ps.id;
                 option.textContent = ps.name;
                 policeStationSelect.appendChild(option);
-                
-                // Add to search dropdown
-                const dropdownOption = document.createElement('div');
-                dropdownOption.className = 'dropdown-option';
-                dropdownOption.textContent = ps.name;
-                dropdownOption.dataset.value = ps.id;
-                dropdownOption.addEventListener('click', function() {
-                    selectPoliceStation(ps.id, ps.name);
-                    policeStationSearch.value = ps.name;
-                    policeStationOptions.style.display = 'none';
-                });
-                policeStationOptions.appendChild(dropdownOption);
             });
         }
 
-        // Select a police station and populate post office options
-        function selectPoliceStation(psId, psName) {
-            selectedPoliceStation = selectedDistrict.policeStations.find(ps => ps.id === psId);
+        // Populate post offices based on selected police station
+        function populatePostOffices(policeStationId) {
+            // Find the police station in any district and division
+            let postOffices = [];
+            for (const division of locationData.divisions) {
+                for (const district of division.districts) {
+                    const policeStation = district.policeStations.find(ps => ps.id === policeStationId);
+                    if (policeStation) {
+                        postOffices = policeStation.postOffices;
+                        break;
+                    }
+                }
+                if (postOffices.length > 0) break;
+            }
             
-            // Update select element
-            policeStationSelect.value = psId;
-            
-            // Clear dependent fields
             postOfficeSelect.innerHTML = '<option value="">Select Post Office</option>';
-            postCodeField.value = '';
             
-            // Enable post office field
-            postOfficeSearch.disabled = false;
-            postOfficeSelect.disabled = false;
-            
-            // Populate post office options
-            populatePostOfficeOptions(selectedPoliceStation.postOffices);
-        }
-
-        // Populate post office options
-        function populatePostOfficeOptions(postOffices) {
-            // Clear existing options
-            postOfficeSelect.innerHTML = '<option value="">Select Post Office</option>';
-            postOfficeOptions.innerHTML = '';
-            
-            // Add options from postOffices array
             postOffices.forEach(po => {
-                // Add to select element
                 const option = document.createElement('option');
                 option.value = po.id;
                 option.textContent = po.name;
                 postOfficeSelect.appendChild(option);
-                
-                // Add to search dropdown
-                const dropdownOption = document.createElement('div');
-                dropdownOption.className = 'dropdown-option';
-                dropdownOption.textContent = po.name;
-                dropdownOption.dataset.value = po.id;
-                dropdownOption.addEventListener('click', function() {
-                    selectPostOffice(po.id, po.name, po.postCode);
-                    postOfficeSearch.value = po.name;
-                    postOfficeOptions.style.display = 'none';
-                });
-                postOfficeOptions.appendChild(dropdownOption);
             });
         }
 
-        // Select a post office and set post code
-        function selectPostOffice(poId, poName, postCode) {
-            selectedPostOffice = selectedPoliceStation.postOffices.find(po => po.id === poId);
-            
-            // Update select element
-            postOfficeSelect.value = poId;
-            
-            // Set post code
-            postCodeField.value = postCode;
-        }
-
-        // Setup event listeners
-        function setupEventListeners() {
-            // Selection method tabs
-            selectionTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const method = this.dataset.method;
-                    
-                    // Update active tab
-                    selectionTabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Show corresponding method
-                    divisionMethod.classList.remove('active');
-                    postcodeMethod.classList.remove('active');
-                    
-                    if (method === 'division') {
-                        divisionMethod.classList.add('active');
-                    } else {
-                        postcodeMethod.classList.add('active');
-                    }
-                });
-            });
-            
-            // Select element change events
-            divisionSelect.addEventListener('change', function() {
-                if (this.value) {
-                    const division = locationData.divisions.find(div => div.id === this.value);
-                    selectDivision(division.id, division.name);
-                }
-            });
-            
-            districtSelect.addEventListener('change', function() {
-                if (this.value) {
-                    const district = selectedDivision.districts.find(dis => dis.id === this.value);
-                    selectDistrict(district.id, district.name);
-                }
-            });
-            
-            policeStationSelect.addEventListener('change', function() {
-                if (this.value) {
-                    const ps = selectedDistrict.policeStations.find(ps => ps.id === this.value);
-                    selectPoliceStation(ps.id, ps.name);
-                }
-            });
-            
-            postOfficeSelect.addEventListener('change', function() {
-                if (this.value) {
-                    const po = selectedPoliceStation.postOffices.find(po => po.id === this.value);
-                    selectPostOffice(po.id, po.name, po.postCode);
-                }
-            });
-        }
-
-        // Setup search functionality
-        function setupSearchFunctionality() {
-            // Division search
-            divisionSearch.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                const options = divisionOptions.querySelectorAll('.dropdown-option');
-                let hasMatches = false;
-                
-                options.forEach(option => {
-                    if (option.textContent.toLowerCase().includes(searchTerm)) {
-                        option.style.display = 'block';
-                        hasMatches = true;
-                    } else {
-                        option.style.display = 'none';
-                    }
-                });
-                
-                if (searchTerm && hasMatches) {
-                    divisionOptions.style.display = 'block';
-                } else {
-                    divisionOptions.style.display = 'none';
-                }
-            });
-            
-            // District search
-            districtSearch.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                const options = districtOptions.querySelectorAll('.dropdown-option');
-                let hasMatches = false;
-                
-                options.forEach(option => {
-                    if (option.textContent.toLowerCase().includes(searchTerm)) {
-                        option.style.display = 'block';
-                        hasMatches = true;
-                    } else {
-                        option.style.display = 'none';
-                    }
-                });
-                
-                if (searchTerm && hasMatches) {
-                    districtOptions.style.display = 'block';
-                } else {
-                    districtOptions.style.display = 'none';
-                }
-            });
-            
-            // Police station search
-            policeStationSearch.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                const options = policeStationOptions.querySelectorAll('.dropdown-option');
-                let hasMatches = false;
-                
-                options.forEach(option => {
-                    if (option.textContent.toLowerCase().includes(searchTerm)) {
-                        option.style.display = 'block';
-                        hasMatches = true;
-                    } else {
-                        option.style.display = 'none';
-                    }
-                });
-                
-                if (searchTerm && hasMatches) {
-                    policeStationOptions.style.display = 'block';
-                } else {
-                    policeStationOptions.style.display = 'none';
-                }
-            });
-            
-            // Post office search
-            postOfficeSearch.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                const options = postOfficeOptions.querySelectorAll('.dropdown-option');
-                let hasMatches = false;
-                
-                options.forEach(option => {
-                    if (option.textContent.toLowerCase().includes(searchTerm)) {
-                        option.style.display = 'block';
-                        hasMatches = true;
-                    } else {
-                        option.style.display = 'none';
-                    }
-                });
-                
-                if (searchTerm && hasMatches) {
-                    postOfficeOptions.style.display = 'block';
-                } else {
-                    postOfficeOptions.style.display = 'none';
-                }
-            });
-            
-            // Post code direct search
-            postCodeDirect.addEventListener('input', function() {
-                const searchTerm = this.value;
-                postCodeOptions.innerHTML = '';
-                
-                if (searchTerm.length >= 2) {
-                    // Show loading animation
-                    const loadingOption = document.createElement('div');
-                    loadingOption.className = 'search-loading';
-                    loadingOption.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Searching...';
-                    postCodeOptions.appendChild(loadingOption);
-                    postCodeOptions.style.display = 'block';
-                    
-                    // Simulate API delay
-                    setTimeout(() => {
-                        postCodeOptions.innerHTML = '';
-                        
-                        // Find matching post codes
-                        const matches = Object.keys(postCodeMap).filter(code => 
-                            code.startsWith(searchTerm)
-                        );
-                        
-                        if (matches.length > 0) {
-                            matches.forEach(code => {
-                                const option = document.createElement('div');
-                                option.className = 'dropdown-option';
-                                option.textContent = code;
-                                option.addEventListener('click', function() {
-                                    selectByPostCode(code);
-                                    postCodeDirect.value = code;
-                                    postCodeOptions.style.display = 'none';
-                                });
-                                postCodeOptions.appendChild(option);
-                            });
-                        } else {
-                            const noResult = document.createElement('div');
-                            noResult.className = 'search-loading';
-                            noResult.textContent = 'No post code found';
-                            postCodeOptions.appendChild(noResult);
+        // Get post code for selected post office
+        function getPostCode(postOfficeId) {
+            // Find the post office in any police station, district and division
+            for (const division of locationData.divisions) {
+                for (const district of division.districts) {
+                    for (const policeStation of district.policeStations) {
+                        const postOffice = policeStation.postOffices.find(po => po.id === postOfficeId);
+                        if (postOffice) {
+                            return postOffice.postCode;
                         }
-                    }, 500);
+                    }
+                }
+            }
+            return '';
+        }
+
+        // Add a new branch address section
+        function addBranchAddress() {
+            const branchCount = document.querySelectorAll('.branch-address').length + 1;
+            
+            const branchDiv = document.createElement('div');
+            branchDiv.className = 'branch-address';
+            branchDiv.innerHTML = `
+                <h4>Branch Office Address ${branchCount}</h4>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="branchDivision${branchCount}">Division</label>
+                        <select id="branchDivision${branchCount}" class="premium-focus branch-division">
+                            <option value="">Select Division</option>
+                            ${locationData.divisions.map(div => `<option value="${div.id}">${div.name}</option>`).join('')}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="branchDistrict${branchCount}">District</label>
+                        <select id="branchDistrict${branchCount}" class="premium-focus branch-district" disabled>
+                            <option value="">Select District</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="branchAddress${branchCount}">Address</label>
+                        <input type="text" id="branchAddress${branchCount}" placeholder="Enter branch address" class="premium-focus">
+                    </div>
+                </div>
+                <button class="remove-branch-btn" type="button">
+                    <i class="fas fa-trash"></i>
+                    Remove Branch
+                </button>
+            `;
+            
+            branchAddressesContainer.appendChild(branchDiv);
+            
+            // Add event listener for the new branch division selection
+            const branchDivisionSelect = branchDiv.querySelector('.branch-division');
+            branchDivisionSelect.addEventListener('change', function() {
+                const selectedDivisionId = this.value;
+                const branchDistrictSelect = this.closest('.form-row').nextElementSibling.querySelector('.branch-district');
+                
+                if (selectedDivisionId) {
+                    populateBranchDistricts(selectedDivisionId, branchDistrictSelect);
+                    branchDistrictSelect.disabled = false;
                 } else {
-                    postCodeOptions.style.display = 'none';
+                    branchDistrictSelect.disabled = true;
+                    branchDistrictSelect.innerHTML = '<option value="">Select District</option>';
                 }
             });
             
-            // Close dropdown when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.searchable-select')) {
-                    divisionOptions.style.display = 'none';
-                    districtOptions.style.display = 'none';
-                    policeStationOptions.style.display = 'none';
-                    postOfficeOptions.style.display = 'none';
-                    postCodeOptions.style.display = 'none';
-                }
+            // Add event listener for the remove branch button
+            const removeBtn = branchDiv.querySelector('.remove-branch-btn');
+            removeBtn.addEventListener('click', function() {
+                branchDiv.remove();
+                showToast('Branch address removed', 'info');
             });
+            
+            showToast('New branch address added', 'success');
         }
 
-        // Select location by post code
-        function selectByPostCode(postCode) {
-            if (postCodeMap[postCode]) {
-                const location = postCodeMap[postCode];
-                
-                // Set values in direct method fields
-                postOfficeDirect.value = location.postOffice;
-                policeStationDirect.value = location.policeStation;
-                districtDirect.value = location.district;
-                divisionDirect.value = location.division;
+        // Populate districts for branch addresses
+        function populateBranchDistricts(divisionId, districtSelect) {
+            const division = locationData.divisions.find(d => d.id === divisionId);
+            districtSelect.innerHTML = '<option value="">Select District</option>';
+            
+            if (division) {
+                division.districts.forEach(district => {
+                    const option = document.createElement('option');
+                    option.value = district.id;
+                    option.textContent = district.name;
+                    districtSelect.appendChild(option);
+                });
             }
+        }
+
+        // Validate the form
+        function validateForm() {
+            let isValid = true;
+            
+            // Check required fields
+            const requiredFields = [
+                'division', 'district', 'policeStation', 'postOffice', 'postCode',
+                'houseName', 'streetAddress', 'city', 'state', 'postalCode', 'country',
+                'phone', 'mobile', 'email'
+            ];
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                const errorElement = document.getElementById(fieldId + 'Error');
+                
+                if (!field.value.trim()) {
+                    field.classList.add('input-error');
+                    errorElement.style.display = 'block';
+                    isValid = false;
+                } else {
+                    field.classList.remove('input-error');
+                    errorElement.style.display = 'none';
+                }
+            });
+            
+            // Validate email format
+            const emailField = document.getElementById('email');
+            const emailError = document.getElementById('emailError');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (emailField.value && !emailRegex.test(emailField.value)) {
+                emailField.classList.add('input-error');
+                emailError.textContent = 'Please enter a valid email address';
+                emailError.style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate flat number (only English letters)
+            const flatNoField = document.getElementById('flatNo');
+            const flatNoError = document.getElementById('flatNoError');
+            const flatNoRegex = /^[A-Za-z]*$/;
+            
+            if (flatNoField.value && !flatNoRegex.test(flatNoField.value)) {
+                flatNoField.classList.add('input-error');
+                flatNoError.style.display = 'block';
+                isValid = false;
+            } else {
+                flatNoField.classList.remove('input-error');
+                flatNoError.style.display = 'none';
+            }
+            
+            // Validate section number (1-50)
+            const sectionNoField = document.getElementById('sectionNo');
+            const sectionNoError = document.getElementById('sectionNoError');
+            
+            if (sectionNoField.value && (sectionNoField.value < 1 || sectionNoField.value > 50)) {
+                sectionNoField.classList.add('input-error');
+                sectionNoError.style.display = 'block';
+                isValid = false;
+            } else {
+                sectionNoField.classList.remove('input-error');
+                sectionNoError.style.display = 'none';
+            }
+            
+            return isValid;
+        }
+
+        // Setup auto-save functionality
+        function setupAutoSave() {
+            const formFields = document.querySelectorAll('input, select, textarea');
+            
+            formFields.forEach(field => {
+                field.addEventListener('change', function() {
+                    autoSaveStatus.innerHTML = '<i class="fas fa-sync-alt fa-spin"></i><span>Auto-saving...</span>';
+                    
+                    // Simulate auto-save delay
+                    setTimeout(() => {
+                        autoSaveStatus.innerHTML = '<i class="fas fa-check-circle"></i><span>Auto-saved</span>';
+                        
+                        // Revert to original status after 2 seconds
+                        setTimeout(() => {
+                            autoSaveStatus.innerHTML = '<i class="fas fa-save"></i><span>Auto-save enabled</span>';
+                        }, 2000);
+                    }, 1000);
+                });
+            });
         }
 
         // Show toast notification
         function showToast(message, type = 'info') {
-            const toastContainer = document.getElementById('toastContainer');
             const toast = document.createElement('div');
             toast.className = `toast toast-${type}`;
             toast.innerHTML = `
@@ -2045,14 +1789,16 @@
             
             toastContainer.appendChild(toast);
             
+            // Animate in
             setTimeout(() => {
                 toast.classList.add('show');
             }, 100);
             
+            // Remove after 4 seconds
             setTimeout(() => {
                 toast.classList.remove('show');
                 setTimeout(() => {
-                    toastContainer.removeChild(toast);
+                    toast.remove();
                 }, 300);
             }, 4000);
         }
@@ -2063,196 +1809,10 @@
                 case 'success': return 'check-circle';
                 case 'error': return 'exclamation-circle';
                 case 'warning': return 'exclamation-triangle';
+                case 'info': return 'info-circle';
                 default: return 'info-circle';
             }
         }
-
-        // Add branch address functionality
-        document.getElementById('addBranchBtn').addEventListener('click', function() {
-            const branchAddresses = document.getElementById('branchAddresses');
-            
-            if (branchAddresses.querySelector('p')) {
-                branchAddresses.innerHTML = '';
-            }
-            
-            const branchCount = branchAddresses.children.length + 1;
-            
-            const branchDiv = document.createElement('div');
-            branchDiv.className = 'branch-address-card card';
-            branchDiv.innerHTML = `
-                <div class="card-header">
-                    <h4>Branch Address ${branchCount}</h4>
-                    <button type="button" class="remove-branch-btn">
-                        <i class="fas fa-times"></i> Remove
-                    </button>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="branchName${branchCount}">Branch Name</label>
-                        <input type="text" id="branchName${branchCount}" class="premium-focus" placeholder="Enter branch name">
-                    </div>
-                    <div class="form-group">
-                        <label for="branchPhone${branchCount}">Branch Phone</label>
-                        <input type="tel" id="branchPhone${branchCount}" class="premium-focus" placeholder="+880 XXXX-XXXXXX">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="branchAddress${branchCount}">Branch Address</label>
-                    <textarea id="branchAddress${branchCount}" class="premium-focus" placeholder="Enter branch address" rows="3"></textarea>
-                </div>
-            `;
-            
-            branchAddresses.appendChild(branchDiv);
-            
-            // Add event listener to remove button
-            branchDiv.querySelector('.remove-branch-btn').addEventListener('click', function() {
-                branchAddresses.removeChild(branchDiv);
-                
-                // If no branches left, show message
-                if (branchAddresses.children.length === 0) {
-                    branchAddresses.innerHTML = '<p>No branch addresses added yet.</p>';
-                }
-            });
-            
-            showToast('Branch address added successfully', 'success');
-        });
-
-        // Form navigation
-        document.getElementById('prevBtn').addEventListener('click', function() {
-            showToast('Navigating to previous step', 'info');
-        });
-
-        document.getElementById('nextBtn').addEventListener('click', function() {
-            // Validate form before proceeding
-            if (validateStep3()) {
-                showToast('Step 3 completed successfully!', 'success');
-                // In a real application, you would navigate to the next step
-            } else {
-                showToast('Please complete all required fields', 'error');
-            }
-        });
-
-        document.getElementById('saveBtn').addEventListener('click', function() {
-            showToast('Draft saved successfully', 'success');
-        });
-
-        // Form validation for step 3
-        function validateStep3() {
-            let isValid = true;
-            
-            // Check which method is active
-            const isDivisionMethod = divisionMethod.classList.contains('active');
-            
-            if (isDivisionMethod) {
-                // Validate division method fields
-                if (!divisionSelect.value) {
-                    document.getElementById('divisionError').style.display = 'block';
-                    isValid = false;
-                } else {
-                    document.getElementById('divisionError').style.display = 'none';
-                }
-                
-                if (!districtSelect.value) {
-                    document.getElementById('districtError').style.display = 'block';
-                    isValid = false;
-                } else {
-                    document.getElementById('districtError').style.display = 'none';
-                }
-                
-                if (!policeStationSelect.value) {
-                    document.getElementById('policeStationError').style.display = 'block';
-                    isValid = false;
-                } else {
-                    document.getElementById('policeStationError').style.display = 'none';
-                }
-                
-                if (!postOfficeSelect.value) {
-                    document.getElementById('postOfficeError').style.display = 'block';
-                    isValid = false;
-                } else {
-                    document.getElementById('postOfficeError').style.display = 'none';
-                }
-                
-                if (!postCodeField.value) {
-                    document.getElementById('postCodeError').style.display = 'block';
-                    isValid = false;
-                } else {
-                    document.getElementById('postCodeError').style.display = 'none';
-                }
-                
-                if (!document.getElementById('detailedAddress').value) {
-                    document.getElementById('detailedAddressError').style.display = 'block';
-                    isValid = false;
-                } else {
-                    document.getElementById('detailedAddressError').style.display = 'none';
-                }
-            } else {
-                // Validate postcode method fields
-                if (!postCodeDirect.value) {
-                    document.getElementById('postCodeDirectError').style.display = 'block';
-                    isValid = false;
-                } else {
-                    document.getElementById('postCodeDirectError').style.display = 'none';
-                }
-                
-                if (!postOfficeDirect.value) {
-                    document.getElementById('postOfficeDirectError').style.display = 'block';
-                    isValid = false;
-                } else {
-                    document.getElementById('postOfficeDirectError').style.display = 'none';
-                }
-                
-                if (!policeStationDirect.value) {
-                    document.getElementById('policeStationDirectError').style.display = 'block';
-                    isValid = false;
-                } else {
-                    document.getElementById('policeStationDirectError').style.display = 'none';
-                }
-                
-                if (!districtDirect.value) {
-                    document.getElementById('districtDirectError').style.display = 'block';
-                    isValid = false;
-                } else {
-                    document.getElementById('districtDirectError').style.display = 'none';
-                }
-                
-                if (!divisionDirect.value) {
-                    document.getElementById('divisionDirectError').style.display = 'block';
-                    isValid = false;
-                } else {
-                    document.getElementById('divisionDirectError').style.display = 'none';
-                }
-                
-                if (!document.getElementById('detailedAddressDirect').value) {
-                    document.getElementById('detailedAddressDirectError').style.display = 'block';
-                    isValid = false;
-                } else {
-                    document.getElementById('detailedAddressDirectError').style.display = 'none';
-                }
-            }
-            
-            // Validate contact information
-            if (!document.getElementById('phoneNumber').value) {
-                document.getElementById('phoneError').style.display = 'block';
-                isValid = false;
-            } else {
-                document.getElementById('phoneError').style.display = 'none';
-            }
-            
-            if (!document.getElementById('email').value) {
-                document.getElementById('emailError').style.display = 'block';
-                isValid = false;
-            } else {
-                document.getElementById('emailError').style.display = 'none';
-            }
-            
-            return isValid;
-        }
-
-        // Support button
-        document.getElementById('supportBtn').addEventListener('click', function() {
-            showToast('Support team will contact you shortly', 'info');
-        });
     </script>
 </body>
 </html>
