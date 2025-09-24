@@ -1,0 +1,121 @@
+[
+  {
+    "Division": "Dhaka",
+    "District": "Dhaka",
+    "PoliceStation": "Badda",
+    "PostOffice": "Badda TSO",
+    "PostCode": "1212"
+  },
+  {
+    "Division": "Dhaka",
+    "District": "Dhaka",
+    "PoliceStation": "Badda",
+    "PostOffice": "Boro Beraid EDBO",
+    "PostCode": "1212"
+  },
+  {
+    "Division": "Dhaka",
+    "District": "Dhaka",
+    "PoliceStation": "Badda",
+    "PostOffice": "Satarkul EDBO",
+    "PostCode": "1212"
+  },
+  {
+    "Division": "Dhaka",
+    "District": "Dhaka",
+    "PoliceStation": "Banani",
+    "PostOffice": "Banani Night TSO",
+    "PostCode": "1213"
+  },
+  {
+    "Division": "Dhaka",
+    "District": "Dhaka",
+    "PoliceStation": "Banani",
+    "PostOffice": "Banani TSO",
+    "PostCode": "1213"
+  },
+  {
+    "Division": "Dhaka",
+    "District": "Dhaka",
+    "PoliceStation": "Banani",
+    "PostOffice": "Public Health TSO",
+    "PostCode": "1212"
+  },
+  {
+    "Division": "Dhaka",
+    "District": "Dhaka",
+    "PoliceStation": "Bongshal",
+    "PostOffice": "Babu Bazar TSO",
+    "PostCode": "1100"
+  },
+  {
+    "Division": "Dhaka",
+    "District": "Dhaka",
+    "PoliceStation": "Bongshal",
+    "PostOffice": "Sk Burhauddin College TSO",
+    "PostCode": "1100"
+  },
+  {
+    "Division": "Dhaka",
+    "District": "Dhaka",
+    "PoliceStation": "Cantonment",
+    "PostOffice": "Air HQ TSO",
+    "PostCode": "1206"
+  },
+  {
+    "Division": "Dhaka",
+    "District": "Dhaka",
+    "PoliceStation": "Cantonment",
+    "PostOffice": "BAF base TSO",
+    "PostCode": "1206"
+  },
+  {
+    "Division": "Dhaka",
+    "District": "Dhaka",
+    "PoliceStation": "Cantonment",
+    "PostOffice": "Dhaka Cant Night TSO",
+    "PostCode": "1206"
+  },
+  {
+    "Division": "Dhaka",
+    "District": "Dhaka",
+    "PoliceStation": "Cantonment",
+    "PostOffice": "Dhaka Cantonment TSO",
+    "PostCode": "1206"
+  },
+  {
+    "Division": "Dhaka",
+    "District": "Dhaka",
+    "PoliceStation": "Cantonment",
+    "PostOffice": "Manikdi TSO",
+    "PostCode": "1206"
+  },
+  {
+    "Division": "Rangpur",
+    "District": "Dinajpur",
+    "PoliceStation": "Bachaganj",
+    "PostOffice": "BARA SULTANPUR",
+    "PostCode": "5216"
+  },
+  {
+    "Division": "Rangpur",
+    "District": "Dinajpur",
+    "PoliceStation": "Bachaganj",
+    "PostOffice": "Choto Sultanpur",
+    "PostCode": "5216"
+  },
+  {
+    "Division": "Rangpur",
+    "District": "Dinajpur",
+    "PoliceStation": "Bachaganj",
+    "PostOffice": "Hatmadhobpur",
+    "PostCode": "5216"
+  },
+  {
+    "Division": "Rajshahi",
+    "District": "Natore",
+    "PoliceStation": "Bagatipara",
+    "PostOffice": "Bashbaria",
+    "PostCode": "6410"
+  }
+]

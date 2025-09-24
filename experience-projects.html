@@ -1163,7 +1163,336 @@
                                 </div>
                             </div>
                         </div>
+                         <!-- Portfolio Details Section - Added after Project Portfolio section -->
+<div class="card hover-lift">
+    <h3 class="card-title">Portfolio Details</h3>
+    <p class="section-description">Complete portfolio contract information and progress tracking</p>
 
+    <!-- Procuring Entity Section -->
+    <div class="contract-section">
+        <div class="contract-section-header">
+            <h4 class="contract-section-title">
+                <i class="fas fa-landmark contract-section-icon"></i>
+                Procuring Entity Details
+            </h4>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="procuringEntity" class="required">01 Procuring Entity Details</label>
+                <input type="text" id="procuringEntity" class="premium-focus" placeholder="Enter procuring entity details (e.g., P.E Division: Ministry of Housing and Public Works)">
+                <div class="error-message">Please enter procuring entity details</div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="worksName" class="required">02 Name of Works</label>
+                <input type="text" id="worksName" class="premium-focus" placeholder="Enter name of works">
+                <div class="error-message">Please enter name of works</div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="contractNo" class="required">03 Contract No</label>
+                <input type="text" id="contractNo" class="premium-focus" placeholder="Enter contract number">
+                <div class="error-message">Please enter contract number</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contractor Information Section -->
+    <div class="contract-section">
+        <div class="contract-section-header">
+            <h4 class="contract-section-title">
+                <i class="fas fa-user-tie contract-section-icon"></i>
+                Contractor Information
+            </h4>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="contractorTitle" class="required">04 Contractor's Legal Title</label>
+                <input type="text" id="contractorTitle" class="premium-focus" placeholder="Enter contractor's legal title">
+                <div class="error-message">Please enter contractor's legal title</div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="contractorContact" class="required">05 Contractor's Contact Details</label>
+                <input type="text" id="contractorContact" class="premium-focus" placeholder="Enter contractor's contact details">
+                <div class="error-message">Please enter contractor's contact details</div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="tradeLicense" class="required">06 Contractor's Trade License</label>
+                <input type="text" id="tradeLicense" class="premium-focus" placeholder="Enter trade license number">
+                <div class="error-message">Please enter trade license number</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contract Details Section -->
+    <div class="contract-section">
+        <div class="contract-section-header">
+            <h4 class="contract-section-title">
+                <i class="fas fa-clipboard-list contract-section-icon"></i>
+                Contract Details & Progress
+            </h4>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="noaReference" class="required">07 Reference to NOA with Date</label>
+                <input type="text" id="noaReference" class="premium-focus" placeholder="Enter NOA reference with date">
+                <div class="error-message">Please enter NOA reference</div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="originalPrice" class="required">08 Original Contract Price</label>
+                <input type="text" id="originalPrice" class="premium-focus financial-input" placeholder="Enter original contract price (e.g., Tk. 5,97,25,159.20)">
+                <div class="price-in-words" id="originalPriceWords"></div>
+                <div class="error-message">Please enter original contract price</div>
+            </div>
+            <div class="form-group">
+                <label for="finalPrice" class="required">09 Final Contract Price</label>
+                <input type="text" id="finalPrice" class="premium-focus financial-input" placeholder="Enter final contract price">
+                <div class="price-in-words" id="finalPriceWords"></div>
+                <div class="error-message">Please enter final contract price</div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="originalPeriod" class="required">10 Original Contract Period</label>
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1;">
+                        <input type="date" id="commencementDate" class="premium-focus">
+                        <small style="color: var(--secondary-color);">Commencement Date</small>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <input type="date" id="completionDate" class="premium-focus">
+                        <small style="color: var(--secondary-color);">Completion Date</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="actualPeriod" class="required">11 Actual Implementation Period</label>
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1;">
+                        <input type="date" id="actualCommencement" class="premium-focus">
+                        <small style="color: var(--secondary-color);">Actual Commencement</small>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <input type="date" id="actualCompletion" class="premium-focus">
+                        <small style="color: var(--secondary-color);">Actual Completion</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="extension">12 Extension</label>
+                <input type="text" id="extension" class="premium-focus" placeholder="Enter extension details if any">
+            </div>
+            <div class="form-group">
+                <label for="bonus">13 Bonus for Early Completion</label>
+                <input type="text" id="bonus" class="premium-focus" placeholder="Enter bonus amount if any">
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="ld">14 LD for Delayed Completion</label>
+                <input type="text" id="ld" class="premium-focus" placeholder="Enter LD amount if any">
+            </div>
+            <div class="form-group">
+                <label for="physicalProgress" class="required">15 Physical Progress</label>
+                <input type="text" id="physicalProgress" class="premium-focus" placeholder="Enter physical progress percentage">
+                <div class="error-message">Please enter physical progress</div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="financialProgress" class="required">16 Financial Progress</label>
+                <input type="text" id="financialProgress" class="premium-focus financial-input" placeholder="Enter financial progress amount">
+                <div class="price-in-words" id="financialProgressWords"></div>
+                <div class="error-message">Please enter financial progress</div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="specialNote">17 Special Note</label>
+                <textarea id="specialNote" class="premium-focus" placeholder="Enter any special notes or comments" rows="3"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Document Upload for Portfolio -->
+    <div class="form-group">
+        <label>Upload Supporting Documents</label>
+        <div class="file-upload hover-lift" id="portfolioDocsContainer">
+            <input type="file" id="portfolioDocsUpload" accept=".pdf,.doc,.docx,.jpg,.png" style="display: none;" multiple>
+            <button class="upload-btn" onclick="document.getElementById('portfolioDocsUpload').click()">
+                <i class="fas fa-upload"></i>
+                Choose Files
+            </button>
+            <p class="file-info" id="portfolioDocsFileInfo">No files selected</p>
+            <div class="file-preview" id="portfolioDocsPreview"></div>
+            <div class="upload-status" id="portfolioDocsUploadStatus"></div>
+            <small>PDF, Word, Images | Max 5MB per file</small>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Additional Styles for Portfolio Details */
+.contract-section {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+    transition: var(--transition);
+}
+
+.contract-section:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+}
+
+.contract-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.contract-section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--heading-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contract-section-icon {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.price-in-words {
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+    margin-top: 0.25rem;
+    font-style: italic;
+    min-height: 1.2rem;
+}
+
+.financial-input {
+    border-left: 3px solid var(--primary-color) !important;
+}
+
+.financial-input:focus {
+    border-left-color: var(--primary-dark) !important;
+}
+</style>
+
+<script>
+// Number to Words Conversion Function
+function numberToWords(num) {
+    const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 
+                 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+    const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+    
+    if (num === 0) return 'Zero';
+    
+    function convertLessThanThousand(n) {
+        if (n === 0) return '';
+        if (n < 20) return ones[n];
+        if (n < 100) return tens[Math.floor(n / 10)] + (n % 10 !== 0 ? ' ' + ones[n % 10] : '');
+        return ones[Math.floor(n / 100)] + ' Hundred' + (n % 100 !== 0 ? ' ' + convertLessThanThousand(n % 100) : '');
+    }
+    
+    let result = '';
+    const crore = Math.floor(num / 10000000);
+    const lakh = Math.floor((num % 10000000) / 100000);
+    const thousand = Math.floor((num % 100000) / 1000);
+    const remainder = num % 1000;
+    
+    if (crore > 0) {
+        result += convertLessThanThousand(crore) + ' Crore ';
+    }
+    if (lakh > 0) {
+        result += convertLessThanThousand(lakh) + ' Lakh ';
+    }
+    if (thousand > 0) {
+        result += convertLessThanThousand(thousand) + ' Thousand ';
+    }
+    if (remainder > 0) {
+        result += convertLessThanThousand(remainder);
+    }
+    
+    return result.trim() + ' Taka Only';
+}
+
+// Financial input handling
+function setupFinancialInputs() {
+    const financialInputs = document.querySelectorAll('.financial-input');
+    
+    financialInputs.forEach(input => {
+        input.addEventListener('input', function() {
+            const value = this.value.replace(/[^\d.]/g, '');
+            const numValue = parseFloat(value) || 0;
+            const wordsElement = this.parentElement.querySelector('.price-in-words');
+            
+            if (wordsElement && numValue > 0) {
+                wordsElement.textContent = 'in word: ' + numberToWords(Math.floor(numValue));
+            } else if (wordsElement) {
+                wordsElement.textContent = '';
+            }
+        });
+    });
+}
+
+// Initialize portfolio details section
+document.addEventListener('DOMContentLoaded', function() {
+    setupFinancialInputs();
+    setupFileUpload('portfolioDocsUpload', 'portfolioDocsFileInfo', 'portfolioDocsPreview', 'portfolioDocsUploadStatus');
+});
+
+// Validation for required fields
+function validatePortfolioDetails() {
+    const requiredFields = document.querySelectorAll('#step-5 [required]');
+    let isValid = true;
+    
+    requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+            field.classList.add('input-error');
+            isValid = false;
+        } else {
+            field.classList.remove('input-error');
+        }
+    });
+    
+    return isValid;
+}
+</script>   
                         <div class="card hover-lift">
                             <h3 class="card-title">Reference Projects</h3>
                             <div class="form-group">
